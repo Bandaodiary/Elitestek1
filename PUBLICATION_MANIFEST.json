@@ -12,7 +12,7 @@
     "c36_qat_b_mosaic_stable_20260915a"
   ],
   "source_file_count": 2006,
-  "source_bytes": 19040270,
+  "source_bytes": 19041007,
   "files": [
     {
       "path": "case1/15FPS_THROUGHPUT_PHASE.md",
@@ -3320,7 +3320,7 @@
     },
     {
       "path": "case1/review/PUBLICATION_C39_20260916.md",
-      "bytes": 2930
+      "bytes": 3667
     },
     {
       "path": "case1/review/R2_ARRAY_FEASIBILITY_20260913.md",

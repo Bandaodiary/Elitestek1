@@ -2,6 +2,12 @@
 
 整理日期：2026-09-16；硬件与模型证据基线：2026-09-15。
 
+## 实际交付状态
+
+两份文档和独立发布副本均已完成，本地Git已提交，分支为`codex/c39-source-publication`。副本位于原工作区的`case1/publish/Elitestek1-20260915`，共2010项受版本管理文件，约18.2 MiB源码/文档/精选模型输入（不含Git数据库）。
+
+GitHub推送尚未成功：实际HTTPS请求返回403，当前凭据账号`StephenWangZhevsky`对`Bandaodiary/Elitestek1`无写权限。凭据管理器只列出该账号；现有SSH也认证为同一账号。没有更改全局登录、没有新增密钥或覆盖远端。需要用户登录有权限的账号，或授予当前账号目标仓库写权限，再重试普通推送。目标仓库读取可达不代表拥有写权限。
+
 ## 两份主要文档
 
 [Efinity开发方法](../EFINITY_AUTOMATION_PLAYBOOK.md)依据本机安装脚本和实际运行方法编写，21个本地链接已检查。内容包含环境、IP Manager、RISC-V、MAP/PNR/STA、CDC边界、独立Windows worker和定向清理。
