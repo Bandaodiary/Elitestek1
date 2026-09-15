@@ -1,0 +1,502 @@
+{
+  "parameter_image": "../plan_unfused/parameters.bin",
+  "pairs": [
+    [
+      14,
+      15
+    ]
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "name": "encoder1.conv3x3_s2",
+      "inputs": [
+        "$frame"
+      ],
+      "physical_inputs": [
+        "$frame"
+      ],
+      "mode": 4,
+      "cin": 3,
+      "cout": 12,
+      "src_width": 640,
+      "src_height": 480,
+      "dst_width": 320,
+      "dst_height": 240,
+      "src_slot": 0,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 60,
+      "parameter_block": 0,
+      "input_rgb": true,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 1,
+      "name": "encoder2.conv3x3_s2",
+      "inputs": [
+        "encoder1.conv3x3_s2"
+      ],
+      "physical_inputs": [
+        "encoder1.conv3x3_s2"
+      ],
+      "mode": 5,
+      "cin": 12,
+      "cout": 24,
+      "src_width": 320,
+      "src_height": 240,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 0,
+      "dst_slot": 1,
+      "skip_slot": 0,
+      "parameter_beats": 360,
+      "parameter_block": 1,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 2,
+      "name": "res0.expand1x1",
+      "inputs": [
+        "encoder2.conv3x3_s2"
+      ],
+      "physical_inputs": [
+        "encoder2.conv3x3_s2"
+      ],
+      "mode": 0,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 1,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 120,
+      "parameter_block": 2,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 3,
+      "name": "res0.depthwise3x3",
+      "inputs": [
+        "res0.expand1x1"
+      ],
+      "physical_inputs": [
+        "res0.expand1x1"
+      ],
+      "mode": 2,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 0,
+      "dst_slot": 2,
+      "skip_slot": 0,
+      "parameter_beats": 72,
+      "parameter_block": 3,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 4,
+      "name": "res0.project1x1",
+      "inputs": [
+        "res0.depthwise3x3"
+      ],
+      "physical_inputs": [
+        "res0.depthwise3x3"
+      ],
+      "mode": 0,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 2,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 120,
+      "parameter_block": 4,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 5,
+      "name": "res0.add_relu",
+      "inputs": [
+        "res0.project1x1",
+        "encoder2.conv3x3_s2"
+      ],
+      "physical_inputs": [
+        "res0.project1x1",
+        "encoder2.conv3x3_s2"
+      ],
+      "mode": 3,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 0,
+      "dst_slot": 2,
+      "skip_slot": 1,
+      "parameter_beats": 0,
+      "parameter_block": 5,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 6,
+      "name": "res1.expand1x1",
+      "inputs": [
+        "res0.add_relu"
+      ],
+      "physical_inputs": [
+        "res0.add_relu"
+      ],
+      "mode": 0,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 2,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 120,
+      "parameter_block": 6,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 7,
+      "name": "res1.depthwise3x3",
+      "inputs": [
+        "res1.expand1x1"
+      ],
+      "physical_inputs": [
+        "res1.expand1x1"
+      ],
+      "mode": 2,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 0,
+      "dst_slot": 1,
+      "skip_slot": 0,
+      "parameter_beats": 72,
+      "parameter_block": 7,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 8,
+      "name": "res1.project1x1",
+      "inputs": [
+        "res1.depthwise3x3"
+      ],
+      "physical_inputs": [
+        "res1.depthwise3x3"
+      ],
+      "mode": 0,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 1,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 120,
+      "parameter_block": 8,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 9,
+      "name": "res1.add_relu",
+      "inputs": [
+        "res1.project1x1",
+        "res0.add_relu"
+      ],
+      "physical_inputs": [
+        "res1.project1x1",
+        "res0.add_relu"
+      ],
+      "mode": 3,
+      "cin": 24,
+      "cout": 24,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 0,
+      "dst_slot": 1,
+      "skip_slot": 2,
+      "parameter_beats": 0,
+      "parameter_block": 9,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 10,
+      "name": "decoder1.pointwise1x1",
+      "inputs": [
+        "res1.add_relu"
+      ],
+      "physical_inputs": [
+        "res1.add_relu"
+      ],
+      "mode": 0,
+      "cin": 24,
+      "cout": 16,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 160,
+      "dst_height": 120,
+      "src_slot": 1,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 80,
+      "parameter_block": 10,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 11,
+      "name": "decoder1.upsample2",
+      "inputs": [
+        "decoder1.pointwise1x1"
+      ],
+      "physical_inputs": [
+        "decoder1.pointwise1x1"
+      ],
+      "mode": 0,
+      "cin": 16,
+      "cout": 16,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 320,
+      "dst_height": 240,
+      "src_slot": 0,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 0,
+      "parameter_block": 11,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": true,
+      "last": false
+    },
+    {
+      "index": 12,
+      "name": "decoder1.depthwise3x3",
+      "inputs": [
+        "decoder1.upsample2"
+      ],
+      "physical_inputs": [
+        "decoder1.pointwise1x1"
+      ],
+      "mode": 2,
+      "cin": 16,
+      "cout": 16,
+      "src_width": 160,
+      "src_height": 120,
+      "dst_width": 320,
+      "dst_height": 240,
+      "src_slot": 0,
+      "dst_slot": 1,
+      "skip_slot": 0,
+      "parameter_beats": 48,
+      "parameter_block": 12,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": true,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 13,
+      "name": "decoder2.upsample2",
+      "inputs": [
+        "decoder1.depthwise3x3"
+      ],
+      "physical_inputs": [
+        "decoder1.depthwise3x3"
+      ],
+      "mode": 0,
+      "cin": 16,
+      "cout": 16,
+      "src_width": 320,
+      "src_height": 240,
+      "dst_width": 640,
+      "dst_height": 480,
+      "src_slot": 1,
+      "dst_slot": 1,
+      "skip_slot": 0,
+      "parameter_beats": 0,
+      "parameter_block": 13,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": true,
+      "last": false
+    },
+    {
+      "index": 14,
+      "name": "decoder2.depthwise3x3",
+      "inputs": [
+        "decoder2.upsample2"
+      ],
+      "physical_inputs": [
+        "decoder1.depthwise3x3"
+      ],
+      "mode": 2,
+      "cin": 16,
+      "cout": 16,
+      "src_width": 320,
+      "src_height": 240,
+      "dst_width": 640,
+      "dst_height": 480,
+      "src_slot": 1,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 48,
+      "parameter_block": 14,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": true,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 15,
+      "name": "decoder2.pointwise1x1",
+      "inputs": [
+        "decoder2.depthwise3x3"
+      ],
+      "physical_inputs": [
+        "decoder2.depthwise3x3"
+      ],
+      "mode": 0,
+      "cin": 16,
+      "cout": 8,
+      "src_width": 640,
+      "src_height": 480,
+      "dst_width": 640,
+      "dst_height": 480,
+      "src_slot": 0,
+      "dst_slot": 2,
+      "skip_slot": 0,
+      "parameter_beats": 24,
+      "parameter_block": 15,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 16,
+      "name": "output.conv3x3",
+      "inputs": [
+        "decoder2.pointwise1x1"
+      ],
+      "physical_inputs": [
+        "decoder2.pointwise1x1"
+      ],
+      "mode": 1,
+      "cin": 8,
+      "cout": 3,
+      "src_width": 640,
+      "src_height": 480,
+      "dst_width": 640,
+      "dst_height": 480,
+      "src_slot": 2,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 33,
+      "parameter_block": 16,
+      "input_rgb": false,
+      "output_rgb": true,
+      "virtual_up2": false,
+      "view": false,
+      "last": false
+    },
+    {
+      "index": 17,
+      "name": "output.s8_to_rgb",
+      "inputs": [
+        "output.conv3x3"
+      ],
+      "physical_inputs": [
+        "output.conv3x3"
+      ],
+      "mode": 0,
+      "cin": 3,
+      "cout": 3,
+      "src_width": 640,
+      "src_height": 480,
+      "dst_width": 640,
+      "dst_height": 480,
+      "src_slot": 0,
+      "dst_slot": 0,
+      "skip_slot": 0,
+      "parameter_beats": 0,
+      "parameter_block": 17,
+      "input_rgb": false,
+      "output_rgb": false,
+      "virtual_up2": false,
+      "view": true,
+      "last": true
+    }
+  ],
+  "RTL_simulated": false
+}

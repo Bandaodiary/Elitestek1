@@ -1,0 +1,532 @@
+// C39 generated official IP / explicit host ablation. Not board signoff.
+// C38 resource-only joint wrapper. Generated from public port headers.
+// NOT a board top: no periphery/pin/PLL assignment, CSI or HDMI PHY.
+// CPU path: normal noncoherent aligned INCR DDR only; see C13 contract.
+// 28-bit physical DDR addressing relies on C37 fixed arena and CPU range checks.
+`timescale 1ns/1ps
+`default_nettype none
+module c1_ti60_c39_joint_s2_onehot (
+    input wire core_clk,
+    input wire reset_n,
+    input wire cam_clk,
+    input wire cam_valid,
+    input wire cam_vs,
+    input wire cam_de,
+    input wire cam_error,
+    input wire [47:0] cam_rgb,
+    input wire camera_cancel,
+    output wire camera_busy,
+    output wire camera_config_error,
+    output wire camera_snapshot_valid,
+    output wire [31:0] camera_seen,
+    output wire [31:0] camera_skipped,
+    output wire [15:0] camera_fifo_peak,
+    output wire camera_result_valid,
+    output wire camera_result_failed,
+    output wire camera_result_admitted,
+    output wire [3:0] camera_result_code,
+    output wire [31:0] camera_result_tag,
+    input wire display_request,
+    output wire display_request_ready,
+    input wire p_req,
+    input wire p_sof,
+    input wire p_eol,
+    input wire p_eof,
+    output wire m_valid,
+    output wire m_sof,
+    output wire m_eol,
+    output wire m_eof,
+    output wire [23:0] m_rgb,
+    output wire front_valid,
+    output wire display_frame_armed,
+    output wire [31:0] display_pair_tag,
+    output wire nn_complete,
+    output wire nn_failed,
+    output wire [31:0] nn_result_tag,
+    output wire [31:0] nn_result_cycles,
+    output wire fabric_error,
+    output wire [7:0] physical_read_outstanding,
+    output wire [7:0] physical_write_outstanding,
+    input wire soc_jtagCtrl_enable,
+    input wire soc_jtagCtrl_tdi,
+    input wire soc_jtagCtrl_capture,
+    input wire soc_jtagCtrl_shift,
+    input wire soc_jtagCtrl_update,
+    input wire soc_jtagCtrl_reset,
+    output wire soc_jtagCtrl_tdo,
+    input wire soc_jtagCtrl_tck,
+    input wire soc_system_spi_0_io_data_0_read,
+    output wire soc_system_spi_0_io_data_0_write,
+    output wire soc_system_spi_0_io_data_0_writeEnable,
+    input wire soc_system_spi_0_io_data_1_read,
+    output wire soc_system_spi_0_io_data_1_write,
+    output wire soc_system_spi_0_io_data_1_writeEnable,
+    input wire soc_system_spi_0_io_data_2_read,
+    output wire soc_system_spi_0_io_data_2_write,
+    output wire soc_system_spi_0_io_data_2_writeEnable,
+    input wire soc_system_spi_0_io_data_3_read,
+    output wire soc_system_spi_0_io_data_3_write,
+    output wire soc_system_spi_0_io_data_3_writeEnable,
+    output wire soc_system_spi_0_io_sclk_write,
+    output wire soc_io_systemReset,
+    output wire soc_system_uart_0_io_txd,
+    input wire soc_system_uart_0_io_rxd,
+    input wire soc_system_i2c_0_io_scl_read,
+    output wire soc_system_i2c_0_io_scl_write,
+    input wire soc_system_i2c_0_io_sda_read,
+    output wire soc_system_i2c_0_io_sda_write,
+    output wire [3:0] soc_system_gpio_0_io_writeEnable,
+    output wire [3:0] soc_system_gpio_0_io_write,
+    input wire [3:0] soc_system_gpio_0_io_read,
+    output wire soc_system_spi_0_io_ss,
+    input wire phy_sdram_clk,
+    input wire phy_rx_cal_clk,
+    input wire phy_tx_cal_clk,
+    input wire phy_tx_cal_clk_90edge,
+    output wire [2:0] phy_pll_shift,
+    output wire [4:0] phy_pll_shift_sel,
+    output wire phy_pll_shift_ena,
+    output wire phy_ddr_ck_hi,
+    output wire phy_ddr_ck_lo,
+    output wire phy_ddr_reset_n,
+    output wire phy_ddr_cke,
+    output wire [13:0] phy_ddr_addr,
+    output wire [2:0] phy_ddr_ba,
+    output wire phy_ddr_cas_n,
+    output wire phy_ddr_cs_n,
+    output wire phy_ddr_ras_n,
+    output wire phy_ddr_we_n,
+    input wire [1:0] phy_ddr_dqs_in_hi,
+    input wire [1:0] phy_ddr_dqs_in_lo,
+    input wire [15:0] phy_ddr_dq_in_hi,
+    input wire [15:0] phy_ddr_dq_in_lo,
+    output wire [1:0] phy_ddr_dqs_oe,
+    output wire [1:0] phy_ddr_dqs_oe_n,
+    output wire [15:0] phy_ddr_dq_oe,
+    output wire [1:0] phy_ddr_dqs_out_hi,
+    output wire [1:0] phy_ddr_dqs_out_lo,
+    output wire [15:0] phy_ddr_dq_out_hi,
+    output wire [15:0] phy_ddr_dq_out_lo,
+    output wire [1:0] phy_ddr_dm_hi,
+    output wire [1:0] phy_ddr_dm_lo,
+    output wire phy_ddr_odt,
+    output wire phy_app_sr_active,
+    output wire phy_app_ref_ack,
+    output wire phy_app_zq_ack,
+    output wire [7:0] phy_wrlvl_dq_check,
+    output wire [7:0] phy_rd_level_dqs_check,
+    output wire [2:0] phy_rdlvl_shift,
+    output wire [2:0] phy_wrlvl_shift,
+    output wire [6:0] phy_init_cur_state,
+    output wire phy_idelay_ld,
+    output wire phy_mpr_rdlvl_dly,
+    output wire [35:0] phy_ddr_debug_port,
+    output wire cpu_adapter_busy,
+    output wire cpu_adapter_fault,
+    output wire calibrated
+);
+    wire host_rst;
+    wire cal_ready;
+    wire ddr_cal_done;
+    wire psel;
+    wire penable;
+    wire pwrite;
+    wire [15:0] paddr;
+    wire [31:0] pwdata;
+    wire [31:0] prdata;
+    wire pready;
+    wire pslverr;
+    wire irq;
+    wire [31:0] cpu_araddr;
+    wire [7:0] cpu_arlen;
+    wire [2:0] cpu_arsize;
+    wire [1:0] cpu_arburst;
+    wire cpu_arvalid;
+    wire cpu_arready;
+    wire [127:0] cpu_rdata;
+    wire [1:0] cpu_rresp;
+    wire cpu_rlast;
+    wire cpu_rvalid;
+    wire cpu_rready;
+    wire [31:0] cpu_awaddr;
+    wire [7:0] cpu_awlen;
+    wire [2:0] cpu_awsize;
+    wire [1:0] cpu_awburst;
+    wire cpu_awvalid;
+    wire cpu_awready;
+    wire [127:0] cpu_wdata;
+    wire [15:0] cpu_wstrb;
+    wire cpu_wlast;
+    wire cpu_wvalid;
+    wire cpu_wready;
+    wire [1:0] cpu_bresp;
+    wire cpu_bvalid;
+    wire cpu_bready;
+    wire [3:0] m_axi_arid;
+    wire [31:0] m_axi_araddr;
+    wire [7:0] m_axi_arlen;
+    wire [2:0] m_axi_arsize;
+    wire [1:0] m_axi_arburst;
+    wire m_axi_arlock;
+    wire [3:0] m_axi_arcache;
+    wire [3:0] m_axi_arqos;
+    wire [2:0] m_axi_arprot;
+    wire m_axi_arvalid;
+    wire m_axi_arready;
+    wire [3:0] m_axi_rid;
+    wire [127:0] m_axi_rdata;
+    wire [1:0] m_axi_rresp;
+    wire m_axi_rlast;
+    wire m_axi_rvalid;
+    wire m_axi_rready;
+    wire [3:0] m_axi_awid;
+    wire [31:0] m_axi_awaddr;
+    wire [7:0] m_axi_awlen;
+    wire [2:0] m_axi_awsize;
+    wire [1:0] m_axi_awburst;
+    wire m_axi_awlock;
+    wire [3:0] m_axi_awcache;
+    wire [3:0] m_axi_awqos;
+    wire [2:0] m_axi_awprot;
+    wire m_axi_awvalid;
+    wire m_axi_awready;
+    wire [127:0] m_axi_wdata;
+    wire [15:0] m_axi_wstrb;
+    wire m_axi_wlast;
+    wire m_axi_wvalid;
+    wire m_axi_wready;
+    wire [3:0] m_axi_bid;
+    wire [1:0] m_axi_bresp;
+    wire m_axi_bvalid;
+    wire m_axi_bready;
+    wire [7:0] cpu_arid;
+    wire [7:0] cpu_awid;
+    wire cpu_arlock;
+    wire cpu_awlock;
+    wire [3:0] cpu_arregion;
+    wire [3:0] cpu_awregion;
+    wire [7:0] cpu_rid;
+    wire [7:0] cpu_bid;
+    wire soc_wvalid;
+    wire soc_awvalid;
+    wire soc_arvalid;
+    (* async_reg="true" *) reg [1:0] reset_pipe,cam_reset_pipe,cal_pipe;
+    always @(posedge core_clk or negedge reset_n)
+        if(!reset_n) begin reset_pipe<=2'b11;cal_pipe<=0;end
+        else begin reset_pipe<={reset_pipe[0],1'b0};cal_pipe<={cal_pipe[0],ddr_cal_done};end
+    always @(posedge cam_clk or negedge reset_n)
+        if(!reset_n) cam_reset_pipe<=2'b11;
+        else cam_reset_pipe<={cam_reset_pipe[0],1'b0};
+    assign host_rst=reset_pipe[1];
+    assign cal_ready=cal_pipe[1] && !host_rst;
+    assign cpu_wvalid=soc_wvalid && cal_ready;
+    assign cpu_awvalid=soc_awvalid && cal_ready;
+    assign cpu_arvalid=soc_arvalid && cal_ready;
+    assign calibrated=cal_ready;
+    c39_soc_s2 u_soc (
+        .io_systemClk(core_clk),
+        .io_ddrA_w_payload_strb(cpu_wstrb),
+        .io_ddrA_w_payload_data(cpu_wdata),
+        .jtagCtrl_enable(soc_jtagCtrl_enable),
+        .jtagCtrl_tdi(soc_jtagCtrl_tdi),
+        .jtagCtrl_capture(soc_jtagCtrl_capture),
+        .jtagCtrl_shift(soc_jtagCtrl_shift),
+        .jtagCtrl_update(soc_jtagCtrl_update),
+        .jtagCtrl_reset(soc_jtagCtrl_reset),
+        .jtagCtrl_tdo(soc_jtagCtrl_tdo),
+        .jtagCtrl_tck(soc_jtagCtrl_tck),
+        .io_ddrA_r_payload_last(cpu_rlast),
+        .io_ddrA_r_payload_resp(cpu_rresp),
+        .io_ddrA_r_payload_id(cpu_rid),
+        .io_ddrA_r_payload_data(cpu_rdata),
+        .io_ddrA_r_ready(cpu_rready),
+        .io_ddrA_r_valid(cpu_rvalid),
+        .io_ddrA_b_payload_resp(cpu_bresp),
+        .io_ddrA_b_payload_id(cpu_bid),
+        .io_ddrA_b_ready(cpu_bready),
+        .io_ddrA_b_valid(cpu_bvalid),
+        .io_ddrA_w_payload_last(cpu_wlast),
+        .io_ddrA_w_ready(cpu_wready && cal_ready),
+        .io_ddrA_w_valid(soc_wvalid),
+        .io_ddrA_aw_payload_prot(),
+        .io_ddrA_aw_payload_qos(),
+        .io_ddrA_aw_payload_cache(),
+        .io_ddrA_aw_payload_lock(cpu_awlock),
+        .io_ddrA_aw_payload_burst(cpu_awburst),
+        .io_ddrA_aw_payload_size(cpu_awsize),
+        .io_ddrA_aw_payload_len(cpu_awlen),
+        .io_ddrA_aw_payload_region(cpu_awregion),
+        .io_ddrA_aw_payload_id(cpu_awid),
+        .io_ddrA_aw_payload_addr(cpu_awaddr),
+        .io_ddrA_aw_ready(cpu_awready && cal_ready),
+        .io_ddrA_aw_valid(soc_awvalid),
+        .io_ddrA_ar_payload_prot(),
+        .io_ddrA_ar_payload_qos(),
+        .io_ddrA_ar_payload_cache(),
+        .io_ddrA_ar_payload_lock(cpu_arlock),
+        .io_ddrA_ar_payload_burst(cpu_arburst),
+        .io_ddrA_ar_payload_size(cpu_arsize),
+        .io_ddrA_ar_payload_len(cpu_arlen),
+        .io_ddrA_ar_payload_region(cpu_arregion),
+        .io_ddrA_ar_payload_id(cpu_arid),
+        .io_ddrA_ar_payload_addr(cpu_araddr),
+        .io_ddrA_ar_ready(cpu_arready && cal_ready),
+        .io_ddrA_ar_valid(soc_arvalid),
+        .system_spi_0_io_data_0_read(soc_system_spi_0_io_data_0_read),
+        .system_spi_0_io_data_0_write(soc_system_spi_0_io_data_0_write),
+        .system_spi_0_io_data_0_writeEnable(soc_system_spi_0_io_data_0_writeEnable),
+        .system_spi_0_io_data_1_read(soc_system_spi_0_io_data_1_read),
+        .system_spi_0_io_data_1_write(soc_system_spi_0_io_data_1_write),
+        .system_spi_0_io_data_1_writeEnable(soc_system_spi_0_io_data_1_writeEnable),
+        .system_spi_0_io_data_2_read(soc_system_spi_0_io_data_2_read),
+        .system_spi_0_io_data_2_write(soc_system_spi_0_io_data_2_write),
+        .system_spi_0_io_data_2_writeEnable(soc_system_spi_0_io_data_2_writeEnable),
+        .system_spi_0_io_data_3_read(soc_system_spi_0_io_data_3_read),
+        .system_spi_0_io_data_3_write(soc_system_spi_0_io_data_3_write),
+        .system_spi_0_io_data_3_writeEnable(soc_system_spi_0_io_data_3_writeEnable),
+        .system_spi_0_io_sclk_write(soc_system_spi_0_io_sclk_write),
+        .userInterruptA(irq),
+        .io_apbSlave_0_PADDR(paddr),
+        .io_apbSlave_0_PENABLE(penable),
+        .io_apbSlave_0_PRDATA(prdata),
+        .io_apbSlave_0_PREADY(pready),
+        .io_apbSlave_0_PSEL(psel),
+        .io_apbSlave_0_PSLVERROR(pslverr),
+        .io_apbSlave_0_PWDATA(pwdata),
+        .io_apbSlave_0_PWRITE(pwrite),
+        .io_asyncReset(!reset_n),
+        .io_systemReset(soc_io_systemReset),
+        .system_uart_0_io_txd(soc_system_uart_0_io_txd),
+        .system_uart_0_io_rxd(soc_system_uart_0_io_rxd),
+        .system_i2c_0_io_scl_read(soc_system_i2c_0_io_scl_read),
+        .system_i2c_0_io_scl_write(soc_system_i2c_0_io_scl_write),
+        .system_i2c_0_io_sda_read(soc_system_i2c_0_io_sda_read),
+        .system_i2c_0_io_sda_write(soc_system_i2c_0_io_sda_write),
+        .system_gpio_0_io_writeEnable(soc_system_gpio_0_io_writeEnable),
+        .system_gpio_0_io_write(soc_system_gpio_0_io_write),
+        .system_gpio_0_io_read(soc_system_gpio_0_io_read),
+        .system_spi_0_io_ss(soc_system_spi_0_io_ss)
+    );
+    c1_r2_fused_rgb2_host_system #(.FRAME_DIVISOR(1)) u_host (
+        .clk(core_clk),
+        .rst(host_rst),
+        .platform_ready(cal_ready),
+        .psel(psel),
+        .penable(penable),
+        .pwrite(pwrite),
+        .paddr(paddr),
+        .pwdata(pwdata),
+        .prdata(prdata),
+        .pready(pready),
+        .pslverr(pslverr),
+        .irq(irq),
+        .cam_clk(cam_clk),
+        .cam_rst(cam_reset_pipe[1]),
+        .cam_valid(cam_valid),
+        .cam_vs(cam_vs),
+        .cam_de(cam_de),
+        .cam_error(cam_error),
+        .cam_rgb(cam_rgb),
+        .camera_cancel(camera_cancel),
+        .camera_busy(camera_busy),
+        .camera_config_error(camera_config_error),
+        .camera_snapshot_valid(camera_snapshot_valid),
+        .camera_seen(camera_seen),
+        .camera_skipped(camera_skipped),
+        .camera_fifo_peak(camera_fifo_peak),
+        .camera_result_valid(camera_result_valid),
+        .camera_result_failed(camera_result_failed),
+        .camera_result_admitted(camera_result_admitted),
+        .camera_result_code(camera_result_code),
+        .camera_result_tag(camera_result_tag),
+        .display_request(display_request),
+        .display_request_ready(display_request_ready),
+        .p_req(p_req),
+        .p_sof(p_sof),
+        .p_eol(p_eol),
+        .p_eof(p_eof),
+        .m_valid(m_valid),
+        .m_sof(m_sof),
+        .m_eol(m_eol),
+        .m_eof(m_eof),
+        .m_rgb(m_rgb),
+        .front_valid(front_valid),
+        .display_frame_armed(display_frame_armed),
+        .display_pair_tag(display_pair_tag),
+        .nn_complete(nn_complete),
+        .nn_failed(nn_failed),
+        .nn_result_tag(nn_result_tag),
+        .nn_result_cycles(nn_result_cycles),
+        .fabric_error(fabric_error),
+        .physical_read_outstanding(physical_read_outstanding),
+        .physical_write_outstanding(physical_write_outstanding),
+        .cpu_araddr(cpu_araddr),
+        .cpu_arlen(cpu_arlen),
+        .cpu_arsize(cpu_arsize),
+        .cpu_arburst(cpu_arburst),
+        .cpu_arvalid(cpu_arvalid),
+        .cpu_arready(cpu_arready),
+        .cpu_rdata(cpu_rdata),
+        .cpu_rresp(cpu_rresp),
+        .cpu_rlast(cpu_rlast),
+        .cpu_rvalid(cpu_rvalid),
+        .cpu_rready(cpu_rready),
+        .cpu_awaddr(cpu_awaddr),
+        .cpu_awlen(cpu_awlen),
+        .cpu_awsize(cpu_awsize),
+        .cpu_awburst(cpu_awburst),
+        .cpu_awvalid(cpu_awvalid),
+        .cpu_awready(cpu_awready),
+        .cpu_wdata(cpu_wdata),
+        .cpu_wstrb(cpu_wstrb),
+        .cpu_wlast(cpu_wlast),
+        .cpu_wvalid(cpu_wvalid),
+        .cpu_wready(cpu_wready),
+        .cpu_bresp(cpu_bresp),
+        .cpu_bvalid(cpu_bvalid),
+        .cpu_bready(cpu_bready),
+        .m_axi_arid(m_axi_arid),
+        .m_axi_araddr(m_axi_araddr),
+        .m_axi_arlen(m_axi_arlen),
+        .m_axi_arsize(m_axi_arsize),
+        .m_axi_arburst(m_axi_arburst),
+        .m_axi_arlock(m_axi_arlock),
+        .m_axi_arcache(m_axi_arcache),
+        .m_axi_arqos(m_axi_arqos),
+        .m_axi_arprot(m_axi_arprot),
+        .m_axi_arvalid(m_axi_arvalid),
+        .m_axi_arready(m_axi_arready),
+        .m_axi_rid(m_axi_rid),
+        .m_axi_rdata(m_axi_rdata),
+        .m_axi_rresp(m_axi_rresp),
+        .m_axi_rlast(m_axi_rlast),
+        .m_axi_rvalid(m_axi_rvalid),
+        .m_axi_rready(m_axi_rready),
+        .m_axi_awid(m_axi_awid),
+        .m_axi_awaddr(m_axi_awaddr),
+        .m_axi_awlen(m_axi_awlen),
+        .m_axi_awsize(m_axi_awsize),
+        .m_axi_awburst(m_axi_awburst),
+        .m_axi_awlock(m_axi_awlock),
+        .m_axi_awcache(m_axi_awcache),
+        .m_axi_awqos(m_axi_awqos),
+        .m_axi_awprot(m_axi_awprot),
+        .m_axi_awvalid(m_axi_awvalid),
+        .m_axi_awready(m_axi_awready),
+        .m_axi_wdata(m_axi_wdata),
+        .m_axi_wstrb(m_axi_wstrb),
+        .m_axi_wlast(m_axi_wlast),
+        .m_axi_wvalid(m_axi_wvalid),
+        .m_axi_wready(m_axi_wready),
+        .m_axi_bid(m_axi_bid),
+        .m_axi_bresp(m_axi_bresp),
+        .m_axi_bvalid(m_axi_bvalid),
+        .m_axi_bready(m_axi_bready),
+        .cpu_arid(cpu_arid),
+        .cpu_awid(cpu_awid),
+        .cpu_arlock(cpu_arlock),
+        .cpu_awlock(cpu_awlock),
+        .cpu_arregion(cpu_arregion),
+        .cpu_awregion(cpu_awregion),
+        .cpu_rid(cpu_rid),
+        .cpu_bid(cpu_bid),
+        .cpu_adapter_busy(cpu_adapter_busy),
+        .cpu_adapter_fault(cpu_adapter_fault)
+    );
+    ddr3_top u_ddr (
+        .axi_clk(core_clk),
+        .core_clk(core_clk),
+        .sdram_clk(phy_sdram_clk),
+        .rx_cal_clk(phy_rx_cal_clk),
+        .tx_cal_clk(phy_tx_cal_clk),
+        .tx_cal_clk_90edge(phy_tx_cal_clk_90edge),
+        .rstn(reset_n),
+        .pll_shift(phy_pll_shift),
+        .pll_shift_sel(phy_pll_shift_sel),
+        .pll_shift_ena(phy_pll_shift_ena),
+        .ddr_ck_hi(phy_ddr_ck_hi),
+        .ddr_ck_lo(phy_ddr_ck_lo),
+        .ddr_reset_n(phy_ddr_reset_n),
+        .ddr_cke(phy_ddr_cke),
+        .ddr_addr(phy_ddr_addr),
+        .ddr_ba(phy_ddr_ba),
+        .ddr_cas_n(phy_ddr_cas_n),
+        .ddr_cs_n(phy_ddr_cs_n),
+        .ddr_ras_n(phy_ddr_ras_n),
+        .ddr_we_n(phy_ddr_we_n),
+        .ddr_dqs_in_hi(phy_ddr_dqs_in_hi),
+        .ddr_dqs_in_lo(phy_ddr_dqs_in_lo),
+        .ddr_dq_in_hi(phy_ddr_dq_in_hi),
+        .ddr_dq_in_lo(phy_ddr_dq_in_lo),
+        .ddr_dqs_oe(phy_ddr_dqs_oe),
+        .ddr_dqs_oe_n(phy_ddr_dqs_oe_n),
+        .ddr_dq_oe(phy_ddr_dq_oe),
+        .ddr_dqs_out_hi(phy_ddr_dqs_out_hi),
+        .ddr_dqs_out_lo(phy_ddr_dqs_out_lo),
+        .ddr_dq_out_hi(phy_ddr_dq_out_hi),
+        .ddr_dq_out_lo(phy_ddr_dq_out_lo),
+        .ddr_dm_hi(phy_ddr_dm_hi),
+        .ddr_dm_lo(phy_ddr_dm_lo),
+        .ddr_odt(phy_ddr_odt),
+        .app_sr_req(1'b0),
+        .app_sr_active(phy_app_sr_active),
+        .app_ref_req(1'b0),
+        .app_ref_ack(phy_app_ref_ack),
+        .app_zq_req(1'b0),
+        .app_zq_ack(phy_app_zq_ack),
+        .s_axi_awid(m_axi_awid),
+        .s_axi_awaddr(m_axi_awaddr[27:0]),
+        .s_axi_awlen(m_axi_awlen),
+        .s_axi_awsize(m_axi_awsize),
+        .s_axi_awburst(m_axi_awburst),
+        .s_axi_awlock(m_axi_awlock),
+        .s_axi_awcache(m_axi_awcache),
+        .s_axi_awprot(m_axi_awprot),
+        .s_axi_awqos(m_axi_awqos),
+        .s_axi_awvalid(m_axi_awvalid),
+        .s_axi_awready(m_axi_awready),
+        .s_axi_wdata(m_axi_wdata),
+        .s_axi_wstrb(m_axi_wstrb),
+        .s_axi_wlast(m_axi_wlast),
+        .s_axi_wvalid(m_axi_wvalid),
+        .s_axi_wready(m_axi_wready),
+        .s_axi_bready(m_axi_bready),
+        .s_axi_bid(m_axi_bid),
+        .s_axi_bresp(m_axi_bresp),
+        .s_axi_bvalid(m_axi_bvalid),
+        .s_axi_arid(m_axi_arid),
+        .s_axi_araddr(m_axi_araddr[27:0]),
+        .s_axi_arlen(m_axi_arlen),
+        .s_axi_arsize(m_axi_arsize),
+        .s_axi_arburst(m_axi_arburst),
+        .s_axi_arlock(m_axi_arlock),
+        .s_axi_arcache(m_axi_arcache),
+        .s_axi_arprot(m_axi_arprot),
+        .s_axi_arqos(m_axi_arqos),
+        .s_axi_arvalid(m_axi_arvalid),
+        .s_axi_arready(m_axi_arready),
+        .s_axi_rready(m_axi_rready),
+        .s_axi_rid(m_axi_rid),
+        .s_axi_rdata(m_axi_rdata),
+        .s_axi_rresp(m_axi_rresp),
+        .s_axi_rlast(m_axi_rlast),
+        .s_axi_rvalid(m_axi_rvalid),
+        .wrlvl_dq_check(phy_wrlvl_dq_check),
+        .rd_level_dqs_check(phy_rd_level_dqs_check),
+        .rdlvl_shift(phy_rdlvl_shift),
+        .wrlvl_shift(phy_wrlvl_shift),
+        .init_cur_state(phy_init_cur_state),
+        .idelay_ld(phy_idelay_ld),
+        .mpr_rdlvl_dly(phy_mpr_rdlvl_dly),
+        .ddr_debug_port(phy_ddr_debug_port),
+        .cal_done(ddr_cal_done)
+    );
+`ifndef SYNTHESIS
+    always @(posedge core_clk) if(!host_rst) begin
+        if((m_axi_arvalid && m_axi_araddr[31:28]!=0) ||
+           (m_axi_awvalid && m_axi_awaddr[31:28]!=0))
+            $fatal(1,"C38 address exceeds physical 256MiB DDR");
+    end
+`endif
+endmodule
+`default_nettype wire

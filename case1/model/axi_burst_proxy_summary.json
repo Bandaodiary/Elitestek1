@@ -1,0 +1,890 @@
+{
+  "part": "xc7a200tsbg484-1",
+  "clock_mhz": 100,
+  "write_fabric": {
+    "clients": 3,
+    "fifo_depth": 4,
+    "luts": 370,
+    "registers": 478,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 3.787,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "marker": "C1_AXI_N_WRITE_BURST_ARBITER_PROXY_SYNTH_PASS"
+  },
+  "write_parallel_fabric_2lane": {
+    "lanes": 2,
+    "block_logical": 16,
+    "allow_req_pop_refill_default": false,
+    "req_fifo_depth": 32,
+    "burst_beats": 16,
+    "fabric_fifo_depth": 4,
+    "tag_fifo_depth": 64,
+    "luts": 4308,
+    "registers": 10091,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 1.203,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "note": "Optional two-lane wrapper; conservative response-space test removes tag-FIFO-to-BREADY carry path. Legacy top remains unchanged.",
+    "marker": "C1_TENSOR_MEM_AXI128_WRITE_PARALLEL_FABRIC_PROXY_SYNTH_PASS",
+    "run_id": "ecf491a89dab4e21bf04db1bee26d9f7"
+  },
+  "write_parallel_fabric_4lane": {
+    "lanes": 4,
+    "block_logical": 16,
+    "allow_req_pop_refill_default": false,
+    "req_fifo_depth": 32,
+    "burst_beats": 16,
+    "fabric_fifo_depth": 6,
+    "tag_fifo_depth": 128,
+    "luts": 9858,
+    "registers": 20168,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 2.166,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim": {
+      "requests": 32,
+      "axi_bursts": 8,
+      "axi_beats": 16,
+      "packed_requests": 16,
+      "errors": 4,
+      "max_outstanding": 4
+    },
+    "note": "Optional four-lane wrapper; four independent single-outstanding leaves expose four descriptor slots through the ID-less fabric. It is an A/B seam and is not wired into the legacy top.",
+    "marker": "C1_TENSOR_MEM_AXI128_WRITE_PARALLEL_LANES4_PROXY_SYNTH_PASS",
+    "run_id": "lanes4_next"
+  },
+  "write_burst_mlp": {
+    "max_outstanding": 4,
+    "max_beats": 16,
+    "rsp_fifo_depth": 4,
+    "luts": 5882,
+    "registers": 10308,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 3.249,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim": {
+      "descriptors": 6,
+      "axi_bursts": 3,
+      "axi_beats": 12,
+      "b_responses": 3,
+      "max_outstanding": 3,
+      "aw_stall_cycles": 18,
+      "w_stall_cycles": 5,
+      "b_stall_cycles": 49,
+      "errors": 4
+    },
+    "note": "Descriptor-level packed 128-bit writer; AW can run ahead while W/B remain ordered. It is consumed by the optional logical 64-bit write MLP adapter, but neither seam is wired into the default SoC or seven-client fabric.",
+    "marker": "C1_AXI128_WRITE_MLP_PROXY_SYNTH_PASS"
+  },
+  "write_rsp_pop_refill": {
+    "rsp_fifo_depth": 2,
+    "default_enabled": false,
+    "xsim": {
+      "default": {
+        "rsp_pop_refill": 0,
+        "full_pop_push": 0,
+        "descriptors": 6,
+        "axi_bursts": 3,
+        "axi_beats": 12,
+        "b_responses": 3,
+        "max_outstanding": 3,
+        "aw_stall_cycles": 18,
+        "w_stall_cycles": 5,
+        "b_stall_cycles": 49,
+        "errors": 4,
+        "run_id": "write_mlp_default_final_20260827",
+        "marker": "C1_AXI128_WRITE_MLP_PASS"
+      },
+      "optional": {
+        "rsp_pop_refill": 1,
+        "full_pop_push": 1,
+        "descriptors": 6,
+        "axi_bursts": 3,
+        "axi_beats": 12,
+        "b_responses": 3,
+        "max_outstanding": 3,
+        "aw_stall_cycles": 18,
+        "w_stall_cycles": 5,
+        "b_stall_cycles": 48,
+        "errors": 4,
+        "run_id": "write_mlp_poprefill_final_20260827",
+        "marker": "C1_AXI128_WRITE_MLP_PASS"
+      }
+    },
+    "model": {
+      "depth": 2,
+      "responses": 12,
+      "baseline_cycles": 20,
+      "refill_cycles": 20,
+      "saved_stalls": 1,
+      "baseline_stalls": 6,
+      "refill_stalls": 5,
+      "full_pop_push": 10,
+      "marker": "WRITE_RSP_POP_REFILL_MODEL_PASS"
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_axi128_write_mlp.sv",
+      "tb": "sim/tb_c1_axi128_write_mlp.sv",
+      "runner": "scripts/run_axi128_write_mlp_xsim_detached.ps1",
+      "model": "model/write_rsp_pop_refill_model.py",
+      "evidence": "WRITE_RSP_POP_REFILL_OPTIMIZATION.md"
+    },
+    "note": "Optional response-FIFO same-cycle pop/refill; default remains disabled. Xsim preserves traffic/order/error counts and saves one B stall cycle in the shallow-FIFO stress case."
+  },
+  "write_req_pop_refill": {
+    "default_enabled": false,
+    "xsim": {
+      "baseline": {
+        "req_pop_refill": 0,
+        "full_cycle": 9,
+        "first_post_full_cycle": 15,
+        "full_to_accept": 6,
+        "same_cycle": 0,
+        "requests": 12,
+        "axi_bursts": 12,
+        "axi_beats": 12,
+        "max_req": 4,
+        "run_id": "write_req_base_final_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_WRITE_BURST_CLIENT_REQ_POP_REFILL_PASS"
+      },
+      "optional": {
+        "req_pop_refill": 1,
+        "full_cycle": 9,
+        "first_post_full_cycle": 14,
+        "full_to_accept": 5,
+        "same_cycle": 1,
+        "requests": 12,
+        "axi_bursts": 12,
+        "axi_beats": 12,
+        "max_req": 4,
+        "run_id": "write_req_opt_final_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_WRITE_BURST_CLIENT_REQ_POP_REFILL_PASS"
+      },
+      "default_leaf_regression": {
+        "requests": 21,
+        "axi_bursts": 10,
+        "axi_beats": 13,
+        "packed": 7,
+        "errors": 2,
+        "run_id": "write_leaf_default_post_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_WRITE_BURST_CLIENT_PASS"
+      },
+      "parallel_optional_compile": {
+        "req_pop_refill": 1,
+        "requests": 16,
+        "axi_bursts": 4,
+        "axi_beats": 8,
+        "packed": 8,
+        "errors": 4,
+        "max_outstanding": 2,
+        "run_id": "write_parallel_opt_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_WRITE_PARALLEL_PASS"
+      }
+    },
+    "model": {
+      "depth": 4,
+      "requests": 12,
+      "baseline_stalls": 10,
+      "refill_stalls": 9,
+      "baseline_full_to_accept": 3,
+      "refill_full_to_accept": 2,
+      "full_pop_push": 8,
+      "marker": "WRITE_REQ_POP_REFILL_MODEL_PASS"
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_tensor_mem_axi128_write_burst_client.sv",
+      "fabric_rtl": "rtl/dma/c1_tensor_mem_axi128_write_parallel_fabric.sv",
+      "tb": "sim/tb_c1_tensor_mem_axi128_write_burst_client_req_pop_refill.sv",
+      "runner": "scripts/run_tensor_mem_axi128_write_burst_client_xsim_detached.ps1",
+      "model": "model/write_req_pop_refill_model.py",
+      "evidence": "WRITE_REQ_POP_REFILL_OPTIMIZATION.md"
+    },
+    "note": "Optional full request-FIFO same-cycle pop/refill for the 64-bit-to-AXI128 write leaf; it removes one producer-ready bubble at a full queue while preserving packing, AXI burst count, ordering, and occupancy. Default remains disabled; the optional path adds builder-state logic to req_ready and must be timed on the target EBR implementation."
+  },
+  "empty_aw_bypass": {
+    "default_enabled": false,
+    "xsim": {
+      "default": {
+        "empty_aw_bypass": 0,
+        "first_aw_same": 0,
+        "first_aw_latency": 1,
+        "aw": 6,
+        "beats": 12,
+        "b": 6,
+        "max_outstanding": 3,
+        "max_bfm_queue": 3,
+        "aw_stall": 2,
+        "w_stall": 4,
+        "b_stall": 5,
+        "run_id": "awarb_default_bypass_20260827",
+        "marker": "C1_AXI_N_WRITE_BURST_ARBITER_PASS"
+      },
+      "optional": {
+        "empty_aw_bypass": 1,
+        "first_aw_same": 1,
+        "first_aw_latency": 0,
+        "aw": 6,
+        "beats": 12,
+        "b": 6,
+        "max_outstanding": 3,
+        "max_bfm_queue": 3,
+        "aw_stall": 2,
+        "w_stall": 4,
+        "b_stall": 5,
+        "run_id": "awarb_empty_bypass_20260827",
+        "marker": "C1_AXI_N_WRITE_BURST_ARBITER_PASS"
+      }
+    },
+    "model": {
+      "default_first_aw_latency": 1,
+      "empty_bypass_first_aw_latency": 0,
+      "saved_first_aw_cycles": 1,
+      "steady_state_aw": 6,
+      "steady_state_beats": 12,
+      "steady_state_b": 6,
+      "steady_state_max_outstanding": 3,
+      "storage_delta": 0,
+      "model_kind": "structural_handshake_expectation"
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_axi_n_write_burst_arbiter_128.sv",
+      "tb": "sim/tb_c1_axi_n_write_burst_arbiter_128.sv",
+      "runner": "scripts/run_axi_n_write_burst_arbiter_empty_aw_bypass_xsim_detached.ps1",
+      "model": "EMPTY_AW_BYPASS_PREFLIGHT.md",
+      "evidence": "EMPTY_AW_BYPASS_PREFLIGHT.md"
+    },
+    "note": "Optional empty-FIFO direct AW path; xsim removes only the first empty-queue AW bubble. Steady-state AW/W/B and outstanding counts are unchanged; no standalone executable Python model exists, so model values are the RTL handshake-contract expectation."
+  },
+  "read_req_pop_refill": {
+    "default_enabled": false,
+    "xsim": {
+      "default": {
+        "req_pop_refill": 0,
+        "full_cycle": 13,
+        "first_post_full_cycle": 18,
+        "full_to_accept": 5,
+        "same_cycle": 0,
+        "requests": 12,
+        "ar": 12,
+        "beats": 12,
+        "max_req": 4,
+        "run_id": "req_pop_refill_base2_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_CLIENT_REQ_POP_REFILL_PASS"
+      },
+      "optional": {
+        "req_pop_refill": 1,
+        "full_cycle": 13,
+        "first_post_full_cycle": 17,
+        "full_to_accept": 4,
+        "same_cycle": 1,
+        "requests": 12,
+        "ar": 12,
+        "beats": 12,
+        "max_req": 4,
+        "run_id": "req_pop_refill_opt4_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_CLIENT_REQ_POP_REFILL_PASS"
+      },
+      "cache_combined": {
+        "req_pop_refill": 1,
+        "rsp_pop_refill": 0,
+        "beat_fifo": 1,
+        "tail_flush": 1,
+        "burst_beats": 16,
+        "max_outstanding": 4,
+        "taps": 6,
+        "refills": 5,
+        "words": 640,
+        "bursts": 20,
+        "beats": 320,
+        "flush_closes": 5,
+        "closes": 20,
+        "cycles": 1883,
+        "run_id": "combined_long_20260827",
+        "marker": "C1_WINDOW_LINE_CACHE_C8_BURST_SHELL_PASS"
+      },
+      "cache_combined_rsp_pop_refill": {
+        "req_pop_refill": 1,
+        "rsp_pop_refill": 1,
+        "beat_fifo": 1,
+        "tail_flush": 1,
+        "burst_beats": 16,
+        "max_outstanding": 4,
+        "taps": 6,
+        "refills": 5,
+        "words": 640,
+        "bursts": 20,
+        "beats": 320,
+        "flush_closes": 5,
+        "closes": 20,
+        "cycles": 1883,
+        "run_id": "combined_rsp_refill_final_20260827",
+        "marker": "C1_WINDOW_LINE_CACHE_C8_BURST_SHELL_PASS",
+        "note": "组合兼容性 smoke；response-pop/refill 逻辑分支由独立 read-leaf A/B 覆盖。"
+      }
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_tensor_mem_axi128_read_burst_client.sv",
+      "tb": "sim/tb_c1_tensor_mem_axi128_read_burst_client_req_pop_refill.sv",
+      "runner": "scripts/run_tensor_mem_axi128_read_burst_client_xsim_detached.ps1",
+      "evidence": "READ_REQ_POP_REFILL_OPTIMIZATION.md"
+    },
+    "note": "Optional full request FIFO same-cycle pop/refill; the focused test removes one full-boundary producer stall while preserving request/AR/R counts and occupancy. Default remains disabled."
+  },
+  "read_empty_ar_bypass": {
+    "default_enabled": false,
+    "xsim": {
+      "default": {
+        "empty_ar_bypass": 0,
+        "first_ar_latency": 1,
+        "hold_capture": 0,
+        "normal_beats": 16,
+        "malformed_beats": 10,
+        "max_inflight": 4,
+        "ar_total": 4,
+        "early": 1,
+        "missing": 1,
+        "run_id": "a196d06417424c5ba3a31e9116956702",
+        "marker": "C1_AXI_N_READ_BURST_ARBITER_PASS"
+      },
+      "optional": {
+        "empty_ar_bypass": 1,
+        "first_ar_latency": 0,
+        "hold_capture": 1,
+        "normal_beats": 16,
+        "malformed_beats": 10,
+        "max_inflight": 4,
+        "ar_total": 4,
+        "early": 1,
+        "missing": 1,
+        "run_id": "175578278d524a9dadddd8ae45a729a4",
+        "marker": "C1_AXI_N_READ_BURST_ARBITER_PASS"
+      },
+      "fabric_optional": {
+        "requests": 16,
+        "ar": 6,
+        "beats": 8,
+        "packed": 6,
+        "max_inflight": 5,
+        "req_pop_refill": 0,
+        "empty_ar_bypass": 1,
+        "run_id": "f415bf65186d402f805b9749bac4c4ba",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_FABRIC_PASS"
+      },
+      "fabric_default": {
+        "requests": 16,
+        "ar": 6,
+        "beats": 8,
+        "packed": 6,
+        "max_inflight": 5,
+        "req_pop_refill": 0,
+        "empty_ar_bypass": 0,
+        "run_id": "57dbddb9d43847269269592386268296",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_FABRIC_PASS"
+      }
+    },
+    "model": {
+      "ready_first": {
+        "baseline_first_ar_latency": 1,
+        "optional_first_ar_latency": 0,
+        "saved_cycles": 1
+      },
+      "stalled_first": {
+        "baseline_first_ar_latency": 1,
+        "optional_first_ar_latency": 1,
+        "saved_cycles": 0
+      },
+      "marker": "READ_AR_BYPASS_MODEL_PASS"
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_axi_n_read_burst_arbiter_128.sv",
+      "fabric_rtl": "rtl/dma/c1_tensor_mem_axi128_read_fabric_2c.sv",
+      "tb": "sim/tb_c1_axi_n_read_burst_arbiter_128.sv",
+      "runner": "scripts/run_axi_n_read_burst_arbiter_xsim_detached.ps1",
+      "model": "model/read_ar_bypass_model.py",
+      "evidence": "READ_AR_EMPTY_BYPASS_OPTIMIZATION.md"
+    },
+    "note": "Optional direct AR only when pending and response rings are empty; a one-entry hold register covers a stalled downstream AR. It removes the first AR bubble when the first downstream handshake is ready and leaves steady-state payload, ordering, and malformed-R containment unchanged."
+  },
+  "mac_output_restart": {
+    "default_enabled": false,
+    "xsim": {
+      "default": {
+        "first_beat": 0,
+        "output_restart": 0,
+        "banks": 2,
+        "lanes": 2,
+        "transactions": 6,
+        "max_inflight": 2,
+        "same_bank_restart": 0,
+        "first_overlap": 8,
+        "cycles": 40,
+        "run_id": "54a7ee37924b48b4a7a3b2e871211813",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS"
+      },
+      "optional": {
+        "first_beat": 0,
+        "output_restart": 1,
+        "banks": 2,
+        "lanes": 2,
+        "transactions": 6,
+        "max_inflight": 3,
+        "same_bank_restart": 4,
+        "first_overlap": 8,
+        "cycles": 37,
+        "run_id": "69efe3120267411d943be1728d1c663c",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS"
+      },
+      "first_beat_and_optional": {
+        "first_beat": 1,
+        "output_restart": 1,
+        "banks": 2,
+        "lanes": 2,
+        "transactions": 6,
+        "max_inflight": 3,
+        "same_bank_restart": 4,
+        "cycles": 37,
+        "run_id": "eacaf827cc54400b87c4a613d047e147",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS"
+      },
+      "banks4_default": {
+        "first_beat": 0,
+        "output_restart": 0,
+        "banks": 4,
+        "lanes": 2,
+        "transactions": 12,
+        "max_inflight": 4,
+        "same_bank_restart": 0,
+        "first_overlap": 8,
+        "cycles": 47,
+        "run_id": "00277ca94d234b5d97a3f06c1932c9f4",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS"
+      },
+      "banks4_optional": {
+        "first_beat": 0,
+        "output_restart": 1,
+        "banks": 4,
+        "lanes": 2,
+        "transactions": 12,
+        "max_inflight": 5,
+        "same_bank_restart": 1,
+        "first_overlap": 8,
+        "cycles": 45,
+        "run_id": "60087c44bbe14a04ba7f6a96fefb372b",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS"
+      }
+    },
+    "model": {
+      "baseline_cycles": 22,
+      "optional_cycles": 20,
+      "saved_cycles": 2,
+      "same_edge_restarts": 4,
+      "marker": "MAC_OUTPUT_RESTART_MODEL_PASS"
+    },
+    "proxy": {
+      "part": "xc7a200tsbg484-1",
+      "banks": 2,
+      "lanes": 2,
+      "tag_fifo_depth": 8,
+      "default": {
+        "output_restart": false,
+        "slice_luts": 31165,
+        "slice_registers": 22833,
+        "bram_tiles": 0,
+        "dsps": 64,
+        "wns_ns": 1.247,
+        "tns_ns": 0.0,
+        "timing_met": true,
+        "run_id": "gen_default_20260827",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_PROXY_SYNTH_PASS"
+      },
+      "optional": {
+        "output_restart": true,
+        "slice_luts": 31163,
+        "slice_registers": 22833,
+        "bram_tiles": 0,
+        "dsps": 64,
+        "wns_ns": 1.247,
+        "tns_ns": 0.0,
+        "timing_met": true,
+        "run_id": "gen_optional_20260827",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_OUTPUT_RESTART_PROXY_SYNTH_PASS"
+      }
+    },
+    "source": {
+      "rtl": "rtl/cnn/c1_dot8x8_requant_core.sv",
+      "bank_rtl": "rtl/cnn/c1_dot8x8_requant_bank.sv",
+      "pingpong_rtl": "rtl/cnn/c1_dot8x8_requant_pingpong.sv",
+      "tb": "sim/tb_c1_dot8x8_requant_pingpong.sv",
+      "runner": "scripts/run_dot8x8_requant_pingpong_xsim_detached.ps1",
+      "model": "model/mac_output_restart_model.py",
+      "evidence": "MAC_OUTPUT_RESTART_OPTIMIZATION.md"
+    },
+    "note": "Optional same-bank reuse on output retirement; no DSP replication. The measured gain is transaction-boundary latency only and is not a native frame-rate result."
+  },
+  "write_mlp_adapter": {
+    "max_outstanding": 4,
+    "max_beats": 16,
+    "rsp_fifo_depth": 4,
+    "tag_width": 16,
+    "luts": 15961,
+    "registers": 27771,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 2.551,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim": {
+      "descriptors": 5,
+      "logical_requests": 26,
+      "logical_responses": 26,
+      "axi_bursts": 4,
+      "axi_beats": 12,
+      "packed_pairs": 13,
+      "max_outstanding": 4,
+      "local_early_last": 1,
+      "axi_errors": 1
+    },
+    "note": "Logical contiguous 64-bit descriptor stream packed to AXI128 and fed to the burst-level MLP seam. Four valid descriptors run with AW ahead of W/B; an early-LAST frame is poisoned locally. Payload arrays are boardless LUT/FF in this Vivado proxy and require explicit Ti60 EBR/SRAM mapping.",
+    "marker": "C1_TENSOR_MEM_AXI128_WRITE_MLP_ADAPTER_PROXY_SYNTH_PASS",
+    "run_id": "adapter_next",
+    "optimization": "command issue pointer is decoupled from ordered payload feed"
+  },
+  "write_mlp_fabric_2c": {
+    "clients": 2,
+    "max_outstanding": 4,
+    "max_beats": 16,
+    "adapter_rsp_fifo_depth": 4,
+    "fabric_fifo_depth": 6,
+    "luts": 16291,
+    "registers": 28296,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 2.197,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim": {
+      "axi_aw": 4,
+      "axi_w": 7,
+      "axi_b": 4,
+      "adapter_responses": 8,
+      "peer_responses": 2,
+      "max_outstanding": 4,
+      "packed_pairs": 4
+    },
+    "note": "Optional adapter plus raw-peer two-client ID-less write fabric. AW can be accepted across clients while W/B remain ordered; not wired into the default SoC. BRAM=0 is an Artix LUT/FF proxy and not a Ti60 EBR estimate.",
+    "marker": "C1_TENSOR_MEM_AXI128_WRITE_MLP_FABRIC_2C_PROXY_SYNTH_PASS",
+    "run_id": "fabric2c_next_proxy"
+  },
+  "dw_weight_tile_cache": {
+    "cache_dw_weight_tiles": true,
+    "mac_prefetch_overlap": true,
+    "luts": 36413,
+    "registers": 14889,
+    "bram_tiles": 2,
+    "dsps": 35,
+    "wns_ns": -4.959,
+    "tns_ns": -1969.185,
+    "timing_met": false,
+    "xsim": {
+      "baseline_first_run_cycles": 30570,
+      "cache_first_run_cycles": 28553,
+      "stages": 22,
+      "outputs": 836,
+      "mac_outputs": 312,
+      "dw_outputs": 248,
+      "bypass_outputs": 276
+    },
+    "note": "Current tap-bank×64-bit RAM-friendly cache plus MAC overlap proxy: xsim cache-only saves about 6.60% and cache+overlap is bit-exact; the full-top Artix proxy is still not timing-clean. The tap-bank layout reduces the earlier wide-array proxy, but Efinity/EBR mapping is unverified. Keep disabled until timing is demonstrated.",
+    "marker": "C1_R1_MICROSTYLE_CNN_TOP_DWCACHE_PROXY_SYNTH_PASS",
+    "run_id": "dwcache_ramfriendly_proxy_20260827"
+  },
+  "mac_prefetch_overlap": {
+    "mac_prefetch_overlap": true,
+    "xsim": {
+      "baseline_first_run_cycles": 30570,
+      "overlap_first_run_cycles": 29192,
+      "cache_plus_overlap_first_run_cycles": 27174,
+      "baseline_stages": 22,
+      "baseline_outputs": 836,
+      "baseline_mac_outputs": 312,
+      "baseline_dw_outputs": 248,
+      "baseline_bypass_outputs": 276
+    },
+    "model_native": {
+      "baseline_cycles": 39571200,
+      "overlap_cycles": 31238400,
+      "cache_plus_overlap_cycles": 21715384,
+      "overlap_fps_bound": 3.2012,
+      "cache_plus_overlap_fps_bound": 4.605
+    },
+    "note": "Optional engine scheduler optimization: first tile keeps the registered prefetch, then accepted Conv/1x1 beats capture the next tile in the same edge. The xsim A/B is bit-exact on the small 22-stage test; it is not a native-frame throughput proof and has no standalone proxy yet.",
+    "marker": "C1_R1_MICROSTYLE_ENGINE_PASS"
+  },
+  "read_fabric_2c": {
+    "clients": 2,
+    "fabric_fifo_depth": 8,
+    "leaf_burst_beats": 4,
+    "luts": 31905,
+    "registers": 10075,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 1.928,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "note": "Post-optimization proxy: rsp_capacity no longer depends on downstream rsp_pop, cutting the RREADY carry path. RSP/request arrays still map to distributed RAM/LUTRAM here; Ti60 EBR mapping is unverified.",
+    "marker": "C1_TENSOR_MEM_AXI128_READ_FABRIC_PROXY_SYNTH_PASS",
+    "run_id": "1cdd364787744eeb81e62af1dfd5aa5b"
+  },
+  "read_fabric_2c_beat_fifo": {
+    "clients": 2,
+    "fabric_fifo_depth": 8,
+    "leaf_req_fifo_depth": 16,
+    "leaf_burst_beats": 4,
+    "leaf_max_outstanding": 4,
+    "leaf_rsp_fifo_depth": 16,
+    "leaf_rsp_fifo_beat_mode": true,
+    "luts": 2194,
+    "registers": 1630,
+    "bram_tiles": 0,
+    "dsps": 0,
+    "wns_ns": 1.815,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "note": "Integrated two-client beat-FIFO proxy after forwarding LEAF_RSP_FIFO_BEAT_MODE; same fabric dimensions as read_fabric_2c except leaf response depth 16.",
+    "marker": "C1_TENSOR_MEM_AXI128_READ_FABRIC_BEAT_FIFO_PROXY_SYNTH_PASS",
+    "run_id": "46269dd62c2545d8aeccecdcfad47cf0"
+  },
+  "read_leaf_response_fifo_compare": {
+    "part": "xc7a200tsbg484-1",
+    "clock_mhz": 100,
+    "parameters": {
+      "req_fifo_depth": 16,
+      "burst_beats": 16,
+      "max_outstanding": 4,
+      "rsp_fifo_depth": 64
+    },
+    "logical_entry": {
+      "rsp_fifo_beat_mode": false,
+      "luts": 12045,
+      "registers": 5378,
+      "bram_tiles": 0,
+      "dsps": 0,
+      "wns_ns": 1.046,
+      "tns_ns": 0.0,
+      "timing_met": true,
+      "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_CLIENT_LOGICAL_SYNTH_PASS"
+    },
+    "beat_record": {
+      "rsp_fifo_beat_mode": true,
+      "luts": 1714,
+      "registers": 1182,
+      "bram_tiles": 0,
+      "dsps": 0,
+      "wns_ns": 1.38,
+      "tns_ns": 0.0,
+      "timing_met": true,
+      "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_CLIENT_BEAT_FIFO_SYNTH_PASS"
+    },
+    "note": "Same-parameter Artix proxy; beat mode stores one 128-bit R record and drains one/two logical lanes. The option is also forwarded through the two-client read fabric and cache shell, but remains disabled in the default SoC."
+  },
+  "mac_tag_pop_push": {
+    "allow_tag_pop_push_default": false,
+    "requires_allow_output_restart_for_same_bank_reuse": true,
+    "xsim": {
+      "two_bank_baseline": {
+        "banks": 2,
+        "lanes": 2,
+        "transactions": 8,
+        "tag_fifo_depth": 2,
+        "output_restart": false,
+        "tag_pop_push": true,
+        "max_inflight": 2,
+        "same_bank_restart": 0,
+        "full_tag_pop_push": 0,
+        "cycles": 52,
+        "run_id": "tagfull_base_20260827"
+      },
+      "two_bank_optional": {
+        "banks": 2,
+        "lanes": 2,
+        "transactions": 8,
+        "tag_fifo_depth": 2,
+        "output_restart": true,
+        "tag_pop_push": true,
+        "max_inflight": 3,
+        "same_bank_restart": 6,
+        "full_tag_pop_push": 6,
+        "cycles": 48,
+        "run_id": "tagfull_opt_20260827"
+      },
+      "four_bank_baseline": {
+        "banks": 4,
+        "lanes": 2,
+        "transactions": 16,
+        "tag_fifo_depth": 4,
+        "output_restart": false,
+        "tag_pop_push": true,
+        "max_inflight": 4,
+        "same_bank_restart": 0,
+        "full_tag_pop_push": 0,
+        "cycles": 59,
+        "run_id": "tagfull4_base_20260827"
+      },
+      "four_bank_optional": {
+        "banks": 4,
+        "lanes": 2,
+        "transactions": 16,
+        "tag_fifo_depth": 4,
+        "output_restart": true,
+        "tag_pop_push": true,
+        "max_inflight": 5,
+        "same_bank_restart": 2,
+        "full_tag_pop_push": 2,
+        "cycles": 57,
+        "run_id": "tagfull4_opt2_20260827"
+      }
+    },
+    "model": {
+      "baseline_cycles": 35,
+      "optional_cycles": 31,
+      "saved_cycles": 4,
+      "full_pop_push": 6,
+      "max_tag": 2,
+      "marker": "MAC_TAG_POP_PUSH_MODEL_PASS"
+    },
+    "proxy": {
+      "part": "xc7a200tsbg484-1",
+      "clock_mhz": 100,
+      "parameters": {
+        "banks": 2,
+        "lanes": 2,
+        "tag_fifo_depth": 8,
+        "allow_output_restart": true
+      },
+      "baseline": {
+        "allow_tag_pop_push": false,
+        "slice_luts": 31163,
+        "slice_registers": 22833,
+        "bram_tiles": 0,
+        "dsps": 64,
+        "wns_ns": 1.247,
+        "tns_ns": 0.0,
+        "timing_met": true,
+        "run_id": "tagpop_proxy_base_20260827",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_OUTPUT_RESTART_PROXY_SYNTH_PASS"
+      },
+      "optional": {
+        "allow_tag_pop_push": true,
+        "slice_luts": 31159,
+        "slice_registers": 22833,
+        "bram_tiles": 0,
+        "dsps": 64,
+        "wns_ns": 1.845,
+        "tns_ns": 0.0,
+        "timing_met": true,
+        "run_id": "tagpop_proxy_opt_20260827",
+        "marker": "C1_DOT8X8_REQUANT_PINGPONG_TAG_POP_PUSH_PROXY_SYNTH_PASS"
+      },
+      "note": "Small Artix-7 synthesis proxy only; WNS/resource differences are not a causal timing claim and require repeat/P&R on Ti60/Efinity."
+    },
+    "note": "Boardless event-level A/B for the optional full-FIFO admission path; no FPGA synthesis claim. Default ping-pong behavior remains unchanged."
+  },
+  "read_burst_profile": {
+    "default_enabled": false,
+    "parameters": {
+      "req_fifo_depth": 32,
+      "max_outstanding": 4,
+      "rsp_fifo_beat_mode": false,
+      "rsp_fifo_depth_16": 128,
+      "rsp_fifo_depth_32": 256,
+      "profile_stream_requests": 189,
+      "profile_stream_axi_beats": 94
+    },
+    "xsim": {
+      "burst16": {
+        "burst_beats": 16,
+        "requests": 189,
+        "axi_bursts": 9,
+        "axi_beats": 94,
+        "packed_requests": 94,
+        "full_bursts": 5,
+        "short_bursts": 4,
+        "max_outstanding": 3,
+        "page_split": 1,
+        "cycles": 397,
+        "run_id": "burst16_profile_v2_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_PROFILE_PASS"
+      },
+      "burst32": {
+        "burst_beats": 32,
+        "requests": 189,
+        "axi_bursts": 7,
+        "axi_beats": 94,
+        "packed_requests": 94,
+        "full_bursts": 2,
+        "short_bursts": 5,
+        "max_outstanding": 3,
+        "page_split": 1,
+        "cycles": 397,
+        "run_id": "burst32_profile_20260827",
+        "marker": "C1_TENSOR_MEM_AXI128_READ_BURST_PROFILE_PASS"
+      }
+    },
+    "cache_shell_maxrow": {
+      "frame_width": 640,
+      "frame_height": 1,
+      "groups": 2,
+      "row_words": 1280,
+      "burst_beats": 32,
+      "max_outstanding": 4,
+      "bfm_depth": 16,
+      "refills": 1,
+      "axi_bursts": 20,
+      "axi_beats": 640,
+      "packed_requests": 640,
+      "ar_descriptors": 20,
+      "ar_beats": 640,
+      "page_splits": 2,
+      "max_outstanding_observed": 4,
+      "cycles": 1636,
+      "run_id": "maxrow_burst32_compact_20260827",
+      "marker": "C1_WINDOW_LINE_CACHE_C8_BURST_SHELL_MAXROW_PASS",
+      "note": "Native maximum-row boardless cache-shell geometry/order profile; detached xsim runRoot was removed after completion. This is not a 640x480 frame-rate signoff.",
+      "all_options": {
+        "beat_fifo": true,
+        "tail_flush": true,
+        "req_pop_refill": true,
+        "rsp_pop_refill": true,
+        "tail_flush_observed": 1,
+        "run_id": "maxrow_burst32_allopts_20260827"
+      }
+    },
+    "model": {
+      "row_words64": 1280,
+      "row_axi_beats": 640,
+      "row_bursts_16": 40,
+      "row_bursts_32": 20,
+      "marker": "READ_BURST_PROFILE_TEST_PASS"
+    },
+    "source": {
+      "rtl": "rtl/dma/c1_tensor_mem_axi128_read_burst_client.sv",
+      "tb": "sim/tb_c1_tensor_mem_axi128_read_burst_profile.sv",
+      "runner": "scripts/run_tensor_mem_axi128_read_burst_profile_xsim_detached.ps1",
+      "cache_shell_rtl": "rtl/dma/c1_window_line_cache_c8_burst_shell.sv",
+      "cache_shell_tb": "sim/tb_c1_window_line_cache_c8_burst_shell.sv",
+      "cache_shell_runner": "scripts/run_window_line_cache_c8_burst_shell_xsim_detached.ps1",
+      "model": "model/read_burst_profile_model.py",
+      "test": "model/test_read_burst_profile_model.py",
+      "evidence": "READ_LONG_BURST_PROFILE.md"
+    },
+    "note": "Boardless geometry/ordering A/B only. BURST_BEATS=32 cuts AR descriptors for the long contiguous region (9→7 in this compact stream; 40→20 per 1280-word row) while payload beats and response order remain unchanged. The equal 397-cycle result is BFM/request-generator dominated, not an end-to-end fps measurement. Default SoC parameters remain unchanged."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "state": "complete",
+  "pid": 17676,
+  "process_start": 1789414608.1047056,
+  "outside_windows_job": true,
+  "cpu_affinity": [
+    31
+  ],
+  "step": 600,
+  "trained": true,
+  "quantized": true,
+  "RTL_simulated": false,
+  "quality_validated": false,
+  "gpu_telemetry": {
+    "temperature_c": 53.0,
+    "power_w": 26.81,
+    "used_mib": 699.0
+  },
+  "ram_free_gib": 14.604,
+  "cpu_percent": 7.7,
+  "loss": 1.1231930255889893,
+  "elapsed_seconds": 194.156,
+  "heartbeat_local": "2026-09-15T03:39:46+0800",
+  "selected_QAT_step": 600,
+  "integer_probe": {
+    "frames": 4,
+    "all_signed_stages_bitexact": true,
+    "device": "cuda:0",
+    "RTL_simulated": false
+  },
+  "parameter_arena_bytes": 8931,
+  "parameter_plan_bytes": 147456,
+  "fusion_pair": [
+    14,
+    15
+  ],
+  "test_images_read": 0,
+  "finished_local": "2026-09-15T03:40:04+0800"
+}

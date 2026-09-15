@@ -1,0 +1,15 @@
+{
+  "trained": true,
+  "float_run": "D:\\contest\\2026FPGA\\yilingsi\\case1\\outputs\\c36_train_b_starry_20260915a",
+  "float_total_steps": 3500,
+  "float_selected_step": 3250,
+  "QAT_steps": 600,
+  "calibration_batches": 32,
+  "calibration_split": "train",
+  "dataset_manifest": "D:\\contest\\2026FPGA\\yilingsi\\case1\\assets\\training\\c36_openimages320_20260915a\\manifest.json",
+  "test_images_read": 0,
+  "feature_network": "SqueezeNet 1.1, training only",
+  "float_fold_max_rgb_code_delta": 0.9999999403953552,
+  "channel_equalization": true,
+  "arithmetic": "candidate exact-grid QAT; frozen per-channel weight and tied activation scales"
+}

@@ -1,0 +1,795 @@
+{
+  "schema_version": 1,
+  "artifact_role": "layout_only_untrained",
+  "model": "MicroStyle-24",
+  "trained": false,
+  "warning": "Topology/layout artifact only; train and QAT before FPGA use.",
+  "activation": "signed-int8 target",
+  "accumulator": "signed-int32",
+  "tensors": [
+    {
+      "name": "encoder1.weight",
+      "key": "encoder1__weight",
+      "shape": [
+        12,
+        3,
+        3,
+        3
+      ],
+      "scale": 0.0015126518377168911
+    },
+    {
+      "name": "encoder1_norm.weight",
+      "key": "encoder1_norm__weight",
+      "shape": [
+        12
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "encoder1_norm.bias",
+      "key": "encoder1_norm__bias",
+      "shape": [
+        12
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "encoder1_norm.running_mean",
+      "key": "encoder1_norm__running_mean",
+      "shape": [
+        12
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "encoder1_norm.running_var",
+      "key": "encoder1_norm__running_var",
+      "shape": [
+        12
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "encoder1_norm.num_batches_tracked",
+      "key": "encoder1_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "encoder2.weight",
+      "key": "encoder2__weight",
+      "shape": [
+        24,
+        12,
+        3,
+        3
+      ],
+      "scale": 0.0007575966828451382
+    },
+    {
+      "name": "encoder2_norm.weight",
+      "key": "encoder2_norm__weight",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "encoder2_norm.bias",
+      "key": "encoder2_norm__bias",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "encoder2_norm.running_mean",
+      "key": "encoder2_norm__running_mean",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "encoder2_norm.running_var",
+      "key": "encoder2_norm__running_var",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "encoder2_norm.num_batches_tracked",
+      "key": "encoder2_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.expand.weight",
+      "key": "residual__0__expand__weight",
+      "shape": [
+        48,
+        24,
+        1,
+        1
+      ],
+      "scale": 0.0016070049344085334
+    },
+    {
+      "name": "residual.0.expand_norm.weight",
+      "key": "residual__0__expand_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.expand_norm.bias",
+      "key": "residual__0__expand_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.expand_norm.running_mean",
+      "key": "residual__0__expand_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.expand_norm.running_var",
+      "key": "residual__0__expand_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.expand_norm.num_batches_tracked",
+      "key": "residual__0__expand_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.depthwise.weight",
+      "key": "residual__0__depthwise__weight",
+      "shape": [
+        48,
+        1,
+        3,
+        3
+      ],
+      "scale": 0.002621333664796484
+    },
+    {
+      "name": "residual.0.depthwise_norm.weight",
+      "key": "residual__0__depthwise_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.depthwise_norm.bias",
+      "key": "residual__0__depthwise_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.depthwise_norm.running_mean",
+      "key": "residual__0__depthwise_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.depthwise_norm.running_var",
+      "key": "residual__0__depthwise_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.depthwise_norm.num_batches_tracked",
+      "key": "residual__0__depthwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.project.weight",
+      "key": "residual__0__project__weight",
+      "shape": [
+        24,
+        48,
+        1,
+        1
+      ],
+      "scale": 0.0011362632897895153
+    },
+    {
+      "name": "residual.0.project_norm.weight",
+      "key": "residual__0__project_norm__weight",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.project_norm.bias",
+      "key": "residual__0__project_norm__bias",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.project_norm.running_mean",
+      "key": "residual__0__project_norm__running_mean",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.0.project_norm.running_var",
+      "key": "residual__0__project_norm__running_var",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.0.project_norm.num_batches_tracked",
+      "key": "residual__0__project_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.expand.weight",
+      "key": "residual__1__expand__weight",
+      "shape": [
+        48,
+        24,
+        1,
+        1
+      ],
+      "scale": 0.0016033859468820527
+    },
+    {
+      "name": "residual.1.expand_norm.weight",
+      "key": "residual__1__expand_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.expand_norm.bias",
+      "key": "residual__1__expand_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.expand_norm.running_mean",
+      "key": "residual__1__expand_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.expand_norm.running_var",
+      "key": "residual__1__expand_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.expand_norm.num_batches_tracked",
+      "key": "residual__1__expand_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.depthwise.weight",
+      "key": "residual__1__depthwise__weight",
+      "shape": [
+        48,
+        1,
+        3,
+        3
+      ],
+      "scale": 0.0026205343993629996
+    },
+    {
+      "name": "residual.1.depthwise_norm.weight",
+      "key": "residual__1__depthwise_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.depthwise_norm.bias",
+      "key": "residual__1__depthwise_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.depthwise_norm.running_mean",
+      "key": "residual__1__depthwise_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.depthwise_norm.running_var",
+      "key": "residual__1__depthwise_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.depthwise_norm.num_batches_tracked",
+      "key": "residual__1__depthwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.project.weight",
+      "key": "residual__1__project__weight",
+      "shape": [
+        24,
+        48,
+        1,
+        1
+      ],
+      "scale": 0.0011354513525024174
+    },
+    {
+      "name": "residual.1.project_norm.weight",
+      "key": "residual__1__project_norm__weight",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.project_norm.bias",
+      "key": "residual__1__project_norm__bias",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.project_norm.running_mean",
+      "key": "residual__1__project_norm__running_mean",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.1.project_norm.running_var",
+      "key": "residual__1__project_norm__running_var",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.1.project_norm.num_batches_tracked",
+      "key": "residual__1__project_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.expand.weight",
+      "key": "residual__2__expand__weight",
+      "shape": [
+        48,
+        24,
+        1,
+        1
+      ],
+      "scale": 0.0016067323722238616
+    },
+    {
+      "name": "residual.2.expand_norm.weight",
+      "key": "residual__2__expand_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.expand_norm.bias",
+      "key": "residual__2__expand_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.expand_norm.running_mean",
+      "key": "residual__2__expand_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.expand_norm.running_var",
+      "key": "residual__2__expand_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.expand_norm.num_batches_tracked",
+      "key": "residual__2__expand_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.depthwise.weight",
+      "key": "residual__2__depthwise__weight",
+      "shape": [
+        48,
+        1,
+        3,
+        3
+      ],
+      "scale": 0.002598775184060645
+    },
+    {
+      "name": "residual.2.depthwise_norm.weight",
+      "key": "residual__2__depthwise_norm__weight",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.depthwise_norm.bias",
+      "key": "residual__2__depthwise_norm__bias",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.depthwise_norm.running_mean",
+      "key": "residual__2__depthwise_norm__running_mean",
+      "shape": [
+        48
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.depthwise_norm.running_var",
+      "key": "residual__2__depthwise_norm__running_var",
+      "shape": [
+        48
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.depthwise_norm.num_batches_tracked",
+      "key": "residual__2__depthwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.project.weight",
+      "key": "residual__2__project__weight",
+      "shape": [
+        24,
+        48,
+        1,
+        1
+      ],
+      "scale": 0.001135548738044078
+    },
+    {
+      "name": "residual.2.project_norm.weight",
+      "key": "residual__2__project_norm__weight",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.project_norm.bias",
+      "key": "residual__2__project_norm__bias",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.project_norm.running_mean",
+      "key": "residual__2__project_norm__running_mean",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "residual.2.project_norm.running_var",
+      "key": "residual__2__project_norm__running_var",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "residual.2.project_norm.num_batches_tracked",
+      "key": "residual__2__project_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.depthwise.weight",
+      "key": "decoder1__depthwise__weight",
+      "shape": [
+        24,
+        1,
+        3,
+        3
+      ],
+      "scale": 0.0026203318843691366
+    },
+    {
+      "name": "decoder1.depthwise_norm.weight",
+      "key": "decoder1__depthwise_norm__weight",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder1.depthwise_norm.bias",
+      "key": "decoder1__depthwise_norm__bias",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.depthwise_norm.running_mean",
+      "key": "decoder1__depthwise_norm__running_mean",
+      "shape": [
+        24
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.depthwise_norm.running_var",
+      "key": "decoder1__depthwise_norm__running_var",
+      "shape": [
+        24
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder1.depthwise_norm.num_batches_tracked",
+      "key": "decoder1__depthwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.pointwise.weight",
+      "key": "decoder1__pointwise__weight",
+      "shape": [
+        16,
+        24,
+        1,
+        1
+      ],
+      "scale": 0.001605841587847612
+    },
+    {
+      "name": "decoder1.pointwise_norm.weight",
+      "key": "decoder1__pointwise_norm__weight",
+      "shape": [
+        16
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder1.pointwise_norm.bias",
+      "key": "decoder1__pointwise_norm__bias",
+      "shape": [
+        16
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.pointwise_norm.running_mean",
+      "key": "decoder1__pointwise_norm__running_mean",
+      "shape": [
+        16
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder1.pointwise_norm.running_var",
+      "key": "decoder1__pointwise_norm__running_var",
+      "shape": [
+        16
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder1.pointwise_norm.num_batches_tracked",
+      "key": "decoder1__pointwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.depthwise.weight",
+      "key": "decoder2__depthwise__weight",
+      "shape": [
+        16,
+        1,
+        3,
+        3
+      ],
+      "scale": 0.0025649462628552296
+    },
+    {
+      "name": "decoder2.depthwise_norm.weight",
+      "key": "decoder2__depthwise_norm__weight",
+      "shape": [
+        16
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder2.depthwise_norm.bias",
+      "key": "decoder2__depthwise_norm__bias",
+      "shape": [
+        16
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.depthwise_norm.running_mean",
+      "key": "decoder2__depthwise_norm__running_mean",
+      "shape": [
+        16
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.depthwise_norm.running_var",
+      "key": "decoder2__depthwise_norm__running_var",
+      "shape": [
+        16
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder2.depthwise_norm.num_batches_tracked",
+      "key": "decoder2__depthwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.pointwise.weight",
+      "key": "decoder2__pointwise__weight",
+      "shape": [
+        8,
+        16,
+        1,
+        1
+      ],
+      "scale": 0.001967649290880819
+    },
+    {
+      "name": "decoder2.pointwise_norm.weight",
+      "key": "decoder2__pointwise_norm__weight",
+      "shape": [
+        8
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder2.pointwise_norm.bias",
+      "key": "decoder2__pointwise_norm__bias",
+      "shape": [
+        8
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.pointwise_norm.running_mean",
+      "key": "decoder2__pointwise_norm__running_mean",
+      "shape": [
+        8
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "decoder2.pointwise_norm.running_var",
+      "key": "decoder2__pointwise_norm__running_var",
+      "shape": [
+        8
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "decoder2.pointwise_norm.num_batches_tracked",
+      "key": "decoder2__pointwise_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    },
+    {
+      "name": "output.weight",
+      "key": "output__weight",
+      "shape": [
+        3,
+        8,
+        3,
+        3
+      ],
+      "scale": 0.0009242990237521375
+    },
+    {
+      "name": "output_norm.weight",
+      "key": "output_norm__weight",
+      "shape": [
+        3
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "output_norm.bias",
+      "key": "output_norm__bias",
+      "shape": [
+        3
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "output_norm.running_mean",
+      "key": "output_norm__running_mean",
+      "shape": [
+        3
+      ],
+      "scale": 1.0
+    },
+    {
+      "name": "output_norm.running_var",
+      "key": "output_norm__running_var",
+      "shape": [
+        3
+      ],
+      "scale": 0.007874015748031496
+    },
+    {
+      "name": "output_norm.num_batches_tracked",
+      "key": "output_norm__num_batches_tracked",
+      "shape": [],
+      "scale": 1.0
+    }
+  ]
+}

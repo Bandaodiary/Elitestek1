@@ -1,0 +1,31 @@
+{
+  "as_of": "2026-09-15",
+  "role": "report_evidence_index_not_new_measurements",
+  "acceptance": "case1/review/C39_THREE_OBJECTIVES_FINAL_ACCEPTANCE_20260915.md",
+  "purehost_c37": {"xlr": 41318, "ram": 117, "dsp": 121, "setup_ns": 0.267, "hold_ns": 0.026},
+  "purehost_c39": {"xlr": 40476, "ram": 117, "dsp": 121, "setup_ns": 0.606, "hold_ns": 0.026},
+  "joint_s2": {"xlr": 51900, "ram": 165, "dsp": 125, "clock_mhz": 100, "setup_ns": 0.293, "hold_ns": 0.026},
+  "native_simulation": {
+    "run_id": "c39_onehot_stable_camera30_20260915b",
+    "nominal_clock_mhz": 150,
+    "frame_divisor": 1,
+    "width": 640,
+    "height": 480,
+    "cnn_frames": 6,
+    "intervals_cycles": [6316040, 6343354, 6433652, 6398800, 6358814],
+    "captures": 9,
+    "displays": 14,
+    "correct_display_pixels": 8601600,
+    "underflows": 0,
+    "display_misses": 0,
+    "board_measured": false,
+    "joint_cpu_throughput_measured": false
+  },
+  "model": {
+    "manifest": "case1/outputs/c36_qat_b_mosaic_stable_20260915a/plan_fused/manifest.json",
+    "stages": 18,
+    "view_stages": [11, 13, 17],
+    "fused_stages": [14, 15]
+  },
+  "historical_table": "source-metrics.json is an archived 2026-08-31 R1 table, not the current design"
+}

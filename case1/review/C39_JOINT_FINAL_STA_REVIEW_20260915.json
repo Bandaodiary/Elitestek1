@@ -1,0 +1,325 @@
+{
+  "run": "c39_native_acceptance_20260915a_joint_s2_native",
+  "source": "case1/logs/efinity_resource_runs/c39_native_acceptance_20260915a_joint_s2_native/timing_max_paths.sample.log",
+  "original_summary_preserved": true,
+  "physical_resource_complete": true,
+  "board_signoff": false,
+  "interpretation": "Final STA has negative camera/core relationships. Core self-clock setup is +1.598 ns at target 100 MHz. Do not infer core Fmax from multi-clock geomean or bypass model queue timing gate.",
+  "final_sta": {
+    "source": "final_sta_clock_relationship_table",
+    "final_slack_ns": -0.845,
+    "final_hold_slack_ns": 0.011,
+    "geomean_period_ns": 3.471,
+    "geomean_frequency_mhz": 288.101,
+    "geomean_is_core_fmax": false,
+    "setup_rows": 19,
+    "hold_rows": 19,
+    "timing_pass": false,
+    "relationships": [
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "core_clk",
+        "constraint_ns": 10,
+        "slack_ns": 1.598,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "cam_clk",
+        "constraint_ns": 0.002,
+        "slack_ns": -0.428,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "phy_sdram_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 2.181,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.311,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.827,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "core_clk",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.892,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "cam_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0.002,
+        "slack_ns": -0.845,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "cam_clk",
+        "capture": "cam_clk",
+        "constraint_ns": 14.286,
+        "slack_ns": 5.318,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_sdram_clk",
+        "capture": "core_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 1.964,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_sdram_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.314,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.714,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.633,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_rx_cal_clk",
+        "capture": "core_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 2.038,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_rx_cal_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.469,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_tx_cal_clk",
+        "capture": "core_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 2.066,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_tx_cal_clk",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.083,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "core_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 2.048,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.762,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "setup",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 2.5,
+        "slack_ns": 0.336,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.011,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "cam_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.078,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "phy_sdram_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.036,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.084,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.094,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "core_clk",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 0,
+        "slack_ns": 0.082,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "cam_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.023,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "cam_clk",
+        "capture": "cam_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.079,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_sdram_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.156,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_sdram_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.098,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.514,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_sdram_clk",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 0,
+        "slack_ns": 0.723,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_rx_cal_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.108,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_rx_cal_clk",
+        "capture": "phy_rx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.026,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_tx_cal_clk",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.1,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_tx_cal_clk",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.099,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "core_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.11,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "phy_tx_cal_clk",
+        "constraint_ns": 0,
+        "slack_ns": 0.788,
+        "edge": "(R-R)"
+      },
+      {
+        "kind": "hold",
+        "launch": "phy_tx_cal_clk_90edge",
+        "capture": "phy_tx_cal_clk_90edge",
+        "constraint_ns": 0,
+        "slack_ns": 0.072,
+        "edge": "(R-R)"
+      }
+    ]
+  }
+}

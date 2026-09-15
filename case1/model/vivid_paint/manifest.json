@@ -1,0 +1,17 @@
+{
+  "name": "vivid_paint",
+  "tensor_layout": "RGB/HWC activations; OIHW conv1; CHW depthwise; OI pointwise",
+  "rounding": "round absolute magnitude to nearest, ties away from zero",
+  "activation": "clamp 0..255 after every layer",
+  "conv1_shift": 4,
+  "depthwise_shift": 0,
+  "pointwise_shift": 3,
+  "files": {
+    "conv1_w": "conv1_w_i8.hex",
+    "conv1_b": "conv1_b_i32.hex",
+    "depthwise_w": "depthwise_w_i8.hex",
+    "depthwise_b": "depthwise_b_i32.hex",
+    "pointwise_w": "pointwise_w_i8.hex",
+    "pointwise_b": "pointwise_b_i32.hex"
+  }
+}

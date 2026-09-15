@@ -1,0 +1,10 @@
+{
+  "role": "existing_evidence_and_recomputed_analytic_bounds_not_new_fpga_runs",
+  "as_of": "2026-08-31",
+  "isp": {"source": "case1/outputs/r1_validation/metrics.json", "images": 6, "bayer_cases": 24, "minimum_psnr_db": 29.3863758794108, "mean_psnr_db": 31.7269957111775},
+  "qat": {"source": "case1/outputs/microstyle_qat/validation/validation_metrics.json", "image_count": 6, "size": 64, "max_abs_error_u8": 0, "scope": "functional_one_style_not_final_quality"},
+  "model": {"source": "case1/model/microstyle24_starry_functional/manifest.json", "stage_count": 22, "conv_weight_count": 12212, "parameter_arena_bytes": 16896, "mac_per_vga_frame": 428236800},
+  "analytic": {"source": "case1/model/tensor_perf_model.py", "bus_bytes_per_frame_default": 342220800, "bus_bytes_per_frame_ideal_factor_model": 47547744, "ideal_read_reuse": 9, "ideal_pack_factor": 2, "ideal_outstanding": 4, "compute_cycles_64_mac_lower_bound": 6691200, "budget_cycles_100mhz_15fps_floor": 6666666, "scope": "uniform_64_mac_abstraction_not_heterogeneous_engine_absolute_bound; tensor_bus_only; outstanding_changes_latency_not_bytes"},
+  "historical_vivado_cnn": {"source": "case1/TEST_RESULTS.md", "target": "Artix-7 proxy", "lut": 28298, "ff": 11168, "bram36": 2, "dsp": 35, "wns_ns": -4.965, "run_date": "2026-08-24"},
+  "efinity_isolated": {"source": "case1/efinity/RESOURCE_MAP_RESULTS_20260829.md", "target": "Ti60F225 C4", "dot": {"dsp_physical": 80, "fmax_mhz": 189.717}, "dw_narrow_stimulus_wrapper": {"dsp_physical": 28, "fmax_mhz": 271.592}, "parameter_scheduler": {"dsp_physical": 1, "fmax_mhz": 236.855}, "full_board_i3": null}
+}

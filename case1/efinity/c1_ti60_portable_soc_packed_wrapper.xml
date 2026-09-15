@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="c1_ti60_portable_soc_packed_wrapper" description="Case-1 portable SoC packed-affine boardless probe" last_change="0" sw_version="2026.1.132.3.9" last_run_state="" last_run_flow="" config_result_in_sync="false" design_ood="new" place_ood="new" route_ood="new" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+  <efx:device_info><efx:family name="Titanium" /><efx:device name="Ti60F225" /><efx:timing_model name="C4" /></efx:device_info>
+  <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
+    <efx:top_module name="c1_ti60_portable_soc_packed_wrapper" />
+    <efx:design_file name="c1_ti60_portable_soc_packed_wrapper.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_fixed_pkg.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_descriptor_pkg.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_descriptor_decoder_pkg.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_frame_buffer_pkg.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_dot8x8_requant_core.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_dwconv3x3_c8_requant_core.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_c8_parameter_scheduler.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_compute_egress.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_compute_ingress.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_microstyle_cnn_top.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_microstyle_engine.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_microstyle_tensor_adapter.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_pixel_result_writer.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_r1_parameter_bank.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_requant_bank8.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_rgb_s8_center_codec.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_s8_dot8_accum_pipelined.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_s8_dot8_accum_treepipe.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_s8_dot8_accum.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/cnn/c1_window_line_cache_c8.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_async_stream_fifo.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_event_cdc.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_cdc_latest_snapshot.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_r1_unified_output_fifo.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_r1_unified_output_skid.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_ram_sdp_read_first.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_stream_fifo.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_reset_sync.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/common/c1_window3x3.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_apb_csr.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_apb_isp_config.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_apb_r1_mux.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_descriptor_scheduler_subsystem.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_frame_manager.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_frame_pair_resolver.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_layer_command_decoder.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_layer_scheduler.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_r1_config_dispatcher.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_r1_config_loader_subsystem.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_r1_job_frontend.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_r1_job_controller.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/control/c1_r1_stage_config_bank.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_display_line_store_cdc.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_display_prefetch_pair.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_display_flush_reset.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_hex_osd_overlay.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_split_compositor.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/display/c1_video_timing_720p.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_descriptor_reader.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_frame_buffer_table_reader.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_n_serial_arbiter_128.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_parameter_loader.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_read_abort_fence.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_shared_qos_monitor.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_xrgb_frame_reader.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi_xrgb_frame_writer.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi2_serial_arbiter_128.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_cache_refill_completion_adapter.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_cache_refill_scheduler_read_client_exact.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_cache_refill_scheduler_read_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_cache_refill_scheduler.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_mem_axi128_read_burst_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_table_response_elastic_fifo.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_mem_axi128_bridge.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_mem_axi128_write_burst_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_mem_axi128_packing_bridge.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_mem_axi128_ordered_write_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_axi128_write_mlp.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_window_cache_axi_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_window_cache_burst_axi_client.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_tensor_window_cache_seam.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/dma/c1_window_line_cache_c8_exact_burst_shell.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_boardless_frame_system.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_capture_frontend.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_capture_recovery_fence.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_capture_subsystem.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_compute_shell.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_display_subsystem.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_microstyle_system_bridge.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_parameter_subsystem.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_portable_soc.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_rgb_source_mux.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/top/c1_r1_soc_control.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_r1_debayer_bilinear.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_r1_isp_pipeline.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_raw_raster_guard.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_r1_resize_line_sampler.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_r1_resize_pipeline.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/c1_r1_resize_system.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/r1_bilinear_interp_rgb888.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/r1_blc_bayer4_u10.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/r1_resize_request_q16.sv" version="default" library="default" />
+    <efx:design_file name="../rtl/video/r1_rgb10_color_pipeline.sv" version="default" library="default" />
+    <efx:top_vhdl_arch name="" />
+  </efx:design_info>
+  <efx:constraint_info><efx:sdc_file name="c1_ti60_portable_soc_packed_wrapper.sdc" /><efx:inter_file name="" /></efx:constraint_info>
+  <efx:sim_info /><efx:misc_info /><efx:ip_info />
+  <efx:synthesis tool_name="efx_map"><efx:param name="work_dir" value="work_syn" value_type="e_string" /><efx:param name="write_efx_verilog" value="on" value_type="e_bool" /><efx:param name="mode" value="speed" value_type="e_option" /><efx:param name="max_ram" value="-1" value_type="e_integer" /><efx:param name="max_mult" value="-1" value_type="e_integer" /><efx:param name="infer-clk-enable" value="3" value_type="e_option" /><efx:param name="infer-sync-set-reset" value="1" value_type="e_option" /><efx:param name="fanout-limit" value="0" value_type="e_integer" /><efx:param name="bram_output_regs_packing" value="1" value_type="e_option" /><efx:param name="retiming" value="1" value_type="e_option" /><efx:param name="seq_opt" value="1" value_type="e_option" /><efx:param name="dsp-input-regs-packing" value="1" value_type="e_option" /><efx:param name="dsp-output-regs-packing" value="1" value_type="e_option" /><efx:param name="dsp-mac-packing" value="1" value_type="e_option" /><efx:param name="max_threads" value="1" value_type="e_integer" /><efx:param name="use-logic-for-small-mem" value="64" value_type="e_integer" /><efx:param name="use-logic-for-small-rom" value="64" value_type="e_integer" /></efx:synthesis>
+  <efx:place_and_route tool_name="efx_pnr"><efx:param name="work_dir" value="work_pnr" value_type="e_string" /><efx:param name="max_threads" value="1" value_type="e_integer" /></efx:place_and_route>
+  <efx:bitstream_generation tool_name="efx_pgm" /><efx:debugger />
+</efx:project>

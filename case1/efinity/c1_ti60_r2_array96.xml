@@ -1,0 +1,31 @@
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="c1_ti60_r2_array96" description="R2 runtime loaded dot16 array, not a system throughput proof" last_change="0" sw_version="2026.1.132.3.9" last_run_state="" last_run_flow="" config_result_in_sync="false" design_ood="new" place_ood="new" route_ood="new" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+    <efx:device_info><efx:family name="Titanium" /><efx:device name="Ti60F225" /><efx:timing_model name="I3" /></efx:device_info>
+    <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
+        <efx:top_module name="c1_ti60_r2_array96" />
+        <efx:design_file name="../rtl/r2/c1_r2_dot16_array.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_array_host_probe.sv" version="default" library="default" />
+        <efx:design_file name="c1_ti60_r2_array96.sv" version="default" library="default" />
+        <efx:top_vhdl_arch name="" />
+    </efx:design_info>
+    <efx:constraint_info><efx:sdc_file name="c1_ti60_r2_array96.sdc" /><efx:inter_file name="" /></efx:constraint_info>
+    <efx:sim_info /><efx:misc_info /><efx:ip_info />
+    <efx:synthesis tool_name="efx_map">
+        <efx:param name="work_dir" value="work_syn" value_type="e_string" />
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool" />
+        <efx:param name="mode" value="speed" value_type="e_option" />
+        <efx:param name="max_ram" value="-1" value_type="e_integer" />
+        <efx:param name="max_mult" value="-1" value_type="e_integer" />
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option" />
+        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option" />
+        <efx:param name="retiming" value="1" value_type="e_option" />
+        <efx:param name="seq_opt" value="1" value_type="e_option" />
+        <efx:param name="operator-sharing" value="0" value_type="e_option" />
+        <efx:param name="optimize-adder-tree" value="0" value_type="e_option" />
+        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-output-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-mac-packing" value="1" value_type="e_option" />
+        <efx:param name="max_threads" value="1" value_type="e_integer" />
+    </efx:synthesis>
+    <efx:place_and_route tool_name="efx_pnr"><efx:param name="work_dir" value="work_pnr" value_type="e_string" /><efx:param name="max_threads" value="1" value_type="e_integer" /><efx:param name="seed" value="1" value_type="e_string" /></efx:place_and_route>
+    <efx:bitstream_generation tool_name="efx_pgm" /><efx:debugger />
+</efx:project>

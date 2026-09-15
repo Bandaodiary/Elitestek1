@@ -1,0 +1,2188 @@
+{
+  "model": "case1_throughput_sweep",
+  "width": 640,
+  "height": 480,
+  "clock_hz": 100000000,
+  "fps_target": 15,
+  "scenarios": [
+    {
+      "name": "baseline_single_beat_shared",
+      "uncached_read_req": 17376000,
+      "read_req": 17376000,
+      "write_req": 4012800,
+      "read_beats": 17376000,
+      "write_beats": 4012800,
+      "read_bursts": 17376000,
+      "write_bursts": 4012800,
+      "bus_bytes_per_frame": 342220800,
+      "write_beat_share": 0.187612,
+      "effective_outstanding": 1,
+      "channel_memory_cycles": 85555200,
+      "serialized_memory_cycles": 85555200,
+      "engine_cycles": 39571200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "optimistic_frame_cycles": 85555200,
+      "optimistic_fps_bound": 1.1688,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_serial_fabric",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 1,
+      "channel_memory_cycles": 17664000,
+      "serialized_memory_cycles": 17664000,
+      "engine_cycles": 39571200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "optimistic_frame_cycles": 39571200,
+      "optimistic_fps_bound": 2.5271,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_real_out16",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 16,
+      "channel_memory_cycles": 2560200,
+      "serialized_memory_cycles": 4692000,
+      "engine_cycles": 39571200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "optimistic_frame_cycles": 39571200,
+      "optimistic_fps_bound": 2.5271,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_ii1",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 16,
+      "channel_memory_cycles": 2560200,
+      "serialized_memory_cycles": 4692000,
+      "engine_cycles": 21715200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "optimistic_frame_cycles": 21715200,
+      "optimistic_fps_bound": 4.6051,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_dual_narrow",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 16,
+      "channel_memory_cycles": 2560200,
+      "serialized_memory_cycles": 4692000,
+      "engine_cycles": 17510400,
+      "arithmetic_lower_bound_cycles": 3345600,
+      "optimistic_frame_cycles": 17510400,
+      "optimistic_fps_bound": 5.7109,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_dual_wide",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 16,
+      "channel_memory_cycles": 2560200,
+      "serialized_memory_cycles": 4692000,
+      "engine_cycles": 16550400,
+      "arithmetic_lower_bound_cycles": 3345600,
+      "optimistic_frame_cycles": 16550400,
+      "optimistic_fps_bound": 6.0422,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false
+    },
+    {
+      "name": "cache3_pack2_burst16_dedicated_80_lane",
+      "uncached_read_req": 17376000,
+      "read_req": 4819200,
+      "write_req": 4012800,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "effective_outstanding": 16,
+      "channel_memory_cycles": 2560200,
+      "serialized_memory_cycles": 4692000,
+      "engine_cycles": 5898240,
+      "arithmetic_lower_bound_cycles": 5352960,
+      "optimistic_frame_cycles": 5898240,
+      "optimistic_fps_bound": 16.9542,
+      "meets_15fps_optimistic": true,
+      "meets_reserved_budget": true
+    }
+  ],
+  "parallel_mac_sweep": [
+    {
+      "name": "P1_II2_DW9",
+      "output_group_parallelism": 1,
+      "scalar_mac_lanes": 64,
+      "dot_tile_ii": 2,
+      "dw_weight_prefetch_cycles": 9,
+      "engine_cycles": 39571200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "fsm_bubble_cycles": 32880000,
+      "compute_fps_bound": 2.5271
+    },
+    {
+      "name": "P1_II1_DW1",
+      "output_group_parallelism": 1,
+      "scalar_mac_lanes": 64,
+      "dot_tile_ii": 1,
+      "dw_weight_prefetch_cycles": 1,
+      "engine_cycles": 21715200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "fsm_bubble_cycles": 15024000,
+      "compute_fps_bound": 4.6051
+    },
+    {
+      "name": "P2_II1_DW1",
+      "output_group_parallelism": 2,
+      "scalar_mac_lanes": 128,
+      "dot_tile_ii": 1,
+      "dw_weight_prefetch_cycles": 1,
+      "engine_cycles": 16550400,
+      "arithmetic_lower_bound_cycles": 3345600,
+      "fsm_bubble_cycles": 13204800,
+      "compute_fps_bound": 6.0422
+    },
+    {
+      "name": "P4_II1_DW1",
+      "output_group_parallelism": 4,
+      "scalar_mac_lanes": 256,
+      "dot_tile_ii": 1,
+      "dw_weight_prefetch_cycles": 1,
+      "engine_cycles": 14880000,
+      "arithmetic_lower_bound_cycles": 1672800,
+      "fsm_bubble_cycles": 13207200,
+      "compute_fps_bound": 6.7204
+    },
+    {
+      "name": "P8_II1_DW1",
+      "output_group_parallelism": 8,
+      "scalar_mac_lanes": 512,
+      "dot_tile_ii": 1,
+      "dw_weight_prefetch_cycles": 1,
+      "engine_cycles": 14361600,
+      "arithmetic_lower_bound_cycles": 836400,
+      "fsm_bubble_cycles": 13525200,
+      "compute_fps_bound": 6.963
+    }
+  ],
+  "dw_weight_cache_sweep": [
+    {
+      "name": "P1_II2_DW9",
+      "dw_weight_cache_reuse": false,
+      "engine_cycles": 39571200,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "compute_fps_bound": 2.5271,
+      "cycles_saved_vs_baseline": 0,
+      "percent_saved_vs_baseline": 0.0
+    },
+    {
+      "name": "P1_II2_DW9_TILE_CACHE",
+      "dw_weight_cache_reuse": true,
+      "engine_cycles": 30048184,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "compute_fps_bound": 3.328,
+      "cycles_saved_vs_baseline": 9523016,
+      "percent_saved_vs_baseline": 24.0655
+    },
+    {
+      "name": "P1_II1_DW9_TILE_CACHE",
+      "dw_weight_cache_reuse": true,
+      "engine_cycles": 21715384,
+      "arithmetic_lower_bound_cycles": 6691200,
+      "compute_fps_bound": 4.605,
+      "cycles_saved_vs_baseline": 17855816,
+      "percent_saved_vs_baseline": 45.1233
+    }
+  ],
+  "mac_prefetch_overlap_sweep": [
+    {
+      "name": "P1_II2_DW9",
+      "dot_tile_ii": 2,
+      "dw_weight_cache_reuse": false,
+      "engine_cycles": 39571200,
+      "compute_fps_bound": 2.5271,
+      "cycles_saved_vs_baseline": 0,
+      "percent_saved_vs_baseline": 0.0
+    },
+    {
+      "name": "P1_MAC_OVERLAP_DW9",
+      "dot_tile_ii": 1,
+      "dw_weight_cache_reuse": false,
+      "engine_cycles": 31238400,
+      "compute_fps_bound": 3.2012,
+      "cycles_saved_vs_baseline": 8332800,
+      "percent_saved_vs_baseline": 21.0577
+    },
+    {
+      "name": "P1_MAC_OVERLAP_DW9_TILE_CACHE",
+      "dot_tile_ii": 1,
+      "dw_weight_cache_reuse": true,
+      "engine_cycles": 21715384,
+      "compute_fps_bound": 4.605,
+      "cycles_saved_vs_baseline": 17855816,
+      "percent_saved_vs_baseline": 45.1233
+    }
+  ],
+  "traffic_pair_sweep": [
+    {
+      "name": "single_beat",
+      "pair_fraction": 0.0,
+      "read_beats": 4819200,
+      "write_beats": 4012800,
+      "bus_bytes_per_frame": 141312000,
+      "write_beat_share": 0.454348,
+      "read_bursts": 301200,
+      "write_bursts": 250800,
+      "memory_cycles_out16": 5120400
+    },
+    {
+      "name": "pack2_trace_pair18pct",
+      "pair_fraction": 0.182593,
+      "read_beats": 4379224,
+      "write_beats": 3646446,
+      "bus_bytes_per_frame": 128410720,
+      "write_beat_share": 0.454348,
+      "read_bursts": 273702,
+      "write_bursts": 227903,
+      "memory_cycles_out16": 4652926
+    },
+    {
+      "name": "pack2_ideal_pair100pct",
+      "pair_fraction": 1.0,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "bus_bytes_per_frame": 70656000,
+      "write_beat_share": 0.454348,
+      "read_bursts": 150600,
+      "write_bursts": 125400,
+      "memory_cycles_out16": 2560200
+    }
+  ],
+  "fabric_outstanding_sweep": [
+    {
+      "requested_outstanding": 1,
+      "effective_outstanding": 1,
+      "memory_cycles": 9638400,
+      "memory_fps_bound": 10.375166002656043,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": false
+    },
+    {
+      "requested_outstanding": 2,
+      "effective_outstanding": 2,
+      "memory_cycles": 4819200,
+      "memory_fps_bound": 20.750332005312085,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": true
+    },
+    {
+      "requested_outstanding": 4,
+      "effective_outstanding": 4,
+      "memory_cycles": 2560200,
+      "memory_fps_bound": 39.059448480587456,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": true
+    },
+    {
+      "requested_outstanding": 8,
+      "effective_outstanding": 8,
+      "memory_cycles": 2560200,
+      "memory_fps_bound": 39.059448480587456,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": true
+    },
+    {
+      "requested_outstanding": 16,
+      "effective_outstanding": 16,
+      "memory_cycles": 2560200,
+      "memory_fps_bound": 39.059448480587456,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": true
+    },
+    {
+      "requested_outstanding": 32,
+      "effective_outstanding": 32,
+      "memory_cycles": 2560200,
+      "memory_fps_bound": 39.059448480587456,
+      "beats_per_frame": 4416000,
+      "read_beats": 2409600,
+      "write_beats": 2006400,
+      "meets_15fps_memory_only": true
+    }
+  ],
+  "detail": [
+    {
+      "name": "baseline_single_beat_shared",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 17376000,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 0.0,
+        "write_pair_fraction": 0.0,
+        "read_axi_beats": 17376000,
+        "write_axi_beats": 4012800,
+        "read_bursts": 17376000,
+        "write_bursts": 4012800,
+        "bus_axi_beats": 21388800,
+        "bus_bytes_per_frame": 342220800,
+        "write_beat_share": 0.18761220825852784,
+        "cache_enabled": false,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 1,
+        "outstanding_honored": false,
+        "read_issue_cycles": 17376000,
+        "write_issue_cycles": 4012800,
+        "read_latency_cycles": 69504000,
+        "write_latency_cycles": 16051200,
+        "serialized_memory_cycles": 85555200,
+        "channel_overlap_memory_cycles": 85555200
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "legacy_P1_II2_DW9",
+          "output_group_parallelism": 1,
+          "dot_tile_ii": 2,
+          "dw_weight_prefetch_cycles": 9,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 1,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 64,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 39571200,
+        "arithmetic_lower_bound_cycles": 6691200,
+        "effective_scalar_mac_rate": 10.821931101407085,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 24883200,
+            "cycles": 3148800
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 49766400,
+            "cycles": 2227200
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 16588800,
+            "cycles": 2995200
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 29491200,
+            "cycles": 1459200
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 44236800,
+            "cycles": 7987200
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 2457600
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 6451200
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 85555200,
+      "optimistic_fps_bound": 1.168836026331538,
+      "serialized_channel_frame_cycles": 85555200,
+      "serialized_channel_fps_bound": 1.168836026331538,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_serial_fabric",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 1,
+        "outstanding_honored": false,
+        "read_issue_cycles": 2409600,
+        "write_issue_cycles": 2006400,
+        "read_latency_cycles": 9638400,
+        "write_latency_cycles": 8025600,
+        "serialized_memory_cycles": 17664000,
+        "channel_overlap_memory_cycles": 17664000
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "legacy_P1_II2_DW9",
+          "output_group_parallelism": 1,
+          "dot_tile_ii": 2,
+          "dw_weight_prefetch_cycles": 9,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 1,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 64,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 39571200,
+        "arithmetic_lower_bound_cycles": 6691200,
+        "effective_scalar_mac_rate": 10.821931101407085,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 24883200,
+            "cycles": 3148800
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 49766400,
+            "cycles": 2227200
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 16588800,
+            "cycles": 2995200
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 29491200,
+            "cycles": 1459200
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 44236800,
+            "cycles": 7987200
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 2457600
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 6451200
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 39571200,
+      "optimistic_fps_bound": 2.527090409186479,
+      "serialized_channel_frame_cycles": 39571200,
+      "serialized_channel_fps_bound": 2.527090409186479,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_real_out16",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 16,
+        "outstanding_honored": true,
+        "read_issue_cycles": 2560200,
+        "write_issue_cycles": 2131800,
+        "read_latency_cycles": 602400,
+        "write_latency_cycles": 501600,
+        "serialized_memory_cycles": 4692000,
+        "channel_overlap_memory_cycles": 2560200
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "legacy_P1_II2_DW9",
+          "output_group_parallelism": 1,
+          "dot_tile_ii": 2,
+          "dw_weight_prefetch_cycles": 9,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 1,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 64,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 39571200,
+        "arithmetic_lower_bound_cycles": 6691200,
+        "effective_scalar_mac_rate": 10.821931101407085,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 24883200,
+            "cycles": 3148800
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 49766400,
+            "cycles": 2227200
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 979200
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 1497600
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 921600
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 16588800,
+            "cycles": 2995200
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 29491200,
+            "cycles": 1459200
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 44236800,
+            "cycles": 7987200
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 2457600
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 6451200
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 39571200,
+      "optimistic_fps_bound": 2.527090409186479,
+      "serialized_channel_frame_cycles": 39571200,
+      "serialized_channel_fps_bound": 2.527090409186479,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_ii1",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 16,
+        "outstanding_honored": true,
+        "read_issue_cycles": 2560200,
+        "write_issue_cycles": 2131800,
+        "read_latency_cycles": 602400,
+        "write_latency_cycles": 501600,
+        "serialized_memory_cycles": 4692000,
+        "channel_overlap_memory_cycles": 2560200
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "prefetch_overlap_P1_II1_DW1",
+          "output_group_parallelism": 1,
+          "dot_tile_ii": 1,
+          "dw_weight_prefetch_cycles": 1,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 1,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 64,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 21715200,
+        "arithmetic_lower_bound_cycles": 6691200,
+        "effective_scalar_mac_rate": 19.72060123784262,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 24883200,
+            "cycles": 1766400
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 49766400,
+            "cycles": 1190400
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 633600
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 576000
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 576000
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 633600
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 576000
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 576000
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 22118400,
+            "cycles": 633600
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 6,
+            "macs": 8294400,
+            "cycles": 576000
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 576000
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 16588800,
+            "cycles": 1152000
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 29491200,
+            "cycles": 998400
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 44236800,
+            "cycles": 3072000
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 1843200
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 3686400
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 21715200,
+      "optimistic_fps_bound": 4.605069260241674,
+      "serialized_channel_frame_cycles": 21715200,
+      "serialized_channel_fps_bound": 4.605069260241674,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_dual_narrow",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 16,
+        "outstanding_honored": true,
+        "read_issue_cycles": 2560200,
+        "write_issue_cycles": 2131800,
+        "read_latency_cycles": 602400,
+        "write_latency_cycles": 501600,
+        "serialized_memory_cycles": 4692000,
+        "channel_overlap_memory_cycles": 2560200
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "dual_group_P2_II1_narrow_egress",
+          "output_group_parallelism": 2,
+          "dot_tile_ii": 1,
+          "dw_weight_prefetch_cycles": 1,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 1,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 128,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 17510400,
+        "arithmetic_lower_bound_cycles": 3345600,
+        "effective_scalar_mac_rate": 24.45614035087719,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 24883200,
+            "cycles": 998400
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 49766400,
+            "cycles": 825600
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 403200
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 403200
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 441600
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 403200
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 403200
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 441600
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 403200
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 403200
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 441600
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 16588800,
+            "cycles": 921600
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 29491200,
+            "cycles": 691200
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 44236800,
+            "cycles": 2150400
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 1843200
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 3686400
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 17510400,
+      "optimistic_fps_bound": 5.710891812865497,
+      "serialized_channel_frame_cycles": 17510400,
+      "serialized_channel_fps_bound": 5.710891812865497,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_dual_wide",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 16,
+        "outstanding_honored": true,
+        "read_issue_cycles": 2560200,
+        "write_issue_cycles": 2131800,
+        "read_latency_cycles": 602400,
+        "write_latency_cycles": 501600,
+        "serialized_memory_cycles": 4692000,
+        "channel_overlap_memory_cycles": 2560200
+      },
+      "compute": {
+        "model": "shared_sequential_engine_fsm",
+        "config": {
+          "name": "dual_group_P2_II1_wide_egress",
+          "output_group_parallelism": 2,
+          "dot_tile_ii": 1,
+          "dw_weight_prefetch_cycles": 1,
+          "core_start_cycles": 1,
+          "core_result_cycles": 1,
+          "egress_groups_per_cycle": 2,
+          "overlap_batch_egress": false,
+          "scalar_mac_lanes": 128,
+          "dw_weight_cache_reuse": false
+        },
+        "total_macs": 428236800,
+        "engine_cycles": 16550400,
+        "arithmetic_lower_bound_cycles": 3345600,
+        "effective_scalar_mac_rate": 25.874709976798144,
+        "stages": [
+          {
+            "name": "encoder1.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 1,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 24883200,
+            "cycles": 921600
+          },
+          {
+            "name": "encoder2.conv3x3_s2",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 2,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 49766400,
+            "cycles": 806400
+          },
+          {
+            "name": "res0.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 345600
+          },
+          {
+            "name": "res0.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 345600
+          },
+          {
+            "name": "res0.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 422400
+          },
+          {
+            "name": "res0.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res1.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 345600
+          },
+          {
+            "name": "res1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 345600
+          },
+          {
+            "name": "res1.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 422400
+          },
+          {
+            "name": "res1.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "res2.expand1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 22118400,
+            "cycles": 345600
+          },
+          {
+            "name": "res2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 6,
+            "batches_per_pixel": 3,
+            "macs": 8294400,
+            "cycles": 345600
+          },
+          {
+            "name": "res2.project1x1",
+            "kind": "conv",
+            "pixels": 19200,
+            "input_groups": 6,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 22118400,
+            "cycles": 422400
+          },
+          {
+            "name": "res2.add_relu",
+            "kind": "bypass",
+            "pixels": 19200,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 115200
+          },
+          {
+            "name": "decoder1.upsample2",
+            "kind": "bypass",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 3,
+            "macs": 0,
+            "cycles": 460800
+          },
+          {
+            "name": "decoder1.depthwise3x3",
+            "kind": "dw",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 3,
+            "batches_per_pixel": 2,
+            "macs": 16588800,
+            "cycles": 844800
+          },
+          {
+            "name": "decoder1.pointwise1x1",
+            "kind": "conv",
+            "pixels": 76800,
+            "input_groups": 3,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 29491200,
+            "cycles": 614400
+          },
+          {
+            "name": "decoder2.upsample2",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 2,
+            "macs": 0,
+            "cycles": 1228800
+          },
+          {
+            "name": "decoder2.depthwise3x3",
+            "kind": "dw",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 2,
+            "batches_per_pixel": 1,
+            "macs": 44236800,
+            "cycles": 1843200
+          },
+          {
+            "name": "decoder2.pointwise1x1",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 2,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 39321600,
+            "cycles": 1843200
+          },
+          {
+            "name": "output.conv3x3",
+            "kind": "conv",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 66355200,
+            "cycles": 3686400
+          },
+          {
+            "name": "output.s8_to_rgb",
+            "kind": "bypass",
+            "pixels": 307200,
+            "input_groups": 1,
+            "output_groups": 1,
+            "batches_per_pixel": 1,
+            "macs": 0,
+            "cycles": 614400
+          }
+        ],
+        "limitations": [
+          "one collect phase per output pixel",
+          "no inter-stage or inter-pixel overlap",
+          "weight/cache refill latency represented by fixed cycle parameters",
+          "parameter load/repack and descriptor setup overhead omitted",
+          "does not model AXI stalls or output FIFO depth"
+        ]
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 16550400,
+      "optimistic_fps_bound": 6.04215003866976,
+      "serialized_channel_frame_cycles": 16550400,
+      "serialized_channel_fps_bound": 6.04215003866976,
+      "meets_15fps_optimistic": false,
+      "meets_reserved_budget": false,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    },
+    {
+      "name": "cache3_pack2_burst16_dedicated_80_lane",
+      "traffic": {
+        "source_write_requests": 307200,
+        "uncached_stage_read_requests": 17376000,
+        "stage_read_requests": 4819200,
+        "stage_write_requests": 3705600,
+        "logical_64bit_requests": 21388800,
+        "read_pair_fraction": 1.0,
+        "write_pair_fraction": 1.0,
+        "read_axi_beats": 2409600,
+        "write_axi_beats": 2006400,
+        "read_bursts": 150600,
+        "write_bursts": 125400,
+        "bus_axi_beats": 4416000,
+        "bus_bytes_per_frame": 70656000,
+        "write_beat_share": 0.4543478260869565,
+        "cache_enabled": true,
+        "line_rows": 3
+      },
+      "memory": {
+        "effective_outstanding": 16,
+        "outstanding_honored": true,
+        "read_issue_cycles": 2560200,
+        "write_issue_cycles": 2131800,
+        "read_latency_cycles": 602400,
+        "write_latency_cycles": 501600,
+        "serialized_memory_cycles": 4692000,
+        "channel_overlap_memory_cycles": 2560200
+      },
+      "compute": {
+        "model": "dedicated_multirate_streaming_graph",
+        "engine_cycles": 5898240,
+        "arithmetic_lower_bound_cycles": 5352960,
+        "total_macs": 428236800,
+        "bottleneck_stage": "decoder1.pointwise1x1",
+        "multiplier_lanes": 80
+      },
+      "frame_budget_cycles": 6666666,
+      "reserved_budget_cycles": 6000000,
+      "optimistic_frame_cycles": 5898240,
+      "optimistic_fps_bound": 16.954210069444443,
+      "serialized_channel_frame_cycles": 5898240,
+      "serialized_channel_fps_bound": 16.954210069444443,
+      "meets_15fps_optimistic": true,
+      "meets_reserved_budget": true,
+      "assumptions": [
+        "AXI payload beats issue at one beat/cycle",
+        "burst boundary/DDR refresh penalties are not measured",
+        "frame max(memory, compute) assumes overlap between the two",
+        "cache replaces only 3x3 tap reads; all writes remain external",
+        "parameter load/repack and descriptor setup are omitted"
+      ]
+    }
+  ]
+}

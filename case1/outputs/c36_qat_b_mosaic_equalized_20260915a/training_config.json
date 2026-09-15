@@ -1,0 +1,18 @@
+{
+  "trained": true,
+  "float_run": "D:\\contest\\2026FPGA\\yilingsi\\case1\\outputs\\c36_train_b_mosaic_distill_20260915b",
+  "float_total_steps": 4500,
+  "float_selected_step": 2500,
+  "QAT_steps": 600,
+  "calibration_batches": 32,
+  "calibration_split": "train",
+  "dataset_manifest": "D:\\contest\\2026FPGA\\yilingsi\\case1\\assets\\training\\c36_openimages320_20260915a\\manifest.json",
+  "test_images_read": 0,
+  "feature_network": "SqueezeNet 1.1, training only",
+  "float_fold_max_rgb_code_delta": 0.9999999403953552,
+  "channel_equalization": true,
+  "style_gain": 1.0,
+  "objective_variant": "teacher_distill",
+  "teacher_directory": "D:\\contest\\2026FPGA\\yilingsi\\case1\\assets\\teachers\\c36_pytorch_mosaic_20260915b",
+  "arithmetic": "candidate exact-grid QAT; frozen per-channel weight and tied activation scales"
+}

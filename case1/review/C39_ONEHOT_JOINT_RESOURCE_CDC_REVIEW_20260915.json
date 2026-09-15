@@ -1,0 +1,61 @@
+{
+  "run": "c39_onehot_acceptance_20260915a_joint_s2_onehot_cdc",
+  "mapped_host_CDC_and_timing_pass": true,
+  "synchronizer_ff": 56,
+  "camera_to_core_endpoints": 127,
+  "core_to_camera_endpoints": 14,
+  "tag_bits": 32,
+  "paths": {
+    "core_setup": {
+      "paths": 10,
+      "min_slack_ns": 1.601,
+      "max_data_delay_ns": 8.169
+    },
+    "core_hold": {
+      "paths": 10,
+      "min_slack_ns": 0.026,
+      "max_data_delay_ns": 0.211
+    },
+    "camera_setup": {
+      "paths": 10,
+      "min_slack_ns": 5.518,
+      "max_data_delay_ns": 8.58
+    },
+    "camera_hold": {
+      "paths": 10,
+      "min_slack_ns": 0.09,
+      "max_data_delay_ns": 0.168
+    },
+    "camera_to_core": {
+      "paths": 127,
+      "min_slack_ns": 3.55,
+      "max_data_delay_ns": 1.259
+    },
+    "core_to_camera": {
+      "paths": 14,
+      "min_slack_ns": 4.567,
+      "max_data_delay_ns": 0.366
+    },
+    "gray_setup_skew_ns": [
+      0.066,
+      0.042
+    ]
+  },
+  "tool_classification_complete": false,
+  "resource_xlr": 51900,
+  "map_metrics": {
+    "ff": 23053,
+    "srl": 717,
+    "adds": 4545,
+    "luts": 35368,
+    "comb4": 0,
+    "rams": 165,
+    "dsp_mults": 125
+  },
+  "temporary_removed": true,
+  "full_physical_CPU_DDR_JTAG_reset_signoff": false,
+  "board_signoff": false,
+  "review_kind": "derived independent check; historical summaries unchanged",
+  "original_summary": "logs/efinity_resource_runs/c39_onehot_acceptance_20260915a_joint_s2_onehot_cdc/summary.json",
+  "historical_parser_issue": "Truncated repeated top module label: original MAP FF missing and ebr=0 are invalid; corrected map_metrics below parsed from retained root row and cross-checked with PNR."
+}

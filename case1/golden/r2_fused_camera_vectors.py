@@ -1,0 +1,146 @@
+"""C26 unstoppable RGB -> fixed ROI -> independent Resize -> DAG integer oracle; checker-only tensors.
+
+Numerical execution follows logical edges, not the compiled mode/slot table.
+RAM owner expectations follow physical roots resolved from those edges; an
+incorrect slot choice/overwrite must fail instead of supplying golden data.
+"""
+from r1_isp import resize_bilinear_q16_u8, resize_axis_q16
+from generate_r1_resize_line_sampler_vectors import source_image
+from pathlib import Path
+import json
+import sys
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT/'model'))
+from r2_execution_plan import FRAME, OP_RESIDUAL_ADD, OP_UPSAMPLE2, OP_OUTPUT_RGB, OP_DWCONV3X3, lower
+from r2_plan_package import WEIGHTED, compile_package, profile_nodes, export_new, verify
+from microstyle_quant import _integer_conv
+from generate_microstyle_engine_bitexact_vectors import _image
+from run_r2_graph_probe import p2c8, SLOT
+from r2_row_fused_plan import fused_steps, fusion_sv
+from r2_execution_plan import render_sv
+from r2_tail_tile_contract import dw_packets
+
+
+def infer(nodes, bound_arrays, rgb):
+    if rgb.dtype != np.uint8 or rgb.ndim != 3 or rgb.shape[2] != 3:
+        raise ValueError('golden requires RGB uint8')
+    values = {FRAME: (rgb.astype(np.int16)-128).astype(np.int8)}
+    for node in nodes:
+        s = node.spec
+        args = [values[x] for x in node.inputs]
+        if args[0].shape != (s.input_height, s.input_width, s.input_channels):
+            raise ValueError('golden input edge shape')
+        if s.opcode in WEIGHTED:
+            value = _integer_conv(args[0], *bound_arrays[s.name], s.stride,
+                                  s.input_channels if s.opcode == OP_DWCONV3X3 else 1, s.activation)
+        elif s.opcode == OP_RESIDUAL_ADD:
+            if args[0].shape != args[1].shape:
+                raise ValueError('golden residual shape')
+            value = np.clip(args[0].astype(np.int16)+args[1].astype(np.int16), -128, 127)
+            if s.activation == 1:
+                value = np.maximum(value, 0)
+            value = value.astype(np.int8)
+        elif s.opcode == OP_UPSAMPLE2:
+            value = np.repeat(np.repeat(args[0], 2, axis=0), 2, axis=1)
+        elif s.opcode == OP_OUTPUT_RGB:
+            value = np.clip(args[0].astype(np.int16)+128, 0, 255).astype(np.uint8)
+        else:
+            raise ValueError('golden unsupported opcode')
+        if value.shape != (s.output_height, s.output_width, s.output_channels):
+            raise ValueError('golden output edge shape')
+        values[s.name] = value
+    return values[nodes[-1].spec.name], {k: v for k, v in values.items() if k != FRAME}
+
+
+def camera_geometry(width,height):
+    return (1920,1080,240,0,1440,1080) if (width,height)==(640,480) else (width*2+4,height*2+4,2,2,width*2,height*2)
+
+
+def vectors(directory, width, height, profile='drop_res1', package=None, parameter_override=None):
+    directory = Path(directory)
+    package = package or compile_package(profile_nodes(profile))
+    package_dir = directory/'package'
+    export_new(package, package_dir)
+    verify(package, package_dir)
+    image = (package_dir/'parameters.bin').read_bytes()
+    parameter_stages = package.manifest['stages']
+    if parameter_override is not None:
+        # Negative-only: actual DDR gets a stale parameter image. Neither
+        # numerical golden nor the compiled target plan changes.
+        image, parameter_stages = parameter_override.image, parameter_override.manifest['stages']
+    nodes = profile_nodes(profile, width, height)
+    steps,pairs = fused_steps(nodes,width,height)
+    if len(pairs)!=1:raise ValueError('host probe requires one semantic fusion pair')
+    dw_stage,pw_stage=pairs[0]
+    maximum,maximum_pairs=fused_steps(profile_nodes(profile))
+    if pairs!=maximum_pairs:raise ValueError('fusion pair changed with geometry')
+    (package_dir/'execution_plan.sv').write_text(render_sv(maximum),encoding='ascii')
+    (directory/'fusion_plan.sv').write_text(fusion_sv(maximum,maximum_pairs),encoding='ascii')
+    indexes = {n.spec.name: i for i, n in enumerate(nodes)}
+    roots, expected_owners, views = {FRAME: FRAME}, [-99]*(32*6), [1]*32
+    for node, step in zip(nodes, steps):
+        s = node.spec
+        view = s.opcode in (OP_UPSAMPLE2, OP_OUTPUT_RGB)
+        views[step.index] = int(view)
+        roots[s.name] = roots[node.inputs[0]] if view else s.name
+        if not view:
+            for name in node.inputs:
+                root = roots[name]
+                if root == FRAME:
+                    slot, owner = 0, -2
+                else:
+                    producer = steps[indexes[root]]
+                    slot, owner = (4 if producer.output_rgb else 1+producer.dst_slot), indexes[root]
+                expected_owners[step.index*6+slot] = owner
+    # A read using a compiler-selected incorrect source slot will encounter
+    # the wrong expected owner or -99. This does not use step.physical_inputs.
+    (directory/'owners.mem').write_text(''.join(f'{v & 0xffffffff:08x}\n' for v in expected_owners), encoding='ascii')
+    (directory/'views.mem').write_text(''.join(f'{v:x}\n' for v in views), encoding='ascii')
+    initial = []
+    for stage in parameter_stages:
+        for j in range(stage['transfer_beats128']):
+            offset = stage['offset']+j*16
+            initial.append(((5*SLOT+offset) << 128) | int.from_bytes(image[offset:offset+16], 'little'))
+    expected, frames, sources, shadow_packets = [], [], [], []
+    for frame in range(2):
+        sw, sh, rx, ry, rw, rh = camera_geometry(width,height)
+        source = source_image(sw,sh,50+frame)
+        rgb = resize_bilinear_q16_u8(source[ry:ry+rh,rx:rx+rw],width,height)
+        xs,xp = resize_axis_q16(rw,width)
+        ys,yp = resize_axis_q16(rh,height)
+        packed = source.astype(np.uint32).reshape(-1,3)
+        packed = (packed[:,0]<<16)|(packed[:,1]<<8)|packed[:,2]
+        (directory/f'source{frame}.mem').write_text(''.join(f'{int(v):06x}\n' for v in packed),encoding='ascii')
+        sources.append(dict(width=sw,height=sh,roi_x=rx,roi_y=ry,roi_width=rw,roi_height=rh,xs=xs,ys=ys,xp=xp,yp=yp,pixels=sw*sh))
+        result, tensors = infer(nodes, package.layers, rgb)
+        for row in tensors[nodes[dw_stage].spec.name]:
+            packets=dw_packets(row,0)
+            for i,p in enumerate(packets):
+                shadow_packets.append((int(i==len(packets)-1)<<70)|(p['tag']<<54)|(p['mask']<<48)|p['data'])
+        inputs = p2c8(rgb)
+        (directory/f'input{frame}.mem').write_text(''.join(f'{x:032x}\n' for x in inputs), encoding='ascii')
+        stage_shapes, scalars, frame_words = [], 0, 0
+        for node, step in zip(nodes, steps):
+            if node.spec.opcode in (OP_UPSAMPLE2, OP_OUTPUT_RGB):
+                continue
+            if step.index==dw_stage:continue # Only skip DDR spill, never integer inference above.
+            tensor = result if step.output_rgb else tensors[node.spec.name]
+            words = p2c8(tensor)
+            scalars += int(tensor.size)
+            frame_words += len(words)
+            slot = 4 if step.output_rgb else 1+step.dst_slot
+            stage_shapes.append(dict(stage=step.index, name=node.spec.name, shape=list(tensor.shape), words=len(words)))
+            expected += [(step.index << 160) | ((slot*SLOT+j*16) << 128) | word for j, word in enumerate(words)]
+        frames.append(dict(frame=frame, output_words=frame_words, scalars=scalars, stages=stage_shapes))
+    (directory/'parameters.mem').write_text(''.join(f'{x:040x}\n' for x in initial), encoding='ascii')
+    (directory/'expected.mem').write_text(''.join(f'{x:042x}\n' for x in expected), encoding='ascii')
+    (directory/'dw_expected.mem').write_text(''.join(f'{x:018x}\n' for x in shadow_packets),encoding='ascii')
+    info = dict(dw_stage=dw_stage,pw_stage=pw_stage,dw_packets=len(shadow_packets),sources=sources, actual_resize_golden=True, unstoppable_source=True, actual_roi=True, profile=profile, width=width, height=height, stage_count=len(nodes),
+                rgb_stage=indexes[nodes[-1].inputs[0]], view_stages=[i for i in range(len(nodes)) if views[i]],
+                parameter_words=len(initial), planned_parameter_words=package.manifest['transfer_beats128'],
+                input_words=len(inputs), expected_words=len(expected), frames=frames, quality_validated=False)
+    (directory/'metadata.json').write_text(json.dumps(info, indent=2)+'\n', encoding='utf-8')
+    return info
+

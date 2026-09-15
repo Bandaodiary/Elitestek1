@@ -1,0 +1,1000 @@
+{
+  "schema_version": 1,
+  "artifact_role": "c36_candidate_pending_quality_and_RTL",
+  "trained": true,
+  "quality_validated": false,
+  "topology_retraining_performed": true,
+  "parameter_file": "parameter_arena.bin",
+  "parameter_arena_bytes": 8931,
+  "quantized_layers": [
+    {
+      "name": "encoder1.conv3x3_s2",
+      "opcode": 1,
+      "activation": 1,
+      "stride": 2,
+      "groups": 1,
+      "weight_shape": [
+        12,
+        3,
+        3,
+        3
+      ],
+      "input_scale": 0.0078125,
+      "output_scale": 0.03412028948465983,
+      "weight_scales": [
+        0.004589353020735613,
+        0.0053714654577060005,
+        0.005653053756773941,
+        0.0076410052344554995,
+        0.004855894197629193,
+        0.008271936356552004,
+        0.004674158227725292,
+        0.004878627972340021,
+        0.009740158328859825,
+        0.0063941258145129585,
+        0.005192400902275025,
+        0.008397465615760623
+      ],
+      "weight_offset": 0,
+      "weight_bytes": 324,
+      "bias_offset": 336,
+      "bias_bytes": 48,
+      "multiplier_offset": 384,
+      "multiplier_bytes": 48,
+      "shift_offset": 432,
+      "shift_bytes": 12
+    },
+    {
+      "name": "encoder2.conv3x3_s2",
+      "opcode": 1,
+      "activation": 1,
+      "stride": 2,
+      "groups": 1,
+      "weight_shape": [
+        24,
+        12,
+        3,
+        3
+      ],
+      "input_scale": 0.03412028948465983,
+      "output_scale": 0.145502773920695,
+      "weight_scales": [
+        0.0019067915405814103,
+        0.002332294550467664,
+        0.0014472824382031058,
+        0.0014223036334270567,
+        0.0027101851823761705,
+        0.00322711632007689,
+        0.0025848952804024762,
+        0.001566910954910939,
+        0.0037689225410851906,
+        0.0030135528778466652,
+        0.0019234382496105405,
+        0.004221555754894347,
+        0.0044526650211003825,
+        0.004466317770049328,
+        0.002087249999909889,
+        0.0017476803439808643,
+        0.004568897363707775,
+        0.0033015871611167128,
+        0.002344991982452513,
+        0.005879147315588523,
+        0.002152801263989426,
+        0.003778331157729382,
+        0.0023572053026965282,
+        0.002782182195993859
+      ],
+      "weight_offset": 448,
+      "weight_bytes": 2592,
+      "bias_offset": 3040,
+      "bias_bytes": 96,
+      "multiplier_offset": 3136,
+      "multiplier_bytes": 96,
+      "shift_offset": 3232,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res0.expand1x1",
+      "opcode": 2,
+      "activation": 1,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        24,
+        24,
+        1,
+        1
+      ],
+      "input_scale": 0.145502773920695,
+      "output_scale": 0.03275191783905029,
+      "weight_scales": [
+        0.0025178064980844812,
+        0.002146976904606256,
+        0.0017751288695598212,
+        0.0054978249579902706,
+        0.0077392275877824915,
+        0.002586068130853608,
+        0.0028626118588635304,
+        0.0024828415686689964,
+        0.0017805365830894531,
+        0.0021276713356258364,
+        0.0015355543358119455,
+        0.0029552330182293267,
+        0.0024243135621228556,
+        0.002873153667750321,
+        0.00368015409454586,
+        0.0019467913025007473,
+        0.004957096313867044,
+        0.0028247636134230247,
+        0.0014978020679293656,
+        0.003566838390245212,
+        0.002260776251319825,
+        0.002602865376810389,
+        0.004091738715885192,
+        0.0023992871205637772
+      ],
+      "weight_offset": 3264,
+      "weight_bytes": 576,
+      "bias_offset": 3840,
+      "bias_bytes": 96,
+      "multiplier_offset": 3936,
+      "multiplier_bytes": 96,
+      "shift_offset": 4032,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res0.depthwise3x3",
+      "opcode": 3,
+      "activation": 1,
+      "stride": 1,
+      "groups": 24,
+      "weight_shape": [
+        24,
+        1,
+        3,
+        3
+      ],
+      "input_scale": 0.03275191783905029,
+      "output_scale": 0.03445458014806112,
+      "weight_scales": [
+        0.004189881752795122,
+        0.015498131278931624,
+        0.0068612948177367685,
+        0.007673082858558715,
+        0.005840196853547584,
+        0.012749246724947231,
+        0.008377394338292399,
+        0.004524836859365148,
+        0.005305928508127768,
+        0.003902948747469684,
+        0.005180203539180005,
+        0.014938228712307187,
+        0.011463509769890252,
+        0.00439343443067055,
+        0.004620645928570605,
+        0.02513902957045187,
+        0.009982931332325373,
+        0.007990180976747528,
+        0.004772646689978171,
+        0.008227929355591301,
+        0.005444520101772519,
+        0.009524097592811885,
+        0.008173914406243273,
+        0.011136245539807898
+      ],
+      "weight_offset": 4064,
+      "weight_bytes": 216,
+      "bias_offset": 4288,
+      "bias_bytes": 96,
+      "multiplier_offset": 4384,
+      "multiplier_bytes": 96,
+      "shift_offset": 4480,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res0.project1x1",
+      "opcode": 2,
+      "activation": 0,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        24,
+        24,
+        1,
+        1
+      ],
+      "input_scale": 0.03445458014806112,
+      "output_scale": 0.145502773920695,
+      "weight_scales": [
+        0.007143933003342997,
+        0.005179227337123841,
+        0.004922270305513397,
+        0.006066223767798717,
+        0.0036387326210502564,
+        0.006630196815400611,
+        0.0057344751095208596,
+        0.006165215818900761,
+        0.0033860722864706683,
+        0.005704784956504041,
+        0.004560185229684424,
+        0.004960278357107808,
+        0.0042337244889867585,
+        0.003482271367170679,
+        0.004389715945626807,
+        0.008579541379072535,
+        0.007211454271331547,
+        0.009765263617508055,
+        0.008462658078651729,
+        0.006455946156359095,
+        0.005375350084830457,
+        0.006338089939177506,
+        0.004866383207125927,
+        0.007028534187106635
+      ],
+      "weight_offset": 4512,
+      "weight_bytes": 576,
+      "bias_offset": 5088,
+      "bias_bytes": 96,
+      "multiplier_offset": 5184,
+      "multiplier_bytes": 96,
+      "shift_offset": 5280,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res1.expand1x1",
+      "opcode": 2,
+      "activation": 1,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        24,
+        24,
+        1,
+        1
+      ],
+      "input_scale": 0.145502773920695,
+      "output_scale": 0.02520541747411092,
+      "weight_scales": [
+        0.0017413149668475774,
+        0.00253542858784593,
+        0.0025535169548875705,
+        0.001658634172649834,
+        0.002448156593352791,
+        0.0016038475308831283,
+        0.0006786404162880004,
+        0.0016974142686588557,
+        0.0016513286143776,
+        0.0007944400385608823,
+        0.0014431809815834825,
+        0.002597080206307839,
+        0.001045425693819842,
+        0.0026452363006711946,
+        0.001346296330136577,
+        0.0011927589891463752,
+        0.0010614812843442903,
+        0.0011384712429497186,
+        0.0008784408175100492,
+        0.0025360854122582384,
+        0.0008852749945610527,
+        0.0011285564561528483,
+        0.001845084893421864,
+        0.0008998330183855192
+      ],
+      "weight_offset": 5312,
+      "weight_bytes": 576,
+      "bias_offset": 5888,
+      "bias_bytes": 96,
+      "multiplier_offset": 5984,
+      "multiplier_bytes": 96,
+      "shift_offset": 6080,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res1.depthwise3x3",
+      "opcode": 3,
+      "activation": 1,
+      "stride": 1,
+      "groups": 24,
+      "weight_shape": [
+        24,
+        1,
+        3,
+        3
+      ],
+      "input_scale": 0.02520541747411092,
+      "output_scale": 0.04291948477427165,
+      "weight_scales": [
+        0.014219127302094707,
+        0.008753378560223917,
+        0.02150937515919603,
+        0.016621172897459017,
+        0.007890872129305141,
+        0.016186064622533605,
+        0.0031858799964424194,
+        0.013620365323044184,
+        0.02517563714755802,
+        0.004828468082458016,
+        0.01041808747869777,
+        0.011474100623543806,
+        0.00819064406898078,
+        0.0069070571050869195,
+        0.013168283334867222,
+        0.006754017721010944,
+        0.0073872166355763835,
+        0.006602449679937888,
+        0.005448668021855392,
+        0.012560285921171895,
+        0.0047163325031911296,
+        0.007839516391904335,
+        0.006791837102784885,
+        0.004668107182960811
+      ],
+      "weight_offset": 6112,
+      "weight_bytes": 216,
+      "bias_offset": 6336,
+      "bias_bytes": 96,
+      "multiplier_offset": 6432,
+      "multiplier_bytes": 96,
+      "shift_offset": 6528,
+      "shift_bytes": 24
+    },
+    {
+      "name": "res1.project1x1",
+      "opcode": 2,
+      "activation": 0,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        24,
+        24,
+        1,
+        1
+      ],
+      "input_scale": 0.04291948477427165,
+      "output_scale": 0.145502773920695,
+      "weight_scales": [
+        0.005492929867872103,
+        0.013768461745555006,
+        0.004404810469920241,
+        0.0063879320940633455,
+        0.005142827672282542,
+        0.011943216398945005,
+        0.003656820988091897,
+        0.005447061043086014,
+        0.0026118102974779026,
+        0.0050828250374380995,
+        0.0081137812982394,
+        0.003693739260275533,
+        0.00230330674667058,
+        0.001945249208315151,
+        0.006517533242233156,
+        0.003127583603220662,
+        0.004389679338049701,
+        0.006515250900598962,
+        0.011553670477679395,
+        0.005010377703689214,
+        0.006572590568872888,
+        0.004187012281943494,
+        0.00816855937477172,
+        0.002380513534771176
+      ],
+      "weight_offset": 6560,
+      "weight_bytes": 576,
+      "bias_offset": 7136,
+      "bias_bytes": 96,
+      "multiplier_offset": 7232,
+      "multiplier_bytes": 96,
+      "shift_offset": 7328,
+      "shift_bytes": 24
+    },
+    {
+      "name": "decoder1.pointwise1x1",
+      "opcode": 2,
+      "activation": 1,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        16,
+        24,
+        1,
+        1
+      ],
+      "input_scale": 0.145502773920695,
+      "output_scale": 0.025027974446614584,
+      "weight_scales": [
+        0.0015711667030815064,
+        0.0015613475418466284,
+        0.0012725046065848644,
+        0.0008752254519875595,
+        0.000716473995231268,
+        0.000855232786944532,
+        0.0017776610109749742,
+        0.000982684882607047,
+        0.0012672957707577804,
+        0.0017378313804235984,
+        0.002379502133121641,
+        0.0017234617330896573,
+        0.0015037956200246736,
+        0.0019240815808453898,
+        0.0020699907006241206,
+        0.002006106019958736
+      ],
+      "weight_offset": 7360,
+      "weight_bytes": 384,
+      "bias_offset": 7744,
+      "bias_bytes": 64,
+      "multiplier_offset": 7808,
+      "multiplier_bytes": 64,
+      "shift_offset": 7872,
+      "shift_bytes": 16
+    },
+    {
+      "name": "decoder1.depthwise3x3",
+      "opcode": 3,
+      "activation": 1,
+      "stride": 1,
+      "groups": 16,
+      "weight_shape": [
+        16,
+        1,
+        3,
+        3
+      ],
+      "input_scale": 0.025027974446614584,
+      "output_scale": 0.03083235224088033,
+      "weight_scales": [
+        0.006589487312346932,
+        0.008777271105548528,
+        0.003625741389792735,
+        0.009164087415680172,
+        0.005898673703351359,
+        0.005453845647376354,
+        0.005148496684126967,
+        0.004156220146990198,
+        0.008796449721328856,
+        0.007757633689820297,
+        0.005129984983309048,
+        0.010280524651835285,
+        0.008661916875463771,
+        0.008915365211606964,
+        0.010516987072201226,
+        0.0071930767982963505
+      ],
+      "weight_offset": 7888,
+      "weight_bytes": 144,
+      "bias_offset": 8032,
+      "bias_bytes": 64,
+      "multiplier_offset": 8096,
+      "multiplier_bytes": 64,
+      "shift_offset": 8160,
+      "shift_bytes": 16
+    },
+    {
+      "name": "decoder2.depthwise3x3",
+      "opcode": 3,
+      "activation": 1,
+      "stride": 1,
+      "groups": 16,
+      "weight_shape": [
+        16,
+        1,
+        3,
+        3
+      ],
+      "input_scale": 0.03083235224088033,
+      "output_scale": 0.07060757478078207,
+      "weight_scales": [
+        0.008255375651862677,
+        0.020299783841831478,
+        0.010355606792479988,
+        0.029401191576259342,
+        0.005632514090049924,
+        0.08314031315600778,
+        0.024159870748444806,
+        0.005067976440970353,
+        0.009164765125184547,
+        0.0076437362535732,
+        0.051579186296838476,
+        0.053620349703811285,
+        0.011644432863851232,
+        0.009029402507571723,
+        0.013288741975318728,
+        0.01809661031708004
+      ],
+      "weight_offset": 8176,
+      "weight_bytes": 144,
+      "bias_offset": 8320,
+      "bias_bytes": 64,
+      "multiplier_offset": 8384,
+      "multiplier_bytes": 64,
+      "shift_offset": 8448,
+      "shift_bytes": 16
+    },
+    {
+      "name": "decoder2.pointwise1x1",
+      "opcode": 2,
+      "activation": 1,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        8,
+        16,
+        1,
+        1
+      ],
+      "input_scale": 0.07060757478078207,
+      "output_scale": 0.1815353552500407,
+      "weight_scales": [
+        0.260848428320697,
+        0.02299756327951987,
+        0.015685366833303856,
+        0.013082889121348463,
+        0.011078979086688184,
+        0.015434322394723967,
+        0.032183669683501476,
+        0.04050125662736067
+      ],
+      "weight_offset": 8464,
+      "weight_bytes": 128,
+      "bias_offset": 8592,
+      "bias_bytes": 32,
+      "multiplier_offset": 8624,
+      "multiplier_bytes": 32,
+      "shift_offset": 8656,
+      "shift_bytes": 8
+    },
+    {
+      "name": "output.conv3x3",
+      "opcode": 1,
+      "activation": 0,
+      "stride": 1,
+      "groups": 1,
+      "weight_shape": [
+        3,
+        8,
+        3,
+        3
+      ],
+      "input_scale": 0.1815353552500407,
+      "output_scale": 0.0078125,
+      "weight_scales": [
+        0.0020560896772099293,
+        0.0019371929600482851,
+        0.0025710102141372803
+      ],
+      "weight_offset": 8672,
+      "weight_bytes": 216,
+      "bias_offset": 8896,
+      "bias_bytes": 12,
+      "multiplier_offset": 8912,
+      "multiplier_bytes": 12,
+      "shift_offset": 8928,
+      "shift_bytes": 3
+    }
+  ],
+  "model_config": {
+    "blocks": 2,
+    "expansion": 24,
+    "preproject": true
+  },
+  "nodes": [
+    {
+      "spec": {
+        "name": "encoder1.conv3x3_s2",
+        "opcode": 1,
+        "activation": 1,
+        "input_width": 640,
+        "input_height": 480,
+        "output_width": 320,
+        "output_height": 240,
+        "input_channels": 3,
+        "output_channels": 12,
+        "kernel": 3,
+        "stride": 2,
+        "mac_lanes": 5,
+        "weight_count": 324,
+        "flags": 5
+      },
+      "inputs": [
+        "$frame"
+      ]
+    },
+    {
+      "spec": {
+        "name": "encoder2.conv3x3_s2",
+        "opcode": 1,
+        "activation": 1,
+        "input_width": 320,
+        "input_height": 240,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 12,
+        "output_channels": 24,
+        "kernel": 3,
+        "stride": 2,
+        "mac_lanes": 9,
+        "weight_count": 2592,
+        "flags": 1
+      },
+      "inputs": [
+        "encoder1.conv3x3_s2"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res0.expand1x1",
+        "opcode": 2,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 4,
+        "weight_count": 576,
+        "flags": 1
+      },
+      "inputs": [
+        "encoder2.conv3x3_s2"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res0.depthwise3x3",
+        "opcode": 3,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 3,
+        "stride": 1,
+        "mac_lanes": 2,
+        "weight_count": 216,
+        "flags": 1
+      },
+      "inputs": [
+        "res0.expand1x1"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res0.project1x1",
+        "opcode": 2,
+        "activation": 0,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 4,
+        "weight_count": 576,
+        "flags": 1
+      },
+      "inputs": [
+        "res0.depthwise3x3"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res0.add_relu",
+        "opcode": 5,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 1,
+        "weight_count": 0,
+        "flags": 2
+      },
+      "inputs": [
+        "res0.project1x1",
+        "encoder2.conv3x3_s2"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res1.expand1x1",
+        "opcode": 2,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 4,
+        "weight_count": 576,
+        "flags": 1
+      },
+      "inputs": [
+        "res0.add_relu"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res1.depthwise3x3",
+        "opcode": 3,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 3,
+        "stride": 1,
+        "mac_lanes": 2,
+        "weight_count": 216,
+        "flags": 1
+      },
+      "inputs": [
+        "res1.expand1x1"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res1.project1x1",
+        "opcode": 2,
+        "activation": 0,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 4,
+        "weight_count": 576,
+        "flags": 1
+      },
+      "inputs": [
+        "res1.depthwise3x3"
+      ]
+    },
+    {
+      "spec": {
+        "name": "res1.add_relu",
+        "opcode": 5,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 24,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 1,
+        "weight_count": 0,
+        "flags": 2
+      },
+      "inputs": [
+        "res1.project1x1",
+        "res0.add_relu"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder1.pointwise1x1",
+        "opcode": 2,
+        "activation": 1,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 160,
+        "output_height": 120,
+        "input_channels": 24,
+        "output_channels": 16,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 5,
+        "weight_count": 384,
+        "flags": 1
+      },
+      "inputs": [
+        "res1.add_relu"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder1.upsample2",
+        "opcode": 4,
+        "activation": 0,
+        "input_width": 160,
+        "input_height": 120,
+        "output_width": 320,
+        "output_height": 240,
+        "input_channels": 16,
+        "output_channels": 16,
+        "kernel": 1,
+        "stride": 2,
+        "mac_lanes": 1,
+        "weight_count": 0,
+        "flags": 0
+      },
+      "inputs": [
+        "decoder1.pointwise1x1"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder1.depthwise3x3",
+        "opcode": 3,
+        "activation": 1,
+        "input_width": 320,
+        "input_height": 240,
+        "output_width": 320,
+        "output_height": 240,
+        "input_channels": 16,
+        "output_channels": 16,
+        "kernel": 3,
+        "stride": 1,
+        "mac_lanes": 3,
+        "weight_count": 144,
+        "flags": 1
+      },
+      "inputs": [
+        "decoder1.upsample2"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder2.upsample2",
+        "opcode": 4,
+        "activation": 0,
+        "input_width": 320,
+        "input_height": 240,
+        "output_width": 640,
+        "output_height": 480,
+        "input_channels": 16,
+        "output_channels": 16,
+        "kernel": 1,
+        "stride": 2,
+        "mac_lanes": 1,
+        "weight_count": 0,
+        "flags": 0
+      },
+      "inputs": [
+        "decoder1.depthwise3x3"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder2.depthwise3x3",
+        "opcode": 3,
+        "activation": 1,
+        "input_width": 640,
+        "input_height": 480,
+        "output_width": 640,
+        "output_height": 480,
+        "input_channels": 16,
+        "output_channels": 16,
+        "kernel": 3,
+        "stride": 1,
+        "mac_lanes": 8,
+        "weight_count": 144,
+        "flags": 1
+      },
+      "inputs": [
+        "decoder2.upsample2"
+      ]
+    },
+    {
+      "spec": {
+        "name": "decoder2.pointwise1x1",
+        "opcode": 2,
+        "activation": 1,
+        "input_width": 640,
+        "input_height": 480,
+        "output_width": 640,
+        "output_height": 480,
+        "input_channels": 16,
+        "output_channels": 8,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 8,
+        "weight_count": 128,
+        "flags": 1
+      },
+      "inputs": [
+        "decoder2.depthwise3x3"
+      ]
+    },
+    {
+      "spec": {
+        "name": "output.conv3x3",
+        "opcode": 1,
+        "activation": 0,
+        "input_width": 640,
+        "input_height": 480,
+        "output_width": 640,
+        "output_height": 480,
+        "input_channels": 8,
+        "output_channels": 3,
+        "kernel": 3,
+        "stride": 1,
+        "mac_lanes": 12,
+        "weight_count": 216,
+        "flags": 1
+      },
+      "inputs": [
+        "decoder2.pointwise1x1"
+      ]
+    },
+    {
+      "spec": {
+        "name": "output.s8_to_rgb",
+        "opcode": 6,
+        "activation": 0,
+        "input_width": 640,
+        "input_height": 480,
+        "output_width": 640,
+        "output_height": 480,
+        "input_channels": 3,
+        "output_channels": 3,
+        "kernel": 1,
+        "stride": 1,
+        "mac_lanes": 1,
+        "weight_count": 0,
+        "flags": 8
+      },
+      "inputs": [
+        "output.conv3x3"
+      ]
+    }
+  ],
+  "activation_scales": {
+    "$frame": 0.0078125,
+    "encoder1.conv3x3_s2": 0.03412028948465983,
+    "encoder2.conv3x3_s2": 0.145502773920695,
+    "res0.expand1x1": 0.03275191783905029,
+    "res0.depthwise3x3": 0.03445458014806112,
+    "res0.project1x1": 0.145502773920695,
+    "res0.add_relu": 0.145502773920695,
+    "res1.expand1x1": 0.02520541747411092,
+    "res1.depthwise3x3": 0.04291948477427165,
+    "res1.project1x1": 0.145502773920695,
+    "res1.add_relu": 0.145502773920695,
+    "decoder1.pointwise1x1": 0.025027974446614584,
+    "decoder1.upsample2": 0.025027974446614584,
+    "decoder1.depthwise3x3": 0.03083235224088033,
+    "decoder2.upsample2": 0.03083235224088033,
+    "decoder2.depthwise3x3": 0.07060757478078207,
+    "decoder2.pointwise1x1": 0.1815353552500407,
+    "output.conv3x3": 0.0078125,
+    "output.s8_to_rgb": 0.0078125
+  },
+  "training": {
+    "trained": true,
+    "float_run": "D:\\contest\\2026FPGA\\yilingsi\\case1\\outputs\\c36_train_b_starry_20260915a",
+    "float_total_steps": 3500,
+    "float_selected_step": 3250,
+    "QAT_steps": 600,
+    "calibration_batches": 32,
+    "calibration_split": "train",
+    "dataset_manifest": "D:\\contest\\2026FPGA\\yilingsi\\case1\\assets\\training\\c36_openimages320_20260915a\\manifest.json",
+    "test_images_read": 0,
+    "feature_network": "SqueezeNet 1.1, training only",
+    "float_fold_max_rgb_code_delta": 0.9999999403953552,
+    "channel_equalization": true,
+    "arithmetic": "candidate exact-grid QAT; frozen per-channel weight and tied activation scales",
+    "selected_QAT_step": 600
+  },
+  "arithmetic": "s8 weights/activations; s32 accumulator; signed18 multiplier; shift0..47; ties away from zero"
+}

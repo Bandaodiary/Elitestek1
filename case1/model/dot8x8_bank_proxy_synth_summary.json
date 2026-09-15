@@ -1,0 +1,102 @@
+{
+  "proxy": "c1_dot8x8_requant_bank",
+  "part": "xc7a200tsbg484-1",
+  "clock_mhz": 100,
+  "variants": [
+    {
+      "lanes": 1,
+      "slice_luts": 8144,
+      "slice_registers": 2437,
+      "bram_tiles": 0,
+      "dsps": 16,
+      "wns_ns": 3.479,
+      "tns_ns": 0.0,
+      "timing_met": true
+    },
+    {
+      "lanes": 2,
+      "slice_luts": 16576,
+      "slice_registers": 4874,
+      "bram_tiles": 0,
+      "dsps": 32,
+      "wns_ns": 2.26,
+      "tns_ns": 0.0,
+      "timing_met": true
+    },
+    {
+      "lanes": 4,
+      "slice_luts": 33148,
+      "slice_registers": 9748,
+      "bram_tiles": 0,
+      "dsps": 64,
+      "wns_ns": 2.266,
+      "tns_ns": 0.0,
+      "timing_met": true
+    }
+  ],
+  "pingpong_variant": {
+    "module": "c1_dot8x8_requant_pingpong",
+    "banks": 2,
+    "lanes_per_bank": 2,
+    "tag_fifo_depth": 8,
+    "pipelined_dot_tree": 1,
+    "pipelined_dot_tree_full": 1,
+    "slice_luts": 31162,
+    "slice_registers": 22833,
+    "bram_tiles": 0,
+    "dsps": 64,
+    "wns_ns": 1.938,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim_marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS",
+    "synth_marker": "C1_DOT8X8_REQUANT_PINGPONG_PROXY_SYNTH_PASS"
+  },
+  "pingpong_output_restart_current_pair": {
+    "module": "c1_dot8x8_requant_pingpong",
+    "banks": 2,
+    "lanes_per_bank": 2,
+    "tag_fifo_depth": 8,
+    "default": {
+      "slice_luts": 31165,
+      "slice_registers": 22833,
+      "bram_tiles": 0,
+      "dsps": 64,
+      "wns_ns": 1.247,
+      "tns_ns": 0.0,
+      "timing_met": true,
+      "output_restart": false,
+      "run_id": "gen_default_20260827"
+    },
+    "optional": {
+      "slice_luts": 31163,
+      "slice_registers": 22833,
+      "bram_tiles": 0,
+      "dsps": 64,
+      "wns_ns": 1.247,
+      "tns_ns": 0.0,
+      "timing_met": true,
+      "output_restart": true,
+      "run_id": "gen_optional_20260827"
+    },
+    "note": "Current same-script pair; the older pingpong_variant above is retained as a historical snapshot from a different source/synthesis run."
+  },
+  "pingpong_banks4_variant": {
+    "module": "c1_dot8x8_requant_pingpong",
+    "banks": 4,
+    "lanes_per_bank": 2,
+    "tag_fifo_depth": 16,
+    "pipelined_dot_tree": 1,
+    "pipelined_dot_tree_full": 1,
+    "slice_luts": 59912,
+    "slice_registers": 45674,
+    "bram_tiles": 0,
+    "dsps": 128,
+    "wns_ns": 0.337,
+    "tns_ns": 0.0,
+    "timing_met": true,
+    "xsim_marker": "C1_DOT8X8_REQUANT_PINGPONG_PASS",
+    "synth_marker": "C1_DOT8X8_REQUANT_PINGPONG_BANKS4_PROXY_SYNTH_PASS",
+    "note": "Optional scaling point; four-bank transaction overlap, not a full CNN stage scheduler."
+  },
+  "caveat": "Artix-7 structural proxy; Ti60/Efinity placement, scheduler, weight banking and AXI bandwidth are not represented."
+}

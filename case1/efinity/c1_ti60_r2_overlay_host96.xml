@@ -1,0 +1,57 @@
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="c1_ti60_r2_overlay_host96" description="C22 shared-feature six-lane weight APB3/IRQ host shell with retained C14/C13, no actual CPU/PHY/CDC" last_change="0" sw_version="2026.1.132.3.9" last_run_state="" last_run_flow="" config_result_in_sync="false" design_ood="new" place_ood="new" route_ood="new" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+    <efx:device_info><efx:family name="Titanium" /><efx:device name="Ti60F225" /><efx:timing_model name="I3" /></efx:device_info>
+    <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
+        <efx:top_module name="c1_ti60_r2_overlay_host96" />
+        <efx:design_file name="../rtl/r2/c1_r2_cpu_axi_adapter.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/common/c1_ram_sdp_read_first.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/cnn/c1_requant_bank8.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_dot16_array.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_compute6.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_weight_asym_ram.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_weight_store6.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_pw_overlay_feeder.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_feature_overlay_ram.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_overlay_window_store.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_encoder_lane_feeder.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_spatial_overlay_feeder.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_cnn_overlay_engine.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_tensor_stream_loader.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_tensor_pingpong_writer.sv" version="default" library="default" />
+        <efx:design_file name="../model/r2_microstyle24_bound_plan/execution_plan.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_overlay_pingpong_graph.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_axi_row_read.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_axi_row_write.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_rgbx_row_read.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_rgbx_row_write.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_overlay_rgbx_axi_graph.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/dma/c1_axi_n_read_burst_arbiter_128.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/dma/c1_axi_n_write_burst_arbiter_128.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_axi_fabric.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_bram_fifo.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_capture_rgbx32.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_scanout_rgbx32.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_fresh_leases.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_rgbx_csr.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_video_overlay_system.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/vendor/c1_sapphire_apb_master_adapter.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_host_control_bridge.sv" version="default" library="default" />
+        <efx:design_file name="../rtl/r2/c1_r2_overlay_host_system.sv" version="default" library="default" />
+        <efx:design_file name="c1_ti60_r2_overlay_host96.sv" version="default" library="default" />
+        <efx:top_vhdl_arch name="" />
+    </efx:design_info>
+    <efx:constraint_info><efx:sdc_file name="c1_ti60_r2_overlay_host96.sdc" /><efx:inter_file name="" /></efx:constraint_info>
+    <efx:sim_info /><efx:misc_info /><efx:ip_info />
+    <efx:synthesis tool_name="efx_map">
+        <efx:param name="work_dir" value="work_syn" value_type="e_string" />
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool" />
+        <efx:param name="mode" value="speed" value_type="e_option" />
+        <efx:param name="max_ram" value="-1" value_type="e_integer" /><efx:param name="max_mult" value="-1" value_type="e_integer" />
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option" /><efx:param name="infer-sync-set-reset" value="1" value_type="e_option" />
+        <efx:param name="retiming" value="1" value_type="e_option" /><efx:param name="seq_opt" value="1" value_type="e_integer" />
+        <efx:param name="operator-sharing" value="0" value_type="e_option" /><efx:param name="optimize-adder-tree" value="0" value_type="e_option" />
+        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option" /><efx:param name="dsp-output-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-mac-packing" value="1" value_type="e_option" /><efx:param name="max_threads" value="1" value_type="e_integer" />
+    </efx:synthesis>
+    <efx:place_and_route tool_name="efx_pnr"><efx:param name="work_dir" value="work_pnr" value_type="e_string" /><efx:param name="max_threads" value="1" value_type="e_integer" /><efx:param name="seed" value="1" value_type="e_string" /></efx:place_and_route>
+    <efx:bitstream_generation tool_name="efx_pgm" /><efx:debugger />
+</efx:project>

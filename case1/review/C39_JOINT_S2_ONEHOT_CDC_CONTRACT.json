@@ -1,0 +1,17 @@
+{
+  "project": "c1_ti60_c39_joint_s2_onehot_cdc",
+  "base_project": "c1_ti60_c39_joint_s2_onehot",
+  "retained_host_constraints": "c1_ti60_c37_resource24",
+  "frame_divisor": 1,
+  "core_clock_mhz": 100,
+  "source_and_destination_tag_bits": 32,
+  "tag_lsb_must_exist_on_both_sides": true,
+  "crossing_max_delay_ns": 5,
+  "gray_bus_skew_ns": 1,
+  "no_blanket_clock_groups": true,
+  "no_setup_false_paths": true,
+  "mapped_pin_counts_verified": false,
+  "final_timing_verified": false,
+  "physical_CPU_DDR_JTAG_reset_signoff": false,
+  "board_signoff": false
+}

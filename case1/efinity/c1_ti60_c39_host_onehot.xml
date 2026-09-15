@@ -1,0 +1,91 @@
+<efx:project xmlns:efx="http://www.efinixinc.com/enf_proj" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="c1_ti60_c39_host_onehot" description="C39 one-hot operand decode ablation; not production signoff" last_change="0" sw_version="2026.1.132.3.9" last_run_state="" last_run_flow="" config_result_in_sync="false" design_ood="new" place_ood="new" route_ood="new" xsi:schemaLocation="http://www.efinixinc.com/enf_proj enf_proj.xsd">
+    <efx:device_info>
+        <efx:family name="Titanium" />
+        <efx:device name="Ti60F225" />
+        <efx:timing_model name="I3" />
+    </efx:device_info>
+    <efx:design_info def_veri_version="sv_09" def_vhdl_version="vhdl_2008">
+        <efx:top_module name="c1_ti60_c39_host_onehot" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_cpu_axi_adapter.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/common/c1_ram_sdp_read_first.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39/c39_requant_bank8_narrow.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_dot16_array.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39/c37_compute6_indexed.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_weight_asym_ram.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c37/c1_r2_weight_store6.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_pw_shadow_feeder.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_partitioned_feature_ram.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39/c1_r2_partitioned_window_store.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_encoder_lane_feeder.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39_native/c1_r2_spatial_partitioned_feeder.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39_direct/c1_r2_cnn_row_shadow_engine.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_tensor_stream_loader.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_tensor_credit_ring_writer.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/outputs/c36_qat_b_mosaic_stable_20260915a/plan_fused/execution_plan.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_row_fused_graph.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_axi_row_read.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_axi_row_write.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_axi_credit_row_write.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_rgbx_row_read.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_rgbx_credit_row_write.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_fused_rgbx_axi_graph.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/dma/c1_axi_n_read_burst_arbiter_128.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/dma/c1_axi_n_write_burst_arbiter_128.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_axi_fabric.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_bram_fifo.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_capture_rgbx32.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_scanout_rgbx32.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_fresh_leases.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_rgbx_csr.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_video_fused_rgb2_system.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/vendor/c1_sapphire_apb_master_adapter.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_host_control_bridge.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_fused_rgb2_host_system.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_async_pixel_fifo_guarded.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_camera_decimated_ingress.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/common/c1_cdc_latest_snapshot_guarded.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/video/r1_resize_request_q16.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c37/r1_bilinear_interp_rgb888.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_resize_overlap_system.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_resize_pair_ram.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_resize_line_sampler.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_resize_overlap_pipeline.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_resize_overlap_capture.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_rgb2_raster_source.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/r2/c1_r2_dw16_row_shadow_writer.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/outputs/c36_qat_b_mosaic_stable_20260915a/plan_fused/row_fusion_plan.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/rtl/c39_onehot/c39_operand_codec.sv" version="default" library="default" />
+        <efx:design_file name="@CASE1_ROOT@/efinity/c1_ti60_c39_host_onehot.sv" version="default" library="default" />
+    </efx:design_info>
+    <efx:constraint_info>
+        <efx:sdc_file name="@CASE1_ROOT@/efinity/c1_ti60_c37_resource24.sdc" />
+        <efx:inter_file name="" />
+    </efx:constraint_info>
+    <efx:sim_info />
+    <efx:misc_info />
+    <efx:ip_info />
+    <efx:synthesis tool_name="efx_map">
+        <efx:param name="work_dir" value="work_syn" value_type="e_string" />
+        <efx:param name="write_efx_verilog" value="on" value_type="e_bool" />
+        <efx:param name="mode" value="speed" value_type="e_option" />
+        <efx:param name="max_ram" value="-1" value_type="e_integer" />
+        <efx:param name="max_mult" value="-1" value_type="e_integer" />
+        <efx:param name="infer-clk-enable" value="3" value_type="e_option" />
+        <efx:param name="infer-sync-set-reset" value="1" value_type="e_option" />
+        <efx:param name="retiming" value="1" value_type="e_option" />
+        <efx:param name="seq_opt" value="1" value_type="e_integer" />
+        <efx:param name="operator-sharing" value="0" value_type="e_option" />
+        <efx:param name="optimize-adder-tree" value="0" value_type="e_option" />
+        <efx:param name="dsp-input-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-output-regs-packing" value="1" value_type="e_option" />
+        <efx:param name="dsp-mac-packing" value="1" value_type="e_option" />
+        <efx:param name="max_threads" value="1" value_type="e_integer" />
+    </efx:synthesis>
+    <efx:place_and_route tool_name="efx_pnr">
+        <efx:param name="work_dir" value="work_pnr" value_type="e_string" />
+        <efx:param name="max_threads" value="1" value_type="e_integer" />
+        <efx:param name="seed" value="1" value_type="e_string" />
+    </efx:place_and_route>
+    <efx:bitstream_generation tool_name="efx_pgm" />
+    <efx:debugger />
+</efx:project>
