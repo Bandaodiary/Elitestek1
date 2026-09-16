@@ -1,5 +1,17 @@
 # 赛题一 RTL 开发与调试日志
 
+## 2026-09-16：C40 原生100 MHz采集瓶颈与隔离四行缓存实验
+
+同150 MHz压力合同的Icarus完整流程已经取得18项三模型小图正负例通过，但原生项第一帧在camera FIFO溢出后失败，不存在可报告的100 MHz六帧FPS。短测将原因定位为两行缓存处理期间无法接收第三行：100 MHz接收2880像素后，行分配等待816周期时FIFO达到512；约150 MHz同配置32行短测无溢出、峰值404。
+
+新增独立四行缓存候选生成器及采集诊断入口，不修改生产C39 RTL、不覆盖旧验收证据。初版消除第三行阻塞，但实际golden拒绝未知像素；定位到RAM写使能为X后改为显式四位bank_write控制，继续验证。完整采集、回压、故障恢复、CNN联合及Efinity资源时序均尚待后续验收。所有工作按WMI脱离Windows Job、两核低优先级执行，无波形，私有编译/向量随进程退出自动清理。详细结果见[C40推进记录](review/C40_100MHZ_JOINT_THROUGHPUT_20260916.md)。
+
+## 2026-09-16：C40 100 MHz时序配置与官方CPU仿真入口
+
+新增独立100 MHz测试配置，保留摄像头节拍并将原生显示相位改为297/400，维持74.25 MHz像素压力。核心/摄像头边沿监视及精确15fps阈值检查已加入；真实8×8无/有回压各两帧通过，错误时钟与RAM破坏负例均检出。所有私有仿真目录已清理，保留失败a/b和成功c的小型记录。
+
+发现本机Questa Intel Starter 2023.3及官方Sapphire专用模型。子进程MGLS_LICENSE_FILE绑定修复启动环境问题；实际vlib/vlog成功，vsim加载设计仍因intelqsimstarter许可Invalid host失败，尚无实际CPU执行。未改许可文件或全局环境；新worker均WMI脱离Windows Job、两核/BelowNormal、等待其他EDA空闲后执行。完整记录、边界和重跑命令见[C40推进记录](review/C40_100MHZ_JOINT_THROUGHPUT_20260916.md)。
+
 本文件是持续更新的开发记录入口。详细设计和验证报告保留在 `review/`；当前功能边界见 [IMPLEMENTATION_STATUS.md](IMPLEMENTATION_STATUS.md)。
 
 ### 2026-09-15：C39三个目标最终验收

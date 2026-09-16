@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-// Board-independent two-line RGB888 sampler for c1_r1_resize_system.
+// Board-independent four-line RGB888 sampler for the Resize pipelines.
 //
 // Source pixels arrive once, in strict raster order.  Resize sample requests
 // must have nondecreasing (y0,y1), and the supported bilinear pair is y1=y0
@@ -8,19 +8,19 @@
 // r1_resize_request_q16 generator.  A request outside this contract is
 // reported and is never answered with fabricated data.
 //
-// Two source rows are retained.  When a downsample request skips rows, source
+// Four source rows are retained. When a downsample request skips rows, source
 // rows below the waiting y0 are validated and discarded.  Repeated upsample
-// requests reuse the retained rows.  Source ready is removed before either
+// requests reuse the retained rows. Source ready is removed before any
 // retained row could be overwritten while it may still be needed.
 //
 // C23 independent derivative: each row is banked by x parity, not copied.
 // Only adjacent/clamped horizontal pairs are legal; invalid pairs use the
 // existing ERR_REQUEST_PAIR path. The connected coordinate generator always
 // meets this restriction, including negative phases/steps and edge clamping.
-// Four half-depth banks consume 2*ceil(MAX_WIDTH/2)*2*24 logical bits.
+// Eight half-depth banks consume 4*ceil(MAX_WIDTH/2)*2*24 logical bits.
 // Original R1 source is retained for arbitrary horizontal sampling.
 //
-// An accepted request launches all four synchronous reads.  On the following
+// An accepted request launches synchronous reads in all banks. On the following
 // clock their outputs are copied, with the saved row-bank selectors, into an
 // elastic response register.  At most one RAM read is pending, and a pending
 // read is never allowed to overwrite an unconsumed response.  The connected
@@ -89,29 +89,25 @@ module c1_r2_resize_line_sampler #(
     logic                    ram_rd_en;
     logic [RAM_ADDR_WIDTH-1:0] ram_x0_rd_addr;
     logic [RAM_ADDR_WIDTH-1:0] ram_x1_rd_addr;
-    logic                    ram_line0_wr_en;
-    logic                    ram_line1_wr_en;
     logic [RAM_ADDR_WIDTH-1:0] ram_wr_addr;
     logic [23:0]             ram_wr_data;
-    logic [23:0]             ram_line0_x0_rd_data;
-    logic [23:0]             ram_line0_x1_rd_data;
-    logic [23:0]             ram_line1_x0_rd_data;
-    logic [23:0]             ram_line1_x1_rd_data;
 
     logic job_active;
     logic fault;
     logic [15:0] win_q;
     logic [15:0] hin_q;
 
-    logic line0_valid;
-    logic line1_valid;
-    logic [15:0] line0_y;
-    logic [15:0] line1_y;
+    logic [3:0] line_valid;
+    logic [15:0] line_y [0:3];
+    logic [3:0] req_y0_match,req_y1_match;
+    logic [1:0] req_y0_bank,req_y1_bank;
+    wire [23:0] bank_x0 [0:3],bank_x1 [0:3];
+    logic [3:0] bank_write;
 
     logic [15:0] expected_src_x;
     logic [15:0] expected_src_y;
     logic row_store_q;
-    logic row_bank_q;
+    logic [1:0] row_bank_q;
     logic source_done;
 
     logic last_pair_valid;
@@ -121,13 +117,9 @@ module c1_r2_resize_line_sampler #(
     logic last_response_done;
     logic response_last_q;
     logic read_pending;
-    logic read_y0_bank_q;
-    logic read_y1_bank_q;
+    logic [1:0] read_y0_bank_q;
+    logic [1:0] read_y1_bank_q;
 
-    logic req_y0_line0;
-    logic req_y0_line1;
-    logic req_y1_line0;
-    logic req_y1_line1;
     logic req_lines_present;
     logic req_bounds_bad;
     logic req_pair_bad;
@@ -137,17 +129,15 @@ module c1_r2_resize_line_sampler #(
 
     logic retention_valid;
     logic [15:0] retention_floor;
-    logic line0_available;
-    logic line1_available;
     logic row_start_store;
     logic row_start_discard;
-    logic row_start_bank;
+    logic [1:0] row_start_bank;
     logic row_start_ready;
     logic row_plan_valid;
     logic row_plan_store;
-    logic row_plan_bank;
+    logic [1:0] row_plan_bank;
     logic write_pixel;
-    logic write_bank;
+    logic [1:0] write_bank;
 
     logic expected_sof;
     logic expected_eol;
@@ -160,26 +150,32 @@ module c1_r2_resize_line_sampler #(
     logic response_last_handshake;
     logic finish_job;
 
-    c1_r2_resize_pair_ram #(.MAX_WIDTH(MAX_WIDTH)) u_pair_ram (
-        .clk(clk),.rst(rst),.rd_en(ram_rd_en),
-        .rd_x0(sample_req_x0),.rd_x1(sample_req_x1),
-        .row0_x0(ram_line0_x0_rd_data),.row0_x1(ram_line0_x1_rd_data),
-        .row1_x0(ram_line1_x0_rd_data),.row1_x1(ram_line1_x1_rd_data),
-        .wr_row0(ram_line0_wr_en),.wr_row1(ram_line1_wr_en),
-        .wr_x(expected_src_x),.wr_rgb(ram_wr_data)
-    );
+    // Four rows, each parity-banked once; no pixel data replication.
+    for(genvar pair=0;pair<2;pair=pair+1)begin : g_row_pairs
+        c1_r2_resize_pair_ram #(.MAX_WIDTH(MAX_WIDTH)) u_pair_ram (
+            .clk(clk),.rst(rst),.rd_en(ram_rd_en),
+            .rd_x0(sample_req_x0),.rd_x1(sample_req_x1),
+            .row0_x0(bank_x0[pair*2]),.row0_x1(bank_x1[pair*2]),
+            .row1_x0(bank_x0[pair*2+1]),.row1_x1(bank_x1[pair*2+1]),
+            .wr_row0(bank_write[pair*2]),
+            .wr_row1(bank_write[pair*2+1]),
+            .wr_x(expected_src_x),.wr_rgb(src_rgb888)
+        );
+    end
 
     always_comb begin
         start_ready = !rst && !job_active && !sample_rsp_valid &&
                       !read_pending && !row_plan_valid;
         busy = job_active;
 
-        req_y0_line0 = line0_valid && (line0_y == sample_req_y0);
-        req_y0_line1 = line1_valid && (line1_y == sample_req_y0);
-        req_y1_line0 = line0_valid && (line0_y == sample_req_y1);
-        req_y1_line1 = line1_valid && (line1_y == sample_req_y1);
-        req_lines_present = (req_y0_line0 || req_y0_line1) &&
-                            (req_y1_line0 || req_y1_line1);
+        req_y0_match=0;req_y1_match=0;req_y0_bank=0;req_y1_bank=0;
+        for(integer bank=0;bank<4;bank=bank+1)begin
+            req_y0_match[bank]=line_valid[bank] && line_y[bank]==sample_req_y0;
+            req_y1_match[bank]=line_valid[bank] && line_y[bank]==sample_req_y1;
+            if(req_y0_match[bank])req_y0_bank=2'(bank);
+            if(req_y1_match[bank])req_y1_bank=2'(bank);
+        end
+        req_lines_present=(|req_y0_match) && (|req_y1_match);
 
         req_bounds_bad = (sample_req_x0 >= win_q) ||
                          (sample_req_x1 >= win_q) ||
@@ -193,9 +189,9 @@ module c1_r2_resize_line_sampler #(
                         ((sample_req_y0 < last_y0) ||
                          (sample_req_y1 < last_y1));
         req_source_passed =
-            ((!req_y0_line0 && !req_y0_line1) &&
+            ((!(|req_y0_match)) &&
              (source_done || (expected_src_y > sample_req_y0))) ||
-            ((!req_y1_line0 && !req_y1_line1) &&
+            ((!(|req_y1_match)) &&
              (source_done || (expected_src_y > sample_req_y1)));
         req_bad_now = sample_req_valid &&
                       (req_bounds_bad || req_pair_bad || req_order_bad ||
@@ -222,32 +218,17 @@ module c1_r2_resize_line_sampler #(
             retention_valid = last_pair_valid;
             retention_floor = last_y0;
         end
-        line0_available = !line0_valid ||
-                          (retention_valid && (line0_y < retention_floor));
-        line1_available = !line1_valid ||
-                          (retention_valid && (line1_y < retention_floor));
-
-        row_start_store = 1'b0;
-        row_start_discard = 1'b0;
-        row_start_bank = 1'b0;
-        row_start_ready = 1'b0;
-        if (last_request_seen) begin
-            // No later request can use source storage; drain the raster.
-            row_start_discard = 1'b1;
-            row_start_ready = 1'b1;
-        end else if (sample_req_valid &&
-                     (expected_src_y < sample_req_y0)) begin
-            // Downsample skip: validate but do not retain obsolete rows.
-            row_start_discard = 1'b1;
-            row_start_ready = 1'b1;
-        end else if (line0_available) begin
-            row_start_store = 1'b1;
-            row_start_bank = 1'b0;
-            row_start_ready = 1'b1;
-        end else if (line1_available) begin
-            row_start_store = 1'b1;
-            row_start_bank = 1'b1;
-            row_start_ready = 1'b1;
+        row_start_store=0;row_start_discard=0;row_start_bank=0;row_start_ready=0;
+        if(last_request_seen || (sample_req_valid && expected_src_y<sample_req_y0))begin
+            row_start_discard=1;row_start_ready=1;
+        end else begin
+            // Lowest available bank wins; never overwrite a retained consumer.
+            for(integer bank=0;bank<4;bank=bank+1)begin
+                if(!row_start_ready && (!line_valid[bank] ||
+                   (retention_valid && line_y[bank]<retention_floor)))begin
+                    row_start_store=1;row_start_bank=2'(bank);row_start_ready=1;
+                end
+            end
         end
 
         if (!job_active || fault || source_done || req_bad_now)
@@ -291,12 +272,10 @@ module c1_r2_resize_line_sampler #(
 
         // Malformed source beats must not alter either RAM even though RAM
         // write logic resides outside this module's sequential fault branch.
-        ram_line0_wr_en = source_handshake && !source_protocol_bad &&
-                          write_pixel && !write_bank;
-        ram_line1_wr_en = source_handshake && !source_protocol_bad &&
-                          write_pixel && write_bank;
         ram_wr_addr = expected_src_x[RAM_ADDR_WIDTH-1:0];
         ram_wr_data = src_rgb888;
+        for(integer bank=0;bank<4;bank=bank+1)
+            bank_write[bank]=source_handshake && !source_protocol_bad && write_pixel && write_bank==2'(bank);
     end
 
     always_ff @(posedge clk) begin
@@ -309,10 +288,8 @@ module c1_r2_resize_line_sampler #(
             error_code <= ERR_NONE;
             win_q <= 16'd0;
             hin_q <= 16'd0;
-            line0_valid <= 1'b0;
-            line1_valid <= 1'b0;
-            line0_y <= 16'd0;
-            line1_y <= 16'd0;
+            line_valid <= 4'b0;
+            for(integer bank=0;bank<4;bank=bank+1)line_y[bank]<=0;
             expected_src_x <= 16'd0;
             expected_src_y <= 16'd0;
             row_store_q <= 1'b0;
@@ -343,8 +320,7 @@ module c1_r2_resize_line_sampler #(
                 fault <= 1'b0;
                 error <= 1'b0;
                 error_code <= ERR_NONE;
-                line0_valid <= 1'b0;
-                line1_valid <= 1'b0;
+                line_valid <= 4'b0;
                 expected_src_x <= 16'd0;
                 expected_src_y <= 16'd0;
                 row_store_q <= 1'b0;
@@ -420,27 +396,17 @@ module c1_r2_resize_line_sampler #(
                     if (read_pending) begin
                         read_pending <= 1'b0;
                         sample_rsp_valid <= 1'b1;
-                        if (!read_y0_bank_q) begin
-                            sample_rsp_rgb_y0x0 <= ram_line0_x0_rd_data;
-                            sample_rsp_rgb_y0x1 <= ram_line0_x1_rd_data;
-                        end else begin
-                            sample_rsp_rgb_y0x0 <= ram_line1_x0_rd_data;
-                            sample_rsp_rgb_y0x1 <= ram_line1_x1_rd_data;
-                        end
-                        if (!read_y1_bank_q) begin
-                            sample_rsp_rgb_y1x0 <= ram_line0_x0_rd_data;
-                            sample_rsp_rgb_y1x1 <= ram_line0_x1_rd_data;
-                        end else begin
-                            sample_rsp_rgb_y1x0 <= ram_line1_x0_rd_data;
-                            sample_rsp_rgb_y1x1 <= ram_line1_x1_rd_data;
-                        end
+                        sample_rsp_rgb_y0x0 <= bank_x0[read_y0_bank_q];
+                        sample_rsp_rgb_y0x1 <= bank_x1[read_y0_bank_q];
+                        sample_rsp_rgb_y1x0 <= bank_x0[read_y1_bank_q];
+                        sample_rsp_rgb_y1x1 <= bank_x1[read_y1_bank_q];
                     end
 
                     if (request_handshake) begin
                         read_pending <= 1'b1;
                         response_last_q <= sample_req_last;
-                        read_y0_bank_q <= req_y0_line1;
-                        read_y1_bank_q <= req_y1_line1;
+                        read_y0_bank_q <= req_y0_bank;
+                        read_y1_bank_q <= req_y1_bank;
                         last_pair_valid <= 1'b1;
                         last_y0 <= sample_req_y0;
                         last_y1 <= sample_req_y1;
@@ -458,22 +424,14 @@ module c1_r2_resize_line_sampler #(
                             row_store_q <= row_plan_store;
                             row_bank_q <= row_plan_bank;
                             if (row_plan_store) begin
-                                if (!row_plan_bank) begin
-                                    line0_valid <= 1'b0;
-                                    line0_y <= expected_src_y;
-                                end else begin
-                                    line1_valid <= 1'b0;
-                                    line1_y <= expected_src_y;
-                                end
+                                line_valid[row_plan_bank] <= 1'b0;
+                                line_y[row_plan_bank] <= expected_src_y;
                             end
                         end
 
                         if (expected_eol) begin
                             if (write_pixel) begin
-                                if (!write_bank)
-                                    line0_valid <= 1'b1;
-                                else
-                                    line1_valid <= 1'b1;
+                                line_valid[write_bank] <= 1'b1;
                             end
                             row_store_q <= 1'b0;
                             if (expected_eof) begin
@@ -514,9 +472,20 @@ module c1_r2_resize_line_sampler #(
                 $fatal(1, "line sampler overwrote a stalled response");
             if (read_pending && sample_rsp_valid && !sample_rsp_ready)
                 $fatal(1, "line sampler has a RAM result behind stalled response");
-            if (line0_valid && line1_valid && (line0_y == line1_y))
-                $fatal(1, "line sampler retained duplicate row tags");
+            for(integer a=0;a<4;a=a+1)for(integer b=a+1;b<4;b=b+1)
+                if(line_valid[a] && line_valid[b] && line_y[a]==line_y[b])
+                    $fatal(1,"four-row sampler retained duplicate row tags");
         end
+    end
+`endif
+
+
+`ifdef C40_RESIZE_TRACE
+    always @(posedge clk)begin
+        if(source_handshake && expected_src_y<2 && expected_src_x==0)
+            $display("C40_BANK_WRITE y=%0d bank=%0d store=%b en=%b rgb=%h",expected_src_y,write_bank,write_pixel,g_row_pairs[0].u_pair_ram.wr_row0,src_rgb888);
+        if(request_handshake && sample_req_out_y==0 && sample_req_out_x==0)
+            $display("C40_BANK_READ select=%0d/%0d mem0=%h mem1=%h",req_y0_bank,req_y1_bank,g_row_pairs[0].u_pair_ram.g_ram[0].u_ram.mem[0],g_row_pairs[0].u_pair_ram.g_ram[2].u_ram.mem[0]);
     end
 `endif
 

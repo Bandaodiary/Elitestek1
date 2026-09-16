@@ -1,4 +1,4 @@
-param([string]$DestinationName = 'Elitestek1-20260915')
+param([string]$DestinationName = 'Elitestek1-20260916')
 $ErrorActionPreference = 'Stop'
 if ($DestinationName -notmatch '^[A-Za-z0-9_-]+$') { throw 'Invalid destination name' }
 $caseRoot = [IO.Path]::GetFullPath((Split-Path -Parent $PSScriptRoot))
@@ -75,7 +75,7 @@ foreach ($mapping in @(
 }
 $manifest = [ordered]@{
     scope='case1 authored sources and selected deployment inputs only'
-    as_of='2026-09-15'
+    as_of='2026-09-16'
     git_history_copied=$false
     xilinx_generated_files_included=$false
     vendor_generated_ip_included=$false

@@ -19,7 +19,9 @@ param(
     [int]$TimeoutSeconds = 180,
     [switch]$RunPnr,
     [switch]$ProjectInPlace,
-    [switch]$CdcAudit
+    [switch]$CdcAudit,
+    [switch]$TimingAudit,
+    [string]$ScratchRoot = ''
 )
 
 $ErrorActionPreference = 'Stop'
@@ -42,7 +44,9 @@ if (-not $Worker) {
     $pnrArg = if ($RunPnr) { ' -RunPnr' } else { '' }
     $inPlaceArg = if ($ProjectInPlace) { ' -ProjectInPlace' } else { '' }
     $cdcArg = if ($CdcAudit) { ' -CdcAudit' } else { '' }
-    $cmd = "`"$ps`" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$PSCommandPath`" -Worker -RunId $RunId -DesignName $DesignName -TopModule $TopModule -EfinityHome `"$EfinityHome`" -TimeoutSeconds $TimeoutSeconds$pnrArg$inPlaceArg$cdcArg"
+    $extraArg = if ($TimingAudit) { ' -TimingAudit' } else { '' }
+    if ($ScratchRoot) { $extraArg += " -ScratchRoot `"$ScratchRoot`"" }
+    $cmd = "`"$ps`" -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$PSCommandPath`" -Worker -RunId $RunId -DesignName $DesignName -TopModule $TopModule -EfinityHome `"$EfinityHome`" -TimeoutSeconds $TimeoutSeconds$pnrArg$inPlaceArg$cdcArg$extraArg"
     $workerPid = $null
     try {
         $r = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{ CommandLine = $cmd; CurrentDirectory = $caseRoot }
@@ -66,7 +70,16 @@ if ($RunId -notmatch '^[A-Za-z0-9_-]+$') { throw 'invalid RunId' }
 if ($DesignName -notmatch '^[A-Za-z0-9_]+$') { throw 'invalid DesignName' }
 if ([string]::IsNullOrWhiteSpace($TopModule)) { $TopModule = $DesignName }
 if ($TopModule -notmatch '^[A-Za-z0-9_]+$') { throw 'invalid TopModule' }
-$runRoot = Join-Path $env:TEMP "c1_efinity_resource_${DesignName}_$RunId"
+if ($ScratchRoot) {
+    $ScratchRoot = [IO.Path]::GetFullPath($ScratchRoot)
+    $allowedScratch = [IO.Path]::GetFullPath((Join-Path $caseRoot 'sim'))
+    if (-not $ScratchRoot.StartsWith($allowedScratch.TrimEnd('\')+'\',[StringComparison]::OrdinalIgnoreCase)) {
+        throw 'Explicit Efinity scratch must be inside case1/sim'
+    }
+    New-Item -ItemType Directory -Path $ScratchRoot -Force | Out-Null
+}
+$resourceTempRoot = [IO.Path]::GetFullPath($(if ($ScratchRoot) { $ScratchRoot } else { $env:TEMP }))
+$runRoot = Join-Path $resourceTempRoot "c1_efinity_resource_${DesignName}_$RunId"
 $runLog = Join-Path $logRoot $RunId
 $statusPath = Join-Path $runLog 'status.json'
 $summaryPath = Join-Path $runLog 'summary.json'
@@ -77,7 +90,6 @@ $workerInJob = $null
 $workerBudget = $null
 $budgetLease = $null
 $budgetOwned = $false
-$resourceTempRoot = [IO.Path]::GetFullPath($env:TEMP)
 $script:step = 'setup'
 # No -Force: the worker also refuses a duplicate, including launch races.
 if ((Test-Path -LiteralPath $runRoot) -or (Test-Path -LiteralPath $runLog)) { throw 'RunId/private directory already exists' }
@@ -325,6 +337,29 @@ public static class Case1EfinityJobCheck {
                         Set-Content -LiteralPath (Join-Path $runLog "pnr_before_cdc_$suffix") -Encoding UTF8
                 }
             }
+        }
+    }
+
+    if ($RunPnr -and $TimingAudit) {
+        $script:step = 'timing_audit'
+        Write-Status 'running' $script:step 0 'Post-route clock-domain STA audit'
+        $auditScript = Join-Path $proxyRoot "$DesignName.timing.tcl"
+        if (-not (Test-Path -LiteralPath $auditScript)) { throw 'Missing timing audit script' }
+        $env:C40_TIMING_OUT = $outDir.Replace('\','/')
+        $staOut = Join-Path $runLog 'timing_audit.stdout.log'
+        $staErr = Join-Path $runLog 'timing_audit.stderr.log'
+        $staArgs = @($runner,$DesignName,'--prj','-f','sta_tclsh','--tcl_script',$auditScript,
+                     '--family','Titanium','--device','Ti60F225','--output_dir',$outDir,
+                     '--work_dir',$workDir,'--timeout',[string]$TimeoutSeconds)
+        Push-Location $projectCwd
+        try { & $python @staArgs 1> $staOut 2> $staErr; $staExit = $LASTEXITCODE }
+        finally { Pop-Location }
+        foreach ($report in @(Get-ChildItem -LiteralPath $outDir -File -Filter 'c40_*.rpt')) {
+            if ($report.Length -gt 2MB) { throw 'Timing report exceeds retention bound' }
+            Copy-Item -LiteralPath $report.FullName -Destination (Join-Path $runLog $report.Name)
+        }
+        if ($staExit -ne 0 -or -not (Select-String -LiteralPath $staOut -Pattern '^C40_TIMING_AUDIT_PASS$' -Quiet)) {
+            throw "Post-route timing audit failed: $staExit"
         }
     }
 

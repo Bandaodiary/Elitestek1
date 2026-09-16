@@ -1,5 +1,7 @@
 # 赛题一：板卡无关 RTL 系统架构
 
+2026-09-16 当前为 [C40 四行 Resize + C39 one-hot host](review/C40_PRODUCTION_RESIZE_100MHZ_20260916.md)：沿用 RGB48/VS/DE → ROI/CDC → overlap Resize/Capture → 帧池/CNN/双画面 scanout/CPU 接口 → 共享 AXI128 的连接关系，生产 sampler 保留四行，100 MHz 工程显式 FRAME_DIVISOR=1。完整回归与六帧实测约 15.1291 fps，100 MHz PNR/STA 通过；行为 CPU/DDR 仿真不替代真实 CPU/PHY/板卡验证。以下各阶段条目为历史设计记录。
+
 最新C31完整链路：RGB48/VS/DE → `c1_r2_rgb2_raster_source` → `c1_r2_camera_decimated_ingress` → overlap Resize/Capture → 帧池/C29 CNN/双画面scanout/CPU适配 → 共享AXI128。默认整帧除数2，FIFO以49-bit像素对记录计；相机只读扩展升级R2C2。详见[C31连接与边界](review/R2_RGB2_HOST_INTEGRATION_20260914.md)。尚未接真实CPU/DDR PHY/CSI/HDMI，原生15fps未闭环；以下旧阶段状态为保留的历史设计说明。
 
 19时验证更新：原生六次功能已通过，AW2下约14.10171fps，当前结构仍保留原整行写回器。[C32](review/R2_CUTTHROUGH_WRITER_20260914.md)的逐完整字提前写回在单元/真实写侧AXI上数据正确，但过早授权AW会占住共享W并扩大其他客户端等待，因此未接入此主链。下一阶段拟增加逐物理突发就绪信用和已授权范围排空控制，尚未实现或证明整机收益。

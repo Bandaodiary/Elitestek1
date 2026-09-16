@@ -28,7 +28,7 @@ if ($Portable) {
     Write-Output "PUBLICATION_PORTABLE_PASS changed_xml=$changed configure_before_compile=True"
     return
 }
-$project = Join-Path $caseRoot 'efinity/c1_ti60_c39_host_onehot.xml'
+$project = Join-Path $caseRoot 'efinity/c1_ti60_c40_host_100.xml'
 [xml]$xml = Get-Content -LiteralPath $project -Raw -Encoding UTF8
 $nodes = @($xml.SelectNodes('//*[local-name()="design_file"]'))
 if ($nodes.Count -ne 50) { throw "Expected 49 production sources plus top; found $($nodes.Count)" }

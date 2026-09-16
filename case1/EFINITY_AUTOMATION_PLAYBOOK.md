@@ -139,6 +139,8 @@ try {
 
 ## 10. 选择仿真工具时看IP模型，而不是只看工具安装
 
+2026-09-16补充：本机另有`D:/quartus/QTS/questa_fse/win64/vsim.exe`（Intel Starter 2023.3），官方Sapphire的`Testbench/modelsim`目录提供对应模型。当前进程使用已有`SALT_LICENSE_FILE`作为`MGLS_LICENSE_FILE`后，命令行启动和官方模型vlog编译均成功；实际加载设计仍因`intelqsimstarter: Invalid host`失败，需要与当前主机匹配的仿真许可。不要把`vsim -version`、空设计启动或vlog成功当成真实CPU已经执行。详见[C40实际检查与重跑入口](review/C40_100MHZ_JOINT_THROUGHPUT_20260916.md)。
+
 | 对象 | 可先使用的方式 | 不能据此宣称 |
 |---|---|---|
 | 开放SystemVerilog算法/AXI/帧控制 | Icarus或xsim，匹配实际语言特性 | 厂商物理IP已验证 |
