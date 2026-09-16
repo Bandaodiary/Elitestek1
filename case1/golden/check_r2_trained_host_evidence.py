@@ -16,13 +16,14 @@ def traffic(config,width,height):
                 writes=row['cnn_write_words128'])
 
 
-def check_text(text,config,nn=2,clock_native_override=None,camera_profile='legacy'):
+def check_text(text,config,nn=2,clock_native_override=None,camera_profile='legacy',core_period_ps=6666):
     def model_budget(profile,width,height):
         if profile!='c36_trained_student':
             raise ValueError('wrong trained model identity')
         return traffic(config,width,height)
     result=baseline.run(text,profile='c36_trained_student',prefix=PREFIX,expected_nn=nn,
-                        clock_native_override=clock_native_override,model_budget=model_budget,camera_profile=camera_profile)
+                        clock_native_override=clock_native_override,model_budget=model_budget,camera_profile=camera_profile,
+                        core_period_ps=core_period_ps)
     return dict(result,model_config=config,actual_AXI=True,actual_CPU_IP=False)
 
 

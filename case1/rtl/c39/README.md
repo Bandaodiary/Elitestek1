@@ -1,5 +1,7 @@
 # C39已验收开发组合（保留C37回退版）
 
+2026-09-16：当前共用的 `rtl/r2/c1_r2_resize_line_sampler.sv` 已正式扩展为四行。选源仍沿用下述 one-hot 组合，新的 100 MHz 入口为 [C40 工程](../../efinity/c1_ti60_c40_host_100.xml)，完整回归及资源/时序见 [生产合入验收](../../review/C40_PRODUCTION_RESIZE_100MHZ_20260916.md)。旧 C39 的数值资源结果为修改前历史数据；旧 XML 引用共用源时，也会读到当前四行 sampler，不能视作源码冻结快照。
+
 完整实施状态与测试证据见[三个目标记录](../../review/C39_THREE_OBJECTIVES_IMPLEMENTATION_20260915.md)。不得把本目录和所有旧RTL一起通配加入工程，否则同名模块冲突。
 
 ## 当前已验收组合：one-hot

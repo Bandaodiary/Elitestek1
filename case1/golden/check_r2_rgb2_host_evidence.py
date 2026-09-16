@@ -68,7 +68,10 @@ def source_gate():
 
 
 def run(text, profile='microstyle24', prefix=P, expected_nn=6, clock_native_override=None, model_budget=None,
-        camera_profile='legacy'):
+        camera_profile='legacy', core_period_ps=6666):
+    need(type(core_period_ps) is int and core_period_ps in (6666,10000), 'unsupported core clock period')
+    if core_period_ps==10000:
+        need(profile=='c36_trained_student' and prefix=='C1_R2_FUSED_RGB2_HOST_SYSTEM_', '100MHz needs explicit trained-host evidence')
     c24.clean(text)
     p=one(text,'PASS',prefix);plan=one(text,'PLAN',prefix);cam=one(text,'CAMERA',prefix);csr=one(text,'CAMERA_CSR',prefix)
     rgb2=one(text,'RGB2',prefix);div=rgb2['frame_divisor']
@@ -116,13 +119,14 @@ def run(text, profile='microstyle24', prefix=P, expected_nn=6, clock_native_over
     need([s['tag'] for s in sofs]==expected_tags and [r['tag'] for r in results]==eligible, 'source/result/decimation provenance changed')
     need(len(caps)==p['captures'] and [c['tag'] for c in caps]==[i for i in eligible if i not in bad_tags], 'bad capture published')
     source_period=cadence['source_period_camera_cycles'] if native else (w*h*25+4000)//4
-    need(p['camera_period']==(cadence['camera_period_summary'] if native else 4*source_period), 'wrong nominal camera period summary')
+    summary_period=(round(source_period*14286/core_period_ps) if core_period_ps==10000 else cadence['camera_period_summary'])
+    need(p['camera_period']==(summary_period if native else 4*source_period), 'wrong nominal camera period summary')
     need(rgb2['source_period_camera_cycles']==source_period,'RGB2 source period disagrees with requested cadence')
     need(cam['source_sof_cycles']==source_period and all(b['camera_cycle']-a['camera_cycle']==source_period for a,b in zip(sofs,sofs[1:])), 'source waited for downstream/cadence changed')
     for sof in sofs:
         if clock_native:
             # Real independent clocks rounded to 1ps; do not inherit C18's 5M cycle fiction.
-            delta=(sof['camera_cycle']-sofs[0]['camera_cycle'])*14.286/6.666
+            delta=(sof['camera_cycle']-sofs[0]['camera_cycle'])*14286/core_period_ps
             need(abs(sof['core_cycle']-sofs[0]['core_cycle']-delta)<=1, 'source/core clock mapping wrong')
         else:
             need(sof['core_cycle']-sofs[0]['core_cycle']==2*(sof['camera_cycle']-sofs[0]['camera_cycle']), 'small async clock mapping wrong')
@@ -145,7 +149,7 @@ def run(text, profile='microstyle24', prefix=P, expected_nn=6, clock_native_over
     line_blank=106 if native else w+4
     # VS after front porch is the final-source fence; measure from first DE.
     vs_delta=source_period-(2+20)*(sw//2+106)-46 if native else source_period-4-line_blank//2
-    last_pixel=(vs_delta-1)*(14.286/6.666 if clock_native else 2)
+    last_pixel=(vs_delta-1)*(14286/core_period_ps if clock_native else 2)
     for r in results:
         sof=sofs[r['tag']]
         if not r['failed']:

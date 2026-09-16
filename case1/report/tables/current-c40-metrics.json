@@ -1,0 +1,59 @@
+{
+  "as_of": "2026-09-16",
+  "role": "report_evidence_index_not_new_measurements",
+  "acceptance": "case1/review/C40_PRODUCTION_RESIZE_100MHZ_20260916.md",
+  "production_host": {
+    "device": "Ti60F225",
+    "timing_model": "I3",
+    "clock_mhz": 100,
+    "frame_divisor": 1,
+    "xlr": 41394,
+    "ram": 129,
+    "dsp": 121,
+    "core_setup_ns": 2.046,
+    "core_hold_ns": 0.026,
+    "camera_setup_ns": 5.181,
+    "camera_hold_ns": 0.071
+  },
+  "native_simulation": {
+    "run_id": "c40_production_20260916b_native",
+    "simulator": "xsim",
+    "clock_mhz": 100,
+    "width": 640,
+    "height": 480,
+    "cnn_frames": 6,
+    "completion_cycles": [9395687, 15937109, 22517211, 29102813, 35706367, 42316147],
+    "intervals_cycles": [6541422, 6580102, 6585602, 6603554, 6609780],
+    "worst_interval_cycles": 6609780,
+    "worst_fps": 15.129096581126754,
+    "captures": 13,
+    "displays": 21,
+    "correct_display_pixels": 12902400,
+    "underflows": 0,
+    "display_misses": 0,
+    "board_measured": false,
+    "real_cpu_executed": false,
+    "real_ddr_phy_used": false
+  },
+  "regression": {
+    "production_cases": 15,
+    "matrix_100mhz_cases": 18,
+    "matrix_positive_cases": 12,
+    "matrix_correct_cnn_frames": 24,
+    "matrix_fault_injection_cases": 6
+  },
+  "model": {
+    "manifest": "case1/outputs/c36_qat_b_mosaic_stable_20260915a/plan_fused/manifest.json",
+    "stages": 18,
+    "view_stages": [11, 13, 17],
+    "fused_stages": [14, 15]
+  },
+  "historical_joint_s2": {
+    "baseline": "C39 one-hot, not C40 production",
+    "xlr": 51900,
+    "ram": 165,
+    "dsp": 125,
+    "clock_mhz": 100,
+    "real_cpu_throughput_measured": false
+  }
+}

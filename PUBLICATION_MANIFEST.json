@@ -1,6 +1,6 @@
 {
   "scope": "case1 authored sources and selected deployment inputs only",
-  "as_of": "2026-09-15",
+  "as_of": "2026-09-16",
   "git_history_copied": false,
   "xilinx_generated_files_included": false,
   "vendor_generated_ip_included": false,
@@ -11,8 +11,8 @@
     "c36_qat_b_mosaic_equalized_20260915a",
     "c36_qat_b_mosaic_stable_20260915a"
   ],
-  "source_file_count": 2006,
-  "source_bytes": 19041007,
+  "source_file_count": 2029,
+  "source_bytes": 19191267.0,
   "files": [
     {
       "path": "case1/15FPS_THROUGHPUT_PHASE.md",
@@ -28,7 +28,7 @@
     },
     {
       "path": "case1/ARCHITECTURE.md",
-      "bytes": 79934
+      "bytes": 80429
     },
     {
       "path": "case1/BEAT_FIFO_READ_OPTIMIZATION.md",
@@ -52,7 +52,7 @@
     },
     {
       "path": "case1/DEVELOPMENT_LOG.md",
-      "bytes": 414916
+      "bytes": 416839
     },
     {
       "path": "case1/DISPLAY_RESPONSE_FIFO_PROXY_SYNTH.md",
@@ -61,14 +61,6 @@
     {
       "path": "case1/DISPLAY_RESPONSE_FIFO_QOS_PREFLIGHT.md",
       "bytes": 9792
-    },
-    {
-      "path": "case1/EFINITY_AUTOMATION_PLAYBOOK.md",
-      "bytes": 17465
-    },
-    {
-      "path": "case1/EFINITY_RISCV_TOOLCHAIN_GUIDE.md",
-      "bytes": 23995
     },
     {
       "path": "case1/efinity/c1_ti60_affine_case16.sdc",
@@ -307,6 +299,18 @@
       "bytes": 11881
     },
     {
+      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.sdc",
+      "bytes": 491
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.sv",
+      "bytes": 19612
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.xml",
+      "bytes": 11821
+    },
+    {
       "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot_cdc.audit.tcl",
       "bytes": 3797
     },
@@ -325,18 +329,6 @@
     {
       "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot_cdc.xml",
       "bytes": 11904
-    },
-    {
-      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.sdc",
-      "bytes": 491
-    },
-    {
-      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.sv",
-      "bytes": 19612
-    },
-    {
-      "path": "case1/efinity/c1_ti60_c39_joint_s2_onehot.xml",
-      "bytes": 11821
     },
     {
       "path": "case1/efinity/c1_ti60_c39_quant_baseline.sdc",
@@ -361,6 +353,22 @@
     {
       "path": "case1/efinity/c1_ti60_c39_quant_narrow.xml",
       "bytes": 2800
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c40_host_100.sdc",
+      "bytes": 4288
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c40_host_100.sv",
+      "bytes": 10087
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c40_host_100.timing.tcl",
+      "bytes": 1152
+    },
+    {
+      "path": "case1/efinity/c1_ti60_c40_host_100.xml",
+      "bytes": 8781
     },
     {
       "path": "case1/efinity/c1_ti60_cdc_attribute_probe.audit.tcl",
@@ -403,6 +411,10 @@
       "bytes": 2032
     },
     {
+      "path": "case1/efinity/c1_ti60_cdc_fifo_single.sv",
+      "bytes": 2238
+    },
+    {
       "path": "case1/efinity/c1_ti60_cdc_fifo_single_keep.sdc",
       "bytes": 123
     },
@@ -417,10 +429,6 @@
     {
       "path": "case1/efinity/c1_ti60_cdc_fifo_single_plain.xml",
       "bytes": 2129
-    },
-    {
-      "path": "case1/efinity/c1_ti60_cdc_fifo_single.sv",
-      "bytes": 2238
     },
     {
       "path": "case1/efinity/c1_ti60_cnn_leaf.sdc",
@@ -489,6 +497,14 @@
     {
       "path": "case1/efinity/c1_ti60_ebr_probe.xml",
       "bytes": 2265
+    },
+    {
+      "path": "case1/efinity/c1_ti60_engine.sdc",
+      "bytes": 33
+    },
+    {
+      "path": "case1/efinity/c1_ti60_engine.xml",
+      "bytes": 3789
     },
     {
       "path": "case1/efinity/c1_ti60_engine_affine16_wrapper.sdc",
@@ -605,14 +621,6 @@
     {
       "path": "case1/efinity/c1_ti60_engine_small_wrapper.xml",
       "bytes": 3794
-    },
-    {
-      "path": "case1/efinity/c1_ti60_engine.sdc",
-      "bytes": 33
-    },
-    {
-      "path": "case1/efinity/c1_ti60_engine.xml",
-      "bytes": 3789
     },
     {
       "path": "case1/efinity/c1_ti60_portable_soc_packed_wrapper.sdc",
@@ -943,18 +951,6 @@
       "bytes": 3947
     },
     {
-      "path": "case1/efinity/c1_ti60_r2_plan_graph96.sdc",
-      "bytes": 116
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_plan_graph96.sv",
-      "bytes": 1742
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_plan_graph96.xml",
-      "bytes": 4085
-    },
-    {
       "path": "case1/efinity/c1_ti60_r2_planned_host96.sdc",
       "bytes": 129
     },
@@ -965,6 +961,18 @@
     {
       "path": "case1/efinity/c1_ti60_r2_planned_host96.xml",
       "bytes": 6088
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_plan_graph96.sdc",
+      "bytes": 116
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_plan_graph96.sv",
+      "bytes": 1742
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_plan_graph96.xml",
+      "bytes": 4085
     },
     {
       "path": "case1/efinity/c1_ti60_r2_pw96.sdc",
@@ -1091,18 +1099,6 @@
       "bytes": 7726
     },
     {
-      "path": "case1/efinity/c1_ti60_r2_shared_system96.sdc",
-      "bytes": 123
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_shared_system96.sv",
-      "bytes": 4818
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_shared_system96.xml",
-      "bytes": 4869
-    },
-    {
       "path": "case1/efinity/c1_ti60_r2_shared96.sdc",
       "bytes": 127
     },
@@ -1113,6 +1109,18 @@
     {
       "path": "case1/efinity/c1_ti60_r2_shared96.xml",
       "bytes": 3439
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_shared_system96.sdc",
+      "bytes": 123
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_shared_system96.sv",
+      "bytes": 4818
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_shared_system96.xml",
+      "bytes": 4869
     },
     {
       "path": "case1/efinity/c1_ti60_r2_stream96.sdc",
@@ -1163,18 +1171,6 @@
       "bytes": 5306
     },
     {
-      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.sdc",
-      "bytes": 115
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.sv",
-      "bytes": 988
-    },
-    {
-      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.xml",
-      "bytes": 2946
-    },
-    {
       "path": "case1/efinity/c1_ti60_r2_weight_replica.sdc",
       "bytes": 115
     },
@@ -1185,6 +1181,18 @@
     {
       "path": "case1/efinity/c1_ti60_r2_weight_replica.xml",
       "bytes": 2919
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.sdc",
+      "bytes": 115
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.sv",
+      "bytes": 988
+    },
+    {
+      "path": "case1/efinity/c1_ti60_r2_weight_replica_packed.xml",
+      "bytes": 2946
     },
     {
       "path": "case1/efinity/c1_ti60_r2_weight_sdp.sdc",
@@ -1307,6 +1315,14 @@
       "bytes": 8814
     },
     {
+      "path": "case1/EFINITY_AUTOMATION_PLAYBOOK.md",
+      "bytes": 18043
+    },
+    {
+      "path": "case1/EFINITY_RISCV_TOOLCHAIN_GUIDE.md",
+      "bytes": 23995
+    },
+    {
       "path": "case1/EMPTY_AW_BYPASS_PREFLIGHT.md",
       "bytes": 2446
     },
@@ -1371,12 +1387,12 @@
       "bytes": 3279
     },
     {
-      "path": "case1/golden/c39_joint_cdc_evidence_selftest.py",
-      "bytes": 3353
-    },
-    {
       "path": "case1/golden/c39_joint_cdc_evidence.py",
       "bytes": 10071
+    },
+    {
+      "path": "case1/golden/c39_joint_cdc_evidence_selftest.py",
+      "bytes": 3353
     },
     {
       "path": "case1/golden/c39_joint_cdc_projects.py",
@@ -1399,12 +1415,12 @@
       "bytes": 3543
     },
     {
-      "path": "case1/golden/c39_onehot_operator_preflight_selftest.py",
-      "bytes": 4826
-    },
-    {
       "path": "case1/golden/c39_onehot_operator_preflight.py",
       "bytes": 4905
+    },
+    {
+      "path": "case1/golden/c39_onehot_operator_preflight_selftest.py",
+      "bytes": 4826
     },
     {
       "path": "case1/golden/c39_onehot_sources.py",
@@ -1419,12 +1435,12 @@
       "bytes": 3763
     },
     {
-      "path": "case1/golden/c39_operator_preflight_selftest.py",
-      "bytes": 2838
-    },
-    {
       "path": "case1/golden/c39_operator_preflight.py",
       "bytes": 4151
+    },
+    {
+      "path": "case1/golden/c39_operator_preflight_selftest.py",
+      "bytes": 2838
     },
     {
       "path": "case1/golden/c39_requant_boolean_proof.py",
@@ -1491,6 +1507,18 @@
       "bytes": 1571
     },
     {
+      "path": "case1/golden/c40_100mhz_contract.py",
+      "bytes": 4850
+    },
+    {
+      "path": "case1/golden/c40_four_row_candidate.py",
+      "bytes": 964
+    },
+    {
+      "path": "case1/golden/c40_production_project.py",
+      "bytes": 3142
+    },
+    {
       "path": "case1/golden/check_c37_trained_pipeline.py",
       "bytes": 16836
     },
@@ -1501,6 +1529,14 @@
     {
       "path": "case1/golden/check_c39_trained_pipeline.py",
       "bytes": 17261
+    },
+    {
+      "path": "case1/golden/check_c40_iverilog_pipeline.py",
+      "bytes": 6873
+    },
+    {
+      "path": "case1/golden/check_c40_production_stage.py",
+      "bytes": 10741
     },
     {
       "path": "case1/golden/check_column_refill_trace.py",
@@ -1699,12 +1735,12 @@
       "bytes": 13174
     },
     {
-      "path": "case1/golden/check_r2_plan_graph_evidence.py",
-      "bytes": 12202
-    },
-    {
       "path": "case1/golden/check_r2_planned_host_evidence.py",
       "bytes": 14480
+    },
+    {
+      "path": "case1/golden/check_r2_plan_graph_evidence.py",
+      "bytes": 12202
     },
     {
       "path": "case1/golden/check_r2_pw_tile_evidence.py",
@@ -1719,12 +1755,8 @@
       "bytes": 16356
     },
     {
-      "path": "case1/golden/check_r2_rgb_row_evidence.py",
-      "bytes": 6811
-    },
-    {
       "path": "case1/golden/check_r2_rgb2_host_evidence.py",
-      "bytes": 24165
+      "bytes": 24582
     },
     {
       "path": "case1/golden/check_r2_rgb2_startup_evidence.py",
@@ -1733,6 +1765,10 @@
     {
       "path": "case1/golden/check_r2_rgbx_system_evidence.py",
       "bytes": 17362
+    },
+    {
+      "path": "case1/golden/check_r2_rgb_row_evidence.py",
+      "bytes": 6811
     },
     {
       "path": "case1/golden/check_r2_ring_host_evidence.py",
@@ -1792,7 +1828,7 @@
     },
     {
       "path": "case1/golden/check_r2_trained_host_evidence.py",
-      "bytes": 2034
+      "bytes": 2109
     },
     {
       "path": "case1/golden/check_r2_trained_pipeline.py",
@@ -1955,6 +1991,10 @@
       "bytes": 4522
     },
     {
+      "path": "case1/golden/prepare_c40_100mhz_xsim.py",
+      "bytes": 5731
+    },
+    {
       "path": "case1/golden/prepare_portable_soc_trained_fixture.py",
       "bytes": 4365
     },
@@ -2111,6 +2151,26 @@
       "bytes": 2031
     },
     {
+      "path": "case1/golden/run_c40_100mhz_smoke.py",
+      "bytes": 5973
+    },
+    {
+      "path": "case1/golden/run_c40_capture_diagnostic.py",
+      "bytes": 7140
+    },
+    {
+      "path": "case1/golden/run_c40_iverilog_pipeline.py",
+      "bytes": 11228
+    },
+    {
+      "path": "case1/golden/run_c40_production_regression.py",
+      "bytes": 12537
+    },
+    {
+      "path": "case1/golden/run_c40_sapphire_boot.py",
+      "bytes": 4589
+    },
+    {
       "path": "case1/golden/run_r2_array_probe.py",
       "bytes": 7934
     },
@@ -2215,12 +2275,12 @@
       "bytes": 9048
     },
     {
-      "path": "case1/golden/run_r2_cutthrough_write_contention.py",
-      "bytes": 8648
-    },
-    {
       "path": "case1/golden/run_r2_cutthrough_writer_probe.py",
       "bytes": 6244
+    },
+    {
+      "path": "case1/golden/run_r2_cutthrough_write_contention.py",
+      "bytes": 8648
     },
     {
       "path": "case1/golden/run_r2_demo_rgb2_capture_probe.py",
@@ -2295,20 +2355,20 @@
       "bytes": 5336
     },
     {
-      "path": "case1/golden/run_r2_plan_decode_probe.py",
-      "bytes": 1242
-    },
-    {
-      "path": "case1/golden/run_r2_plan_graph_probe.py",
-      "bytes": 5396
-    },
-    {
       "path": "case1/golden/run_r2_planned_host_narrow_probe.py",
       "bytes": 1435
     },
     {
       "path": "case1/golden/run_r2_planned_host_probe.py",
       "bytes": 5331
+    },
+    {
+      "path": "case1/golden/run_r2_plan_decode_probe.py",
+      "bytes": 1242
+    },
+    {
+      "path": "case1/golden/run_r2_plan_graph_probe.py",
+      "bytes": 5396
     },
     {
       "path": "case1/golden/run_r2_pw_shadow_probe.py",
@@ -2347,10 +2407,6 @@
       "bytes": 2524
     },
     {
-      "path": "case1/golden/run_r2_rgb_row_probe.py",
-      "bytes": 6326
-    },
-    {
       "path": "case1/golden/run_r2_rgb2_host_fault_probe.py",
       "bytes": 3323
     },
@@ -2377,6 +2433,10 @@
     {
       "path": "case1/golden/run_r2_rgbx_video_dma_probe.py",
       "bytes": 1793
+    },
+    {
+      "path": "case1/golden/run_r2_rgb_row_probe.py",
+      "bytes": 6326
     },
     {
       "path": "case1/golden/run_r2_ring_rgb2_host_fault_probe.py",
@@ -2548,7 +2608,7 @@
     },
     {
       "path": "case1/IMPLEMENTATION_STATUS.md",
-      "bytes": 326257
+      "bytes": 326907
     },
     {
       "path": "case1/MAC_OUTPUT_RESTART_OPTIMIZATION.md",
@@ -2607,6 +2667,18 @@
       "bytes": 6086
     },
     {
+      "path": "case1/model/microstyle24_starry_functional/manifest.json",
+      "bytes": 43616
+    },
+    {
+      "path": "case1/model/microstyle24_untrained/layout_untrained.json",
+      "bytes": 13491
+    },
+    {
+      "path": "case1/model/microstyle24_untrained/manifest_untrained.json",
+      "bytes": 18315
+    },
+    {
       "path": "case1/model/microstyle_layout.py",
       "bytes": 10136
     },
@@ -2621,18 +2693,6 @@
     {
       "path": "case1/model/microstyle_schedule.py",
       "bytes": 3914
-    },
-    {
-      "path": "case1/model/microstyle24_starry_functional/manifest.json",
-      "bytes": 43616
-    },
-    {
-      "path": "case1/model/microstyle24_untrained/layout_untrained.json",
-      "bytes": 13491
-    },
-    {
-      "path": "case1/model/microstyle24_untrained/manifest_untrained.json",
-      "bytes": 18315
     },
     {
       "path": "case1/model/prepare_r2_style_data.py",
@@ -2727,6 +2787,10 @@
       "bytes": 16735
     },
     {
+      "path": "case1/model/README_QAT.md",
+      "bytes": 3584
+    },
+    {
       "path": "case1/model/read_ar_bypass_model.py",
       "bytes": 1602
     },
@@ -2741,10 +2805,6 @@
     {
       "path": "case1/model/read_tail_flush_model.py",
       "bytes": 3949
-    },
-    {
-      "path": "case1/model/README_QAT.md",
-      "bytes": 3584
     },
     {
       "path": "case1/model/run_r2_training_worker.py",
@@ -3092,7 +3152,15 @@
     },
     {
       "path": "case1/PUBLICATION_README.md",
-      "bytes": 4728
+      "bytes": 5080
+    },
+    {
+      "path": "case1/README.md",
+      "bytes": 103266
+    },
+    {
+      "path": "case1/READY_ABORT_TIMING_PREFLIGHT.md",
+      "bytes": 9470
     },
     {
       "path": "case1/READ_AR_EMPTY_BYPASS_OPTIMIZATION.md",
@@ -3119,16 +3187,8 @@
       "bytes": 2880
     },
     {
-      "path": "case1/README.md",
-      "bytes": 102437
-    },
-    {
-      "path": "case1/READY_ABORT_TIMING_PREFLIGHT.md",
-      "bytes": 9470
-    },
-    {
       "path": "case1/report/chapters/赛题一_RTL架构设计与验证报告.md",
-      "bytes": 29473
+      "bytes": 31059
     },
     {
       "path": "case1/report/figures/architecture_prompt.md",
@@ -3160,7 +3220,7 @@
     },
     {
       "path": "case1/report/plan/notes.md",
-      "bytes": 1020
+      "bytes": 1693
     },
     {
       "path": "case1/report/plan/outline.md",
@@ -3168,7 +3228,7 @@
     },
     {
       "path": "case1/report/plan/progress.md",
-      "bytes": 7731
+      "bytes": 8561
     },
     {
       "path": "case1/report/plan/project-overview.md",
@@ -3212,7 +3272,7 @@
     },
     {
       "path": "case1/report/plan/verify_current_report.ps1",
-      "bytes": 4017
+      "bytes": 4090
     },
     {
       "path": "case1/report/plan/verify_report.ps1",
@@ -3221,6 +3281,10 @@
     {
       "path": "case1/report/tables/current-c39-metrics.json",
       "bytes": 1222
+    },
+    {
+      "path": "case1/report/tables/current-c40-metrics.json",
+      "bytes": 1657
     },
     {
       "path": "case1/report/tables/source-metrics.json",
@@ -3315,12 +3379,24 @@
       "bytes": 27903
     },
     {
+      "path": "case1/review/C40_100MHZ_JOINT_THROUGHPUT_20260916.md",
+      "bytes": 11199
+    },
+    {
+      "path": "case1/review/C40_PRODUCTION_RESIZE_100MHZ_20260916.md",
+      "bytes": 9010
+    },
+    {
       "path": "case1/review/CNN_ALGORITHM_REASSESSMENT_20260915.md",
       "bytes": 17007
     },
     {
       "path": "case1/review/PUBLICATION_C39_20260916.md",
       "bytes": 3667
+    },
+    {
+      "path": "case1/review/PUBLICATION_C40_20260916.md",
+      "bytes": 1832
     },
     {
       "path": "case1/review/R2_ARRAY_FEASIBILITY_20260913.md",
@@ -3439,16 +3515,16 @@
       "bytes": 10866
     },
     {
-      "path": "case1/review/R2_RGB_ROW_FEASIBILITY_20260913.md",
-      "bytes": 9359
-    },
-    {
       "path": "case1/review/R2_RGB2_HOST_INTEGRATION_20260914.md",
       "bytes": 19443
     },
     {
       "path": "case1/review/R2_RGBX_BUFFER_PIPELINE_20260913.md",
       "bytes": 16797
+    },
+    {
+      "path": "case1/review/R2_RGB_ROW_FEASIBILITY_20260913.md",
+      "bytes": 9359
     },
     {
       "path": "case1/review/R2_RING_WRITE_STORAGE_20260914.md",
@@ -3547,6 +3623,10 @@
       "bytes": 3498
     },
     {
+      "path": "case1/review/RTL_CAPTURED_INPUT_IDENTITY_20260911.md",
+      "bytes": 3979
+    },
+    {
       "path": "case1/review/RTL_CAPTURE_ABORT_EOF_20260911.md",
       "bytes": 2471
     },
@@ -3601,10 +3681,6 @@
     {
       "path": "case1/review/RTL_CAPTURE_WRITER_DRAIN_20260911.md",
       "bytes": 4001
-    },
-    {
-      "path": "case1/review/RTL_CAPTURED_INPUT_IDENTITY_20260911.md",
-      "bytes": 3979
     },
     {
       "path": "case1/review/RTL_CDC_PENDING_RESET_20260911.md",
@@ -3711,12 +3787,12 @@
       "bytes": 2352
     },
     {
-      "path": "case1/review/RTL_ENGINE_OPTION_PROPAGATION_20260911.md",
-      "bytes": 1590
-    },
-    {
       "path": "case1/review/RTL_ENGINE_OPTIONS_ABLATION_20260911.md",
       "bytes": 2172
+    },
+    {
+      "path": "case1/review/RTL_ENGINE_OPTION_PROPAGATION_20260911.md",
+      "bytes": 1590
     },
     {
       "path": "case1/review/RTL_ENGINE_WEIGHT_GENERATION_SWITCH_20260911.md",
@@ -3867,12 +3943,12 @@
       "bytes": 1517
     },
     {
-      "path": "case1/review/RTL_PERF_MODEL_PACKING_AUDIT_20260911.md",
-      "bytes": 1963
-    },
-    {
       "path": "case1/review/RTL_PERFORMANCE_ATTRIBUTION_20260910.md",
       "bytes": 9050
+    },
+    {
+      "path": "case1/review/RTL_PERF_MODEL_PACKING_AUDIT_20260911.md",
+      "bytes": 1963
     },
     {
       "path": "case1/review/RTL_PIPELINED_RESULT_WRITES_20260910.md",
@@ -4015,12 +4091,12 @@
       "bytes": 2414
     },
     {
-      "path": "case1/review/RTL_ROW_BANK_CONTROL_GUARDS_20260911.md",
-      "bytes": 1740
-    },
-    {
       "path": "case1/review/RTL_ROW_BANKED_CACHE_FOUNDATION_20260911.md",
       "bytes": 4806
+    },
+    {
+      "path": "case1/review/RTL_ROW_BANK_CONTROL_GUARDS_20260911.md",
+      "bytes": 1740
     },
     {
       "path": "case1/review/RTL_SCALAR_ASSOC_CACHE_20260912.md",
@@ -4235,10 +4311,6 @@
       "bytes": 2516
     },
     {
-      "path": "case1/RTL_FILE_GUIDE.md",
-      "bytes": 68360
-    },
-    {
       "path": "case1/rtl/c37/c1_r2_cnn_row_shadow_engine.sv",
       "bytes": 18947
     },
@@ -4269,6 +4341,34 @@
     {
       "path": "case1/rtl/c37/reference/c37_compute6_indexed_v1.sv",
       "bytes": 7833
+    },
+    {
+      "path": "case1/rtl/c39/c1_r2_cnn_row_shadow_engine.sv",
+      "bytes": 19658
+    },
+    {
+      "path": "case1/rtl/c39/c1_r2_partitioned_window_store.sv",
+      "bytes": 11511
+    },
+    {
+      "path": "case1/rtl/c39/c1_r2_spatial_partitioned_feeder.sv",
+      "bytes": 11673
+    },
+    {
+      "path": "case1/rtl/c39/c37_compute6_indexed.sv",
+      "bytes": 8982
+    },
+    {
+      "path": "case1/rtl/c39/c39_operand_codec.sv",
+      "bytes": 1320
+    },
+    {
+      "path": "case1/rtl/c39/c39_requant_bank8_narrow.sv",
+      "bytes": 4146
+    },
+    {
+      "path": "case1/rtl/c39/README.md",
+      "bytes": 4572
     },
     {
       "path": "case1/rtl/c39_direct/c1_r2_cnn_row_shadow_engine.sv",
@@ -4305,34 +4405,6 @@
     {
       "path": "case1/rtl/c39_window_factor/README.md",
       "bytes": 1199
-    },
-    {
-      "path": "case1/rtl/c39/c1_r2_cnn_row_shadow_engine.sv",
-      "bytes": 19658
-    },
-    {
-      "path": "case1/rtl/c39/c1_r2_partitioned_window_store.sv",
-      "bytes": 11511
-    },
-    {
-      "path": "case1/rtl/c39/c1_r2_spatial_partitioned_feeder.sv",
-      "bytes": 11673
-    },
-    {
-      "path": "case1/rtl/c39/c37_compute6_indexed.sv",
-      "bytes": 8982
-    },
-    {
-      "path": "case1/rtl/c39/c39_operand_codec.sv",
-      "bytes": 1320
-    },
-    {
-      "path": "case1/rtl/c39/c39_requant_bank8_narrow.sv",
-      "bytes": 4146
-    },
-    {
-      "path": "case1/rtl/c39/README.md",
-      "bytes": 4094
     },
     {
       "path": "case1/rtl/cnn/c1_column_line_cache_c8.sv",
@@ -4399,12 +4471,12 @@
       "bytes": 9786
     },
     {
-      "path": "case1/rtl/cnn/c1_requant_bank8_compact.sv",
-      "bytes": 12234
-    },
-    {
       "path": "case1/rtl/cnn/c1_requant_bank8.sv",
       "bytes": 11926
+    },
+    {
+      "path": "case1/rtl/cnn/c1_requant_bank8_compact.sv",
+      "bytes": 12234
     },
     {
       "path": "case1/rtl/cnn/c1_requant_s8.sv",
@@ -4423,16 +4495,16 @@
       "bytes": 1908
     },
     {
+      "path": "case1/rtl/cnn/c1_s8_dot8_accum.sv",
+      "bytes": 6056
+    },
+    {
       "path": "case1/rtl/cnn/c1_s8_dot8_accum_pipelined.sv",
       "bytes": 8842
     },
     {
       "path": "case1/rtl/cnn/c1_s8_dot8_accum_treepipe.sv",
       "bytes": 13035
-    },
-    {
-      "path": "case1/rtl/cnn/c1_s8_dot8_accum.sv",
-      "bytes": 6056
     },
     {
       "path": "case1/rtl/cnn/c1_s8_upsample2_c8.sv",
@@ -4459,12 +4531,12 @@
       "bytes": 5794
     },
     {
-      "path": "case1/rtl/common/c1_cdc_latest_snapshot_guarded.sv",
-      "bytes": 2431
-    },
-    {
       "path": "case1/rtl/common/c1_cdc_latest_snapshot.sv",
       "bytes": 2316
+    },
+    {
+      "path": "case1/rtl/common/c1_cdc_latest_snapshot_guarded.sv",
+      "bytes": 2431
     },
     {
       "path": "case1/rtl/common/c1_event_cdc.sv",
@@ -4527,6 +4599,10 @@
       "bytes": 4606
     },
     {
+      "path": "case1/rtl/control/c1_frames_arena_check.sv",
+      "bytes": 4560
+    },
+    {
       "path": "case1/rtl/control/c1_frame_buffer_pkg.sv",
       "bytes": 900
     },
@@ -4545,10 +4621,6 @@
     {
       "path": "case1/rtl/control/c1_frame_write_region_guard.sv",
       "bytes": 6247
-    },
-    {
-      "path": "case1/rtl/control/c1_frames_arena_check.sv",
-      "bytes": 4560
     },
     {
       "path": "case1/rtl/control/c1_layer_command_decoder.sv",
@@ -4607,6 +4679,14 @@
       "bytes": 2264
     },
     {
+      "path": "case1/rtl/dma/c1_axi128_write_mlp.sv",
+      "bytes": 35279
+    },
+    {
+      "path": "case1/rtl/dma/c1_axi2_serial_arbiter_128.sv",
+      "bytes": 11485
+    },
+    {
       "path": "case1/rtl/dma/c1_axi_descriptor_reader.sv",
       "bytes": 8341
     },
@@ -4659,28 +4739,20 @@
       "bytes": 17080
     },
     {
-      "path": "case1/rtl/dma/c1_axi128_write_mlp.sv",
-      "bytes": 35279
-    },
-    {
-      "path": "case1/rtl/dma/c1_axi2_serial_arbiter_128.sv",
-      "bytes": 11485
-    },
-    {
       "path": "case1/rtl/dma/c1_cache_refill_completion_adapter.sv",
       "bytes": 19104
     },
     {
-      "path": "case1/rtl/dma/c1_cache_refill_scheduler_read_client_exact.sv",
-      "bytes": 15386
+      "path": "case1/rtl/dma/c1_cache_refill_scheduler.sv",
+      "bytes": 41467
     },
     {
       "path": "case1/rtl/dma/c1_cache_refill_scheduler_read_client.sv",
       "bytes": 14060
     },
     {
-      "path": "case1/rtl/dma/c1_cache_refill_scheduler.sv",
-      "bytes": 41467
+      "path": "case1/rtl/dma/c1_cache_refill_scheduler_read_client_exact.sv",
+      "bytes": 15386
     },
     {
       "path": "case1/rtl/dma/c1_column_cache_owned_exact_burst_shell.sv",
@@ -4767,12 +4839,12 @@
       "bytes": 1956
     },
     {
-      "path": "case1/rtl/r2/c1_r2_async_pixel_fifo_guarded.sv",
-      "bytes": 2984
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_async_pixel_fifo.sv",
       "bytes": 2882
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_async_pixel_fifo_guarded.sv",
+      "bytes": 2984
     },
     {
       "path": "case1/rtl/r2/c1_r2_axi_credit_row_write.sv",
@@ -4807,12 +4879,12 @@
       "bytes": 12672
     },
     {
-      "path": "case1/rtl/r2/c1_r2_camera_ingress_guarded.sv",
-      "bytes": 9969
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_camera_ingress.sv",
       "bytes": 9405
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_camera_ingress_guarded.sv",
+      "bytes": 9969
     },
     {
       "path": "case1/rtl/r2/c1_r2_camera_pair_ingress.sv",
@@ -4875,12 +4947,12 @@
       "bytes": 8746
     },
     {
-      "path": "case1/rtl/r2/c1_r2_compute6_compact.sv",
-      "bytes": 5589
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_compute6.sv",
       "bytes": 5513
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_compute6_compact.sv",
+      "bytes": 5589
     },
     {
       "path": "case1/rtl/r2/c1_r2_cpu_axi_adapter.sv",
@@ -4979,12 +5051,12 @@
       "bytes": 8821
     },
     {
-      "path": "case1/rtl/r2/c1_r2_overlay_window_store_packed.sv",
-      "bytes": 9327
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_overlay_window_store.sv",
       "bytes": 9077
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_overlay_window_store_packed.sv",
+      "bytes": 9327
     },
     {
       "path": "case1/rtl/r2/c1_r2_partitioned_feature_ram.sv",
@@ -5005,6 +5077,14 @@
     {
       "path": "case1/rtl/r2/c1_r2_planned_rgbx_axi_graph.sv",
       "bytes": 8671
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_pw16x8_feeder.sv",
+      "bytes": 5979
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_pw16x8_tile.sv",
+      "bytes": 7730
     },
     {
       "path": "case1/rtl/r2/c1_r2_pw_banked_feeder.sv",
@@ -5031,14 +5111,6 @@
       "bytes": 10188
     },
     {
-      "path": "case1/rtl/r2/c1_r2_pw16x8_feeder.sv",
-      "bytes": 5979
-    },
-    {
-      "path": "case1/rtl/r2/c1_r2_pw16x8_tile.sv",
-      "bytes": 7730
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_resize_capture_rgbx32.sv",
       "bytes": 7028
     },
@@ -5048,7 +5120,7 @@
     },
     {
       "path": "case1/rtl/r2/c1_r2_resize_line_sampler.sv",
-      "bytes": 22250
+      "bytes": 21301
     },
     {
       "path": "case1/rtl/r2/c1_r2_resize_overlap_capture.sv",
@@ -5299,12 +5371,12 @@
       "bytes": 4286
     },
     {
-      "path": "case1/rtl/r2/c1_r2_weight_store8_tdp.sv",
-      "bytes": 3370
-    },
-    {
       "path": "case1/rtl/r2/c1_r2_weight_store8.sv",
       "bytes": 2961
+    },
+    {
+      "path": "case1/rtl/r2/c1_r2_weight_store8_tdp.sv",
+      "bytes": 3370
     },
     {
       "path": "case1/rtl/r2/c1_r2_window3x4_c8.sv",
@@ -5447,12 +5519,12 @@
       "bytes": 13747
     },
     {
-      "path": "case1/rtl/video/c1_raw_raster_guard.sv",
-      "bytes": 2886
-    },
-    {
       "path": "case1/rtl/video/c1_raw10_unpack4.sv",
       "bytes": 686
+    },
+    {
+      "path": "case1/rtl/video/c1_raw_raster_guard.sv",
+      "bytes": 2886
     },
     {
       "path": "case1/rtl/video/c1_rgb_decimate.sv",
@@ -5473,6 +5545,10 @@
     {
       "path": "case1/rtl/video/r1_rgb10_color_pipeline.sv",
       "bytes": 13195
+    },
+    {
+      "path": "case1/RTL_FILE_GUIDE.md",
+      "bytes": 68360
     },
     {
       "path": "case1/SCHEDULER_PROTOCOL_AUDIT.md",
@@ -5520,7 +5596,7 @@
     },
     {
       "path": "case1/scripts/configure_publication.ps1",
-      "bytes": 2648
+      "bytes": 2645
     },
     {
       "path": "case1/scripts/efinity_final_timing.ps1",
@@ -5537,6 +5613,10 @@
     {
       "path": "case1/scripts/launch_efinity_riscv_ide.ps1",
       "bytes": 2022
+    },
+    {
+      "path": "case1/scripts/monitor_c40_xsim_10min.ps1",
+      "bytes": 2620
     },
     {
       "path": "case1/scripts/observe_c39_native.ps1",
@@ -5581,6 +5661,26 @@
     {
       "path": "case1/scripts/run_async_fifo_xsim_detached.ps1",
       "bytes": 5619
+    },
+    {
+      "path": "case1/scripts/run_axi128_write_mlp_aw_before_payload_xsim_detached.ps1",
+      "bytes": 4581
+    },
+    {
+      "path": "case1/scripts/run_axi128_write_mlp_proxy_synth_detached.ps1",
+      "bytes": 5969
+    },
+    {
+      "path": "case1/scripts/run_axi128_write_mlp_xsim_detached.ps1",
+      "bytes": 4565
+    },
+    {
+      "path": "case1/scripts/run_axi2_arbiter_xsim_detached.ps1",
+      "bytes": 5476
+    },
+    {
+      "path": "case1/scripts/run_axi7_serial_arbiter_stress_xsim_detached.ps1",
+      "bytes": 5169
     },
     {
       "path": "case1/scripts/run_axi_n_read_burst_arbiter_xsim_detached.ps1",
@@ -5635,26 +5735,6 @@
       "bytes": 4765
     },
     {
-      "path": "case1/scripts/run_axi128_write_mlp_aw_before_payload_xsim_detached.ps1",
-      "bytes": 4581
-    },
-    {
-      "path": "case1/scripts/run_axi128_write_mlp_proxy_synth_detached.ps1",
-      "bytes": 5969
-    },
-    {
-      "path": "case1/scripts/run_axi128_write_mlp_xsim_detached.ps1",
-      "bytes": 4565
-    },
-    {
-      "path": "case1/scripts/run_axi2_arbiter_xsim_detached.ps1",
-      "bytes": 5476
-    },
-    {
-      "path": "case1/scripts/run_axi7_serial_arbiter_stress_xsim_detached.ps1",
-      "bytes": 5169
-    },
-    {
       "path": "case1/scripts/run_c37_trained_pipeline_detached.ps1",
       "bytes": 18583
     },
@@ -5677,6 +5757,18 @@
     {
       "path": "case1/scripts/run_c39_trained_pipeline_detached.ps1",
       "bytes": 18933
+    },
+    {
+      "path": "case1/scripts/run_c40_100mhz_detached.ps1",
+      "bytes": 6023
+    },
+    {
+      "path": "case1/scripts/run_c40_100mhz_xsim_detached.ps1",
+      "bytes": 6086
+    },
+    {
+      "path": "case1/scripts/run_c40_production_stage_detached.ps1",
+      "bytes": 3681
     },
     {
       "path": "case1/scripts/run_cache_fabric_ddr_bfm_xsim_detached.ps1",
@@ -5788,7 +5880,7 @@
     },
     {
       "path": "case1/scripts/run_efinity_ti60_resource_map_detached.ps1",
-      "bytes": 33270
+      "bytes": 35339
     },
     {
       "path": "case1/scripts/run_frame_buffer_table_reader_xsim_detached.ps1",
@@ -6043,12 +6135,12 @@
       "bytes": 5438
     },
     {
-      "path": "case1/scripts/run_r1_stage_config_bank_xsim_detached.ps1",
-      "bytes": 5635
-    },
-    {
       "path": "case1/scripts/run_r1_stage1_handoff_xsim_detached.ps1",
       "bytes": 10861
+    },
+    {
+      "path": "case1/scripts/run_r1_stage_config_bank_xsim_detached.ps1",
+      "bytes": 5635
     },
     {
       "path": "case1/scripts/run_r2_axi_xsim_detached.ps1",
@@ -6115,12 +6207,12 @@
       "bytes": 7136
     },
     {
-      "path": "case1/scripts/run_r2_cutthrough_write_contention_detached.ps1",
-      "bytes": 6993
-    },
-    {
       "path": "case1/scripts/run_r2_cutthrough_writer_detached.ps1",
       "bytes": 5501
+    },
+    {
+      "path": "case1/scripts/run_r2_cutthrough_write_contention_detached.ps1",
+      "bytes": 6993
     },
     {
       "path": "case1/scripts/run_r2_demo_rgb2_capture_xsim_detached.ps1",
@@ -6163,12 +6255,12 @@
       "bytes": 7743
     },
     {
-      "path": "case1/scripts/run_r2_plan_graph_xsim_detached.ps1",
-      "bytes": 7762
-    },
-    {
       "path": "case1/scripts/run_r2_planned_host_xsim_detached.ps1",
       "bytes": 9381
+    },
+    {
+      "path": "case1/scripts/run_r2_plan_graph_xsim_detached.ps1",
+      "bytes": 7762
     },
     {
       "path": "case1/scripts/run_r2_pw_shadow_detached.ps1",
@@ -6419,6 +6511,10 @@
       "bytes": 6236
     },
     {
+      "path": "case1/scripts/run_window3x3_same_c8_xsim_detached.ps1",
+      "bytes": 6317
+    },
+    {
       "path": "case1/scripts/run_window_cache_model.ps1",
       "bytes": 563
     },
@@ -6467,10 +6563,6 @@
       "bytes": 3732
     },
     {
-      "path": "case1/scripts/run_window3x3_same_c8_xsim_detached.ps1",
-      "bytes": 6317
-    },
-    {
       "path": "case1/scripts/run_xsim_detached.ps1",
       "bytes": 1183
     },
@@ -6481,6 +6573,10 @@
     {
       "path": "case1/scripts/start_detached_process.ps1",
       "bytes": 3585
+    },
+    {
+      "path": "case1/scripts/synth_axi128_write_mlp_proxy.tcl",
+      "bytes": 1253
     },
     {
       "path": "case1/scripts/synth_axi_n_write_burst_arbiter_128.tcl",
@@ -6497,10 +6593,6 @@
     {
       "path": "case1/scripts/synth_axi_shared_qos_monitor_proxy.tcl",
       "bytes": 1266
-    },
-    {
-      "path": "case1/scripts/synth_axi128_write_mlp_proxy.tcl",
-      "bytes": 1253
     },
     {
       "path": "case1/scripts/synth_cache_refill_scheduler_proxy.tcl",
@@ -6567,6 +6659,10 @@
       "bytes": 7432
     },
     {
+      "path": "case1/scripts/synth_tensor_mem_axi128_read_burst_client.tcl",
+      "bytes": 952
+    },
+    {
       "path": "case1/scripts/synth_tensor_mem_axi128_read_burst_client_beatfifo.tcl",
       "bytes": 1135
     },
@@ -6575,16 +6671,12 @@
       "bytes": 1210
     },
     {
-      "path": "case1/scripts/synth_tensor_mem_axi128_read_burst_client.tcl",
-      "bytes": 952
+      "path": "case1/scripts/synth_tensor_mem_axi128_read_fabric_2c.tcl",
+      "bytes": 1354
     },
     {
       "path": "case1/scripts/synth_tensor_mem_axi128_read_fabric_2c_beatfifo.tcl",
       "bytes": 1459
-    },
-    {
-      "path": "case1/scripts/synth_tensor_mem_axi128_read_fabric_2c.tcl",
-      "bytes": 1354
     },
     {
       "path": "case1/scripts/synth_tensor_mem_axi128_write_burst_client.tcl",
@@ -6599,12 +6691,12 @@
       "bytes": 1497
     },
     {
-      "path": "case1/scripts/synth_tensor_mem_axi128_write_parallel_fabric_lanes4.tcl",
-      "bytes": 1454
-    },
-    {
       "path": "case1/scripts/synth_tensor_mem_axi128_write_parallel_fabric.tcl",
       "bytes": 1473
+    },
+    {
+      "path": "case1/scripts/synth_tensor_mem_axi128_write_parallel_fabric_lanes4.tcl",
+      "bytes": 1454
     },
     {
       "path": "case1/scripts/synth_tensor_mem_path_seam_proxy.tcl",
@@ -6667,16 +6759,16 @@
       "bytes": 6252
     },
     {
+      "path": "case1/scripts/vivado_runtime_probe.tcl",
+      "bytes": 656
+    },
+    {
       "path": "case1/scripts/vivado_runtime_probe_top.v",
       "bytes": 126
     },
     {
       "path": "case1/scripts/vivado_runtime_probe_worker.ps1",
       "bytes": 2777
-    },
-    {
-      "path": "case1/scripts/vivado_runtime_probe.tcl",
-      "bytes": 656
     },
     {
       "path": "case1/scripts/vivado_synth_worker.ps1",
@@ -6739,6 +6831,22 @@
       "bytes": 12685
     },
     {
+      "path": "case1/sim/tb_c1_axi128_write_mlp.sv",
+      "bytes": 19418
+    },
+    {
+      "path": "case1/sim/tb_c1_axi128_write_mlp_aw_before_payload.sv",
+      "bytes": 15517
+    },
+    {
+      "path": "case1/sim/tb_c1_axi2_serial_arbiter_128.sv",
+      "bytes": 35355
+    },
+    {
+      "path": "case1/sim/tb_c1_axi7_serial_arbiter_128.sv",
+      "bytes": 12768
+    },
+    {
       "path": "case1/sim/tb_c1_axi_descriptor_reader.sv",
       "bytes": 27275
     },
@@ -6771,12 +6879,12 @@
       "bytes": 11553
     },
     {
-      "path": "case1/sim/tb_c1_axi_shared_owner_epoch_fence_arbiter.sv",
-      "bytes": 12784
-    },
-    {
       "path": "case1/sim/tb_c1_axi_shared_owner_epoch_fence.sv",
       "bytes": 6436
+    },
+    {
+      "path": "case1/sim/tb_c1_axi_shared_owner_epoch_fence_arbiter.sv",
+      "bytes": 12784
     },
     {
       "path": "case1/sim/tb_c1_axi_shared_qos_monitor.sv",
@@ -6795,32 +6903,20 @@
       "bytes": 31676
     },
     {
-      "path": "case1/sim/tb_c1_axi128_write_mlp_aw_before_payload.sv",
-      "bytes": 15517
-    },
-    {
-      "path": "case1/sim/tb_c1_axi128_write_mlp.sv",
-      "bytes": 19418
-    },
-    {
-      "path": "case1/sim/tb_c1_axi2_serial_arbiter_128.sv",
-      "bytes": 35355
-    },
-    {
-      "path": "case1/sim/tb_c1_axi7_serial_arbiter_128.sv",
-      "bytes": 12768
-    },
-    {
       "path": "case1/sim/tb_c1_cache_fabric_ddr_bfm.sv",
       "bytes": 24055
+    },
+    {
+      "path": "case1/sim/tb_c1_cache_refill_completion_adapter.sv",
+      "bytes": 13960
     },
     {
       "path": "case1/sim/tb_c1_cache_refill_completion_adapter_normal.sv",
       "bytes": 16287
     },
     {
-      "path": "case1/sim/tb_c1_cache_refill_completion_adapter.sv",
-      "bytes": 13960
+      "path": "case1/sim/tb_c1_cache_refill_scheduler.sv",
+      "bytes": 15899
     },
     {
       "path": "case1/sim/tb_c1_cache_refill_scheduler_drain.sv",
@@ -6831,20 +6927,16 @@
       "bytes": 11867
     },
     {
+      "path": "case1/sim/tb_c1_cache_refill_scheduler_read_client.sv",
+      "bytes": 16427
+    },
+    {
       "path": "case1/sim/tb_c1_cache_refill_scheduler_read_client_exact.sv",
       "bytes": 14514
     },
     {
       "path": "case1/sim/tb_c1_cache_refill_scheduler_read_client_wrapper.sv",
       "bytes": 7765
-    },
-    {
-      "path": "case1/sim/tb_c1_cache_refill_scheduler_read_client.sv",
-      "bytes": 16427
-    },
-    {
-      "path": "case1/sim/tb_c1_cache_refill_scheduler.sv",
-      "bytes": 15899
     },
     {
       "path": "case1/sim/tb_c1_capture_raster_writer_drain.sv",
@@ -6927,16 +7019,20 @@
       "bytes": 11477
     },
     {
-      "path": "case1/sim/tb_c1_dwconv_stream_config.sv",
-      "bytes": 7926
-    },
-    {
       "path": "case1/sim/tb_c1_dwconv3x3_c8_requant_core.sv",
       "bytes": 27523
     },
     {
+      "path": "case1/sim/tb_c1_dwconv_stream_config.sv",
+      "bytes": 7926
+    },
+    {
       "path": "case1/sim/tb_c1_event_cdc.sv",
       "bytes": 3044
+    },
+    {
+      "path": "case1/sim/tb_c1_frames_arena_check.sv",
+      "bytes": 5070
     },
     {
       "path": "case1/sim/tb_c1_frame_manager_ready_fifo.sv",
@@ -6955,16 +7051,12 @@
       "bytes": 7808
     },
     {
-      "path": "case1/sim/tb_c1_frame_write_region_guard.sv",
-      "bytes": 6342
-    },
-    {
       "path": "case1/sim/tb_c1_frame_writer_aw_w_independent.sv",
       "bytes": 6360
     },
     {
-      "path": "case1/sim/tb_c1_frames_arena_check.sv",
-      "bytes": 5070
+      "path": "case1/sim/tb_c1_frame_write_region_guard.sv",
+      "bytes": 6342
     },
     {
       "path": "case1/sim/tb_c1_gamma_initialization.sv",
@@ -7103,20 +7195,20 @@
       "bytes": 8840
     },
     {
-      "path": "case1/sim/tb_c1_r1_microstyle_engine_artifact_8x8.sv",
-      "bytes": 6675
-    },
-    {
       "path": "case1/sim/tb_c1_r1_microstyle_engine.sv",
       "bytes": 57494
     },
     {
-      "path": "case1/sim/tb_c1_r1_microstyle_tensor_adapter_cache_sideband.sv",
-      "bytes": 7052
+      "path": "case1/sim/tb_c1_r1_microstyle_engine_artifact_8x8.sv",
+      "bytes": 6675
     },
     {
       "path": "case1/sim/tb_c1_r1_microstyle_tensor_adapter.sv",
       "bytes": 129548
+    },
+    {
+      "path": "case1/sim/tb_c1_r1_microstyle_tensor_adapter_cache_sideband.sv",
+      "bytes": 7052
     },
     {
       "path": "case1/sim/tb_c1_r1_native_artifact_preflight.sv",
@@ -7179,12 +7271,12 @@
       "bytes": 19605
     },
     {
-      "path": "case1/sim/tb_c1_r1_preview_dma_cancel.sv",
-      "bytes": 9136
-    },
-    {
       "path": "case1/sim/tb_c1_r1_preview_dma.sv",
       "bytes": 6778
+    },
+    {
+      "path": "case1/sim/tb_c1_r1_preview_dma_cancel.sv",
+      "bytes": 9136
     },
     {
       "path": "case1/sim/tb_c1_r1_preview_fork.sv",
@@ -7267,12 +7359,12 @@
       "bytes": 43272
     },
     {
-      "path": "case1/sim/tb_c1_r2_camera_capture_lifecycle.sv",
-      "bytes": 13580
-    },
-    {
       "path": "case1/sim/tb_c1_r2_camera_capture.sv",
       "bytes": 13003
+    },
+    {
+      "path": "case1/sim/tb_c1_r2_camera_capture_lifecycle.sv",
+      "bytes": 13580
     },
     {
       "path": "case1/sim/tb_c1_r2_camera_host_faults.sv",
@@ -7287,12 +7379,12 @@
       "bytes": 15756
     },
     {
-      "path": "case1/sim/tb_c1_r2_camera_safe_capture_lifecycle.sv",
-      "bytes": 14803
-    },
-    {
       "path": "case1/sim/tb_c1_r2_camera_safe_capture.sv",
       "bytes": 13036
+    },
+    {
+      "path": "case1/sim/tb_c1_r2_camera_safe_capture_lifecycle.sv",
+      "bytes": 14803
     },
     {
       "path": "case1/sim/tb_c1_r2_camera_safe_host_faults.sv",
@@ -7431,10 +7523,6 @@
       "bytes": 43225
     },
     {
-      "path": "case1/sim/tb_c1_r2_plan_decode.sv",
-      "bytes": 4270
-    },
-    {
       "path": "case1/sim/tb_c1_r2_planned_host_narrow_system.sv",
       "bytes": 17039
     },
@@ -7447,12 +7535,16 @@
       "bytes": 23359
     },
     {
-      "path": "case1/sim/tb_c1_r2_pw_shadow_feeder.sv",
-      "bytes": 16771
+      "path": "case1/sim/tb_c1_r2_plan_decode.sv",
+      "bytes": 4270
     },
     {
       "path": "case1/sim/tb_c1_r2_pw16x8_tile.sv",
       "bytes": 6338
+    },
+    {
+      "path": "case1/sim/tb_c1_r2_pw_shadow_feeder.sv",
+      "bytes": 16771
     },
     {
       "path": "case1/sim/tb_c1_r2_resize_equivalence.sv",
@@ -7591,12 +7683,12 @@
       "bytes": 1811
     },
     {
-      "path": "case1/sim/tb_c1_raw_raster_guard.sv",
-      "bytes": 4099
-    },
-    {
       "path": "case1/sim/tb_c1_raw10_unpack4.sv",
       "bytes": 526
+    },
+    {
+      "path": "case1/sim/tb_c1_raw_raster_guard.sv",
+      "bytes": 4099
     },
     {
       "path": "case1/sim/tb_c1_requant_bank8_boundaries.sv",
@@ -7651,20 +7743,20 @@
       "bytes": 11786
     },
     {
-      "path": "case1/sim/tb_c1_stream_fifo_reset.sv",
-      "bytes": 1952
-    },
-    {
       "path": "case1/sim/tb_c1_stream_fifo.sv",
       "bytes": 9328
     },
     {
-      "path": "case1/sim/tb_c1_style_cnn3_fullframe.sv",
-      "bytes": 5379
+      "path": "case1/sim/tb_c1_stream_fifo_reset.sv",
+      "bytes": 1952
     },
     {
       "path": "case1/sim/tb_c1_style_cnn3.sv",
       "bytes": 4006
+    },
+    {
+      "path": "case1/sim/tb_c1_style_cnn3_fullframe.sv",
+      "bytes": 5379
     },
     {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_bridge.sv",
@@ -7675,16 +7767,16 @@
       "bytes": 16445
     },
     {
+      "path": "case1/sim/tb_c1_tensor_mem_axi128_read_burst_client.sv",
+      "bytes": 15639
+    },
+    {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_read_burst_client_beatfifo_malformed.sv",
       "bytes": 10151
     },
     {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_read_burst_client_req_pop_refill.sv",
       "bytes": 12460
-    },
-    {
-      "path": "case1/sim/tb_c1_tensor_mem_axi128_read_burst_client.sv",
-      "bytes": 15639
     },
     {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_read_burst_profile.sv",
@@ -7695,12 +7787,12 @@
       "bytes": 17220
     },
     {
-      "path": "case1/sim/tb_c1_tensor_mem_axi128_write_burst_client_req_pop_refill.sv",
-      "bytes": 11346
-    },
-    {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_write_burst_client.sv",
       "bytes": 16228
+    },
+    {
+      "path": "case1/sim/tb_c1_tensor_mem_axi128_write_burst_client_req_pop_refill.sv",
+      "bytes": 11346
     },
     {
       "path": "case1/sim/tb_c1_tensor_mem_axi128_write_mlp_adapter.sv",
@@ -7759,6 +7851,10 @@
       "bytes": 14537
     },
     {
+      "path": "case1/sim/tb_c1_window_line_cache_c8.sv",
+      "bytes": 26115
+    },
+    {
       "path": "case1/sim/tb_c1_window_line_cache_c8_burst_shell.sv",
       "bytes": 21414
     },
@@ -7773,10 +7869,6 @@
     {
       "path": "case1/sim/tb_c1_window_line_cache_c8_maxrow.sv",
       "bytes": 15408
-    },
-    {
-      "path": "case1/sim/tb_c1_window_line_cache_c8.sv",
-      "bytes": 26115
     },
     {
       "path": "case1/sim/tb_c1_window_line_cache_ctrl.sv",
@@ -7995,12 +8087,12 @@
       "bytes": 7895
     },
     {
-      "path": "case1/TEST_RESULTS.md",
-      "bytes": 172366
-    },
-    {
       "path": "case1/tests/fixtures/efinity_truncated_map.txt",
       "bytes": 138
+    },
+    {
+      "path": "case1/TEST_RESULTS.md",
+      "bytes": 172366
     },
     {
       "path": "case1/THIRD_PARTY_NOTICES.md",

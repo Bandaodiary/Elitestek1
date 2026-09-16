@@ -1,5 +1,9 @@
 # 赛题一：板卡前 Golden、RTL 与软件基线
 
+2026-09-16 当前：[四行 Resize 生产合入与 100 MHz 重验已完成](review/C40_PRODUCTION_RESIZE_100MHZ_20260916.md)。四行 sampler 已合入生产 RTL，15 项 xsim 专项、三模型 18 项 100 MHz 矩阵及原生六帧全部通过；100 MHz 最差帧间隔 6,609,780 周期，约 15.1291 fps，无显示下溢/缺帧。新 [C40 100 MHz host 工程](efinity/c1_ti60_c40_host_100.xml)完成综合、PNR 和独立 STA：41,394 XLR / 129 RAM / 121 DSP，核心 setup/hold +2.046/+0.026 ns。临时工程均已清理。下方 C39 的资源、150 MHz 时序和帧率均为修改前历史结果，不自动适用于当前四行生产源码。
+
+官方 Sapphire 仿真许可及真实 CPU 执行边界见 [C40 联合吞吐记录](review/C40_100MHZ_JOINT_THROUGHPUT_20260916.md)；本次 host 验证仍使用行为 CPU/DDR。
+
 ## 文档入口（2026-09-15）
 
 - [Efinity 本机自动化开发方法](EFINITY_AUTOMATION_PLAYBOOK.md)：可提供给其他赛题会话，涵盖 IP 生成、软件、仿真、MAP/PNR/STA、隔离运行及清理。

@@ -39,21 +39,21 @@ for ($i=0; $i -lt $lines.Count; $i++) {
 }
 $caseRoot = Split-Path -Parent $ReportRoot
 $workspace = Split-Path -Parent $caseRoot
-$metrics = Get-Content -LiteralPath (Join-Path $ReportRoot 'tables/current-c39-metrics.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+$metrics = Get-Content -LiteralPath (Join-Path $ReportRoot 'tables/current-c40-metrics.json') -Raw -Encoding UTF8 | ConvertFrom-Json
 $plan = Get-Content -LiteralPath (Join-Path $workspace $metrics.model.manifest) -Raw -Encoding UTF8 | ConvertFrom-Json
 if ($plan.steps.Count -ne 18) { $failures.Add('Current model not 18 stages') }
 $views = @($plan.steps | Where-Object view | ForEach-Object index)
 if (($views -join ',') -ne '11,13,17') { $failures.Add('View-stage evidence mismatch') }
 $joint = Get-Content -LiteralPath (Join-Path $caseRoot 'review/C39_ONEHOT_JOINT_RESOURCE_CDC_REVIEW_20260915.json') -Raw -Encoding UTF8 | ConvertFrom-Json
-if ($joint.resource_xlr -ne $metrics.joint_s2.xlr -or $joint.map_metrics.rams -ne $metrics.joint_s2.ram -or $joint.map_metrics.dsp_mults -ne $metrics.joint_s2.dsp) { $failures.Add('Joint metrics mismatch') }
+if ($joint.resource_xlr -ne $metrics.historical_joint_s2.xlr -or $joint.map_metrics.rams -ne $metrics.historical_joint_s2.ram -or $joint.map_metrics.dsp_mults -ne $metrics.historical_joint_s2.dsp) { $failures.Add('Historical joint metrics mismatch') }
 $compact = $body.Replace(',','').Replace('，','')
-foreach ($number in @('40476','41318','51900','6433652')) {
+foreach ($number in @('41394','129','121','51900','6609780')) {
     if (-not $compact.Contains($number)) { $failures.Add("Missing current fact: $number") }
 }
-if ($body -notmatch '23\.31') { $failures.Add('Missing scoped native fps') }
+if ($body -notmatch '15\.129') { $failures.Add('Missing scoped C40 native fps') }
 if ($body -notmatch '100\s*MHz' -or $body -notmatch '150\s*MHz') { $failures.Add('Missing separate clock boundaries') }
 $slots = @([regex]::Matches($body, '【待[^】]*?\b([MP]\d+)\b') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique)
 if ($slots.Count -lt 8) { $failures.Add("Expected numbered incomplete work: $($slots.Count)") }
 if ($failures.Count) { $failures | ForEach-Object { Write-Output "FAIL $_" }; exit 1 }
 Write-Output "CURRENT_REPORT_PASS sections=8 prose_han=$han local_links=$links placeholders=$($slots.Count) model_stages=18"
-Write-Output 'EVIDENCE_SCOPE_PASS current model and derived joint resource record checked; no new EDA or board validation.'
+Write-Output 'EVIDENCE_SCOPE_PASS C40 host metrics, current model and historical joint resource boundary checked; no board validation claimed.'
